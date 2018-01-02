@@ -1,0 +1,6 @@
+
+var inRange = function (player) {
+
+
+	
+}
