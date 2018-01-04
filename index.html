@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Rugby League All-Stars</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+   -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/style.css">
+	
+</head>
+
+<body>
+
+
+			<button id="PTBbutton" hidden="true" onclick="PTBall()" class="PTB">PLAY THE BALL</button>
+			<button id="BigScreen" hidden="true" onclick="continueS()" class="BigScreen">Welcome To Rugby League All-Stars</button>
+
+<div class="menu">x
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <div class="full width" id="stars" style="background-image: url(images/Riverstars_small.gif); background-size: 100% 100%;">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img id="logo" src="images/logo.png" alt="Star Wars Fan Club" />
+            </a>
+        </div>
+
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img style="height : 25px;" src="images/logo_small_2x.png" alt="Compare The Galaxy" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a>
+                        </li>
+                        <li><a href="#">About</a>
+                        </li>
+                        <li><a href="#">Stats</a>
+                        </li>
+                        <li><a href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <br/>
+
+
+        <div class="container">
+            <h2>HanShotFirst.com - <small>Star Wars Fan Club</small></h2>
+            <label for="basic-url">Member Search</label>
+			
+			
+			
+			
+
+            <div class="input-group">
+
+                <span class="input-group-addon" id="basic-addon3">First Name</span>
+                <input type="text" ng-Change="newCalc()" ng-model="Fname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+
+                <span class="input-group-addon" id="basic-addon3">Surname</span>
+                <input type="text" ng-Change="newCalc()" ng-model="Sname" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+
+                <span class="input-group-addon" id="basic-addon3">Email</span>
+                <input type="text" ng-Change="newCalc()" ng-model="Email" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+
+            </div>
+            <button ng-Click="newCalc()" class="btn btn-primary active btn-block">Search</button>
+
+
+
+
+            <table class="table hover" id="mytable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Speed</th>
+                        <th>Strength</th>
+                        <th>Passing</th>
+						<th>Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+				    <tr ng-repeat="x in team">
+						<td>{{x.Name}}</td>
+						<td>{{x.Position}}</td>
+						<td>{{x.Speed}}</td>  
+						<td>{{x.Strength}}</td>  
+						<td>{{x.Passing}}</td> 
+						<td><button id="DecButton"  ng-Click="addPlayer($index)" class="btn btn-primary active btn-block">ADD</button></td>
+				    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div class="container text-left">
+            <div class="row text-center">
+                <div class="col-sm-4" id="col1">
+                    <img src="images/promo_1_2x.jpg" style="float : left; margin: 0 30px 10px;" id="img1" class="img-responsive" alt="Image">
+                    <h3>Rules</h3>
+                    <small>Check out the Rules and Controls here.</small>
+                </div>
+                <div class="col-sm-4" id="col2">
+                    <img src="images/promo_2_2x.jpg" id="img2" style="float : left; margin: 0 30px 10px;" class="img-responsive" alt="Image">
+                    <h3>Teams</h3>
+                    <small>Browse an index of teams.</small>
+                </div>
+                <div class="col-sm-4" id="col3">
+                    <img src="images/promo_3_2x.jpg" id="img3" style="float : left; margin: 0 30px 10px;" class="img-responsive" alt="Image">
+                    <h3>Match Statistics</h3>
+                    <small>Click here for game stats and analysis.</small>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+			<button id="StartButton"  onclick="startGame()" class="btn btn-primary active btn-block">Start</button>
+        </div>
+
+
+        <footer class="container-fluid text-right">
+            <div id="clock">xx:xx:xx</div>
+        </footer>
+
+
+    </div>
+
+	</div>
+
+</body>
+
+</html>
+
+
+<script src="js/game.js"></script>
+<script src="js/helper.js"></script>
+<script src="js/menu.js"></script>
+
+
+<script>
+    //angular control of list
+
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+
+        $scope.Tname = "Team Name";
+        $scope.Sname = "Last Name";
+        $scope.Email = "Email";
+		
+	
+		 $scope.team = [
+			{
+			  "Name" : "Alfreds Futterkiste",
+			  "Position" : "6",
+			  "Speed" : "10",
+			  "Strength" : "20",
+			  "Passing" : "20",
+			},
+			{
+			  "Name" : "Alfreds John",
+			  "Position" : "7",
+			  "Speed" : "10",
+			  "Strength" : "20",
+			  "Passing" : "20",
+			},
+			{
+			  "Name" : "James Futterkiste",
+			  "Position" : "8",
+			  "Speed" : "10",
+			  "Strength" : "20",
+			  "Passing" : "20",
+			},
+			{
+			  "Name" : "Alfreds Coleman",
+			  "Position" : "1",
+			  "Speed" : "10",
+			  "Strength" : "20",
+			  "Passing" : "20",
+			},
+			{
+			  "Name" : "Bruce Conway",
+			  "Position" : "10",
+			  "Speed" : "10",
+			  "Strength" : "20",
+			  "Passing" : "20",
+			},
+			{
+			  "Name" : "W.L. King",
+			  "Position" : "6",
+			  "Speed" : "190",
+			  "Strength" : "20",
+			  "Passing" : "920",
+			}
+		]
+
+        $scope.newCalc = function() {
+
+            var lookupURL = "lookup.php?page=1";
+            var lookupGraphURL = "lookupGraph.php";
+
+            if ($scope.Fname != "First Name" && $scope.Fname != "") {
+                lookupURL += "&firstname=" + $scope.Fname;
+            }
+            if ($scope.Sname != "Last Name" && $scope.Sname != "") {
+                lookupURL += "&surname=" + $scope.Sname;
+            }
+            if ($scope.Email != "Email" && $scope.Email != "") {
+                lookupURL += "&email=" + $scope.Email;
+            }
+
+
+           // alert(lookupURL);
+            $("#mytable tbody").remove();
+
+            $scope.myFunc(lookupURL);
+            $scope.myGraph(lookupGraphURL);
+            //$scope.myFunc('http://localhost/ifarm/lookup.php?email=ventres0@digg.com');
+            //$scope.myFunc('https://intellipharm.com.au/devtest/index.php?firstname=Phyllida&surname=Josey');
+
+        };
+
+		$scope.addDec = function() {
+		
+			north1.speed = 150;
+		
+		}
+		
+		$scope.addPlayer = function(index) {
+		
+			north1.speed = $scope.team[index].Speed;
+			console.log ($scope.team[index].Name + " now playing as north one!");
+		
+		}
+
+        $scope.myFunc = function(getURL) {
+
+            $.ajax({
+                url: getURL,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+				
+                    obj = JSON.parse(obj);
+                    var tbl = $("<table/>").attr("id", "mytable");
+                    $("#div1").append(tbl);
+					
+                    for (var i = 0; i < obj.length; i++) {
+
+                        var tr = "<tr>";
+                        var td1 = "<td>" + obj[i].firstname + "</td>";
+                        var td2 = "<td>" + obj[i].surname + "</td>";
+                        var td3 = "<td>" + obj[i].email + "</td>";
+                        var td4 = "<td>" + obj[i].gender + "</td>";
+                        var td5 = "<td>" + obj[i].joined_date + "</td>";
+                        var td6 = "<td>" + obj[i].id + "</td>";
+
+                        $("#mytable").append(tr + td1 + td2 + td3 + td4 + td5 + td6);
+                    }
+
+                },
+                error: function(request, error) {
+                    alert("Possible Failed Request: " + JSON.stringify(request));
+                    alert("Check Web Page is available");
+                }
+
+            });
+        };
+
+        $scope.myGraph = function(getURL) {
+
+            $.ajax({
+                url: getURL,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+
+                    obj = JSON.parse(obj);
+					
+                    var x = [];
+                    var y = [];
+
+                    for (var i = 0; i < obj.length; i++) {
+
+                        TESTER = document.getElementById('tester');
+
+                        x.push(obj[i].Year);
+                        y.push(obj[i].Members);
+
+                        Plotly.plot(TESTER, [{x,y}], { margin: {t: 0 } });
+                    }
+
+                },
+                error: function(request, error) {
+                    alert("Possible Failed Request: " + JSON.stringify(request));
+                    alert("Check Web Page is available");
+                }
+
+            });
+        };
+
+    });
+</script>
+
+
+<script>
+    function updateClock() {
+        var currentTime = new Date();
+        var currentHours = currentTime.getHours();
+        var currentMinutes = currentTime.getMinutes();
+        var currentSeconds = currentTime.getSeconds();
+
+        // Pad the minutes and seconds with leading zeros, if required
+        currentMinutes = (currentMinutes < 10 ? "0" : "") + currentMinutes;
+        currentSeconds = (currentSeconds < 10 ? "0" : "") + currentSeconds;
+
+        // Choose either "AM" or "PM" as appropriate
+        var timeOfDay = (currentHours < 12) ? "AM" : "PM";
+
+        // Convert the hours component to 12-hour format if needed
+        currentHours = (currentHours > 12) ? currentHours - 12 : currentHours;
+
+        // Convert an hours component of "0" to "12"
+        currentHours = (currentHours == 0) ? 12 : currentHours;
+
+        // Compose the string for display
+        var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+
+        $("#clock").html(currentTimeString);
+
+    }
+
+    $(document).ready(function() {
+        setInterval('updateClock()', 1000);
+    });
+</script>
