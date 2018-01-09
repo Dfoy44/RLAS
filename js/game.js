@@ -75,9 +75,18 @@ ballImage.onload = function () {
 	ballReady = true;
 };
 
+// Target image
+var targetReady = false;
+var targetImage = new Image();
+targetImage.onload = function () {
+	targetReady = true;
+};
+
+
 northImage.src = "images/north.png";
 northImageCap.src = "images/northRed.png";
 ballImage.src = "images/Ball.png";
+targetImage.src = "images/red_star2.png";
 
 //ball target
 var ballCarrier = "M1";
@@ -102,6 +111,9 @@ var Cbuild = 0;
 
 //clicked
 var clicked = 0;
+
+//ticks
+var gameTicks = 0;
 
 ///////////////its a button thing/////////
 
@@ -248,9 +260,14 @@ var ball = {
 };
 
 //click Marker
-var cursor = {
-	x : 0,
-	y : 0
+var target = {
+	//postion
+	x : 50,
+	y : 50,
+	//animation
+	currFrame : 0,
+	frameX : [0, 500, 1000, 1500, 2000, 2500, 3000],
+	ticks : 10
 };
 
 //tackle count
@@ -361,6 +378,9 @@ if (attackReady == 1) {
 					
 if (pass == 0){		
 
+	target.x = e.pageX;
+	target.y = e.pageY;
+
 // on mouse down we set the targets of the user players
 
 	mTargetx = e.pageX - 20;
@@ -403,6 +423,8 @@ if (pass == 0){
 		
 		mTargetx6 = e.pageX - 200;
 		mTargety6 = e.pageY -40;
+		
+		
 		
 	}
 		
@@ -1044,6 +1066,10 @@ var update = function (modifier) {
 		
 	}
 	
+	
+	
+
+	
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////targets section loops////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1546,14 +1572,22 @@ if (ballCarrier == "M6") {
 
 // Draw everything ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
 var render = function () {
 	
 if (inplay == 1) {
 	
 	
-		
 	if (bgReady) {
 		ctx.drawImage(bgImage, 0, 0);
+	}
+	
+	if (targetReady) {
+		ctx.drawImage(targetImage, spriteFrame(target), 0, 500, 500, target.x, target.y, 50, 50);
+    };   
+		
+		
 	}
 
 	if (southReady) {
@@ -1602,11 +1636,12 @@ if (inplay == 1) {
 	ctx.fillText("Time: " + min + ":" + sec, 560, 50);
 	ctx.fillText("Score: " + score, 10, 50);
 	ctx.fillText("Level: 1",  400, 50);
-	;
 	
-}
-	
+	//ticks
+	gameTicks ++;
 };
+	
+
 
 // The main game loop
 var main = function () {
