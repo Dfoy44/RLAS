@@ -32,6 +32,13 @@ var canvas = document.createElement("canvas");
 var ctx = canvas.getContext("2d");
 canvas.width = 700;
 canvas.height = 900;
+
+$("canvas").css("padding-left", "0");
+$("canvas").css("padding-right", "0");
+$("canvas").css("margin-left", "auto");
+$("canvas").css("margin-right", "auto");
+$("canvas").css("display", "block");
+
 var init = 0;
 
 // Cache elements
@@ -43,7 +50,7 @@ var bgImage = new Image();
 bgImage.onload = function () {
 	bgReady = true;
 };
-bgImage.src = "images/background.png";
+bgImage.src = "images/background1.jpg";
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -54,6 +61,7 @@ bgImage.src = "images/background.png";
 var southReady = false;
 var southImage = new Image();
 var southImageCap = new Image();
+var SouthImageSprite = new Image();
 southImage.onload = function () {
 	southReady = true;
 };
@@ -64,6 +72,7 @@ southImageCap.src = "images/southRed.png";
 var northReady = false;
 var northImage = new Image();
 var northImageCap = new Image();
+var NorthImageSprite = new Image();
 northImage.onload = function () {
 	northReady = true;
 };
@@ -87,9 +96,11 @@ northImage.src = "images/north.png";
 northImageCap.src = "images/northRed.png";
 ballImage.src = "images/Ball.png";
 targetImage.src = "images/red_star2.png";
+SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
+NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
 
 //ball target
-var ballCarrier = "M1";
+var ballCarrier = "N1";
 
 //time 
 var time = 8000
@@ -130,6 +141,14 @@ function startGame() {
 	crowdAmb.play();
 	clicked = 1;
 	gameInfo();
+	
+	//styling
+	$("canvas").css("padding-left", "0");
+	$("canvas").css("padding-right", "0");
+	$("canvas").css("margin-left", "auto");
+	$("canvas").css("margin-right", "auto");
+	$("canvas").css("display", "block");
+	
 }
 
 function PTB() {
@@ -149,106 +168,190 @@ function PTB() {
 //souths
 var south1 = {
 	speed: 27, // movement in pixels per second
+	originalspeed : 30,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0// 1 they are onside and can run anywhere, 0 they need to get onside
+	lock : 0, // 1 they are onside and can run anywhere, 0 they need to get onside
+	//animation
+	currFrame : 0,
+	frameX : [0, 21, 42, 63],
+	ticks : 20
 };
 var south2 = {
 	speed: 27, // movement in pixels per second
+	originalspeed : 30,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	//animation
+	currFrame : 0,
+	frameX : [0, 21, 42, 63],
+	ticks : 20
 };
 var south3 = {
 	speed: 27, // movement in pixels per second
+	originalspeed : 30,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	//animation
+	currFrame : 0,
+	frameX : [0, 21, 42, 63],
+	ticks : 20
 };
 
 var south4 = {
 	speed: 27, // movement in pixels per second
+	originalspeed : 30,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	//animation
+	currFrame : 0,
+	frameX : [0, 21, 42, 63],
+	ticks : 20
 }
 
 var south5 = {
 	speed: 27, // movement in pixels per second
+	originalspeed : 30,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	//animation
+	currFrame : 0,
+	frameX : [0, 21, 42, 63],
+	ticks : 20
 }
 
 var south6 = {
 	speed: 36, // movement in pixels per second
+	originalspeed : 30,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	//animation
+	currFrame : 0,
+	frameX : [0, 21, 42, 63],
+	ticks : 20
 }
 
 
 //norths
 var north1 = { 
 	speed: 55, // movement in pixels per second
+	originalspeed : 55,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	name : 'Player One',
+	position : 'Player One',
+	//animation
+	currFrame : 0,
+	frameX : [0, 20, 40, 60],
+	ticks : 11
 };
 var north2 = { 
 	speed: 55, // movement in pixels per second
+	originalspeed : 55,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	name : 'Player Two',
+	position : 'Player Two',
+	//animation
+	currFrame : 0,
+	frameX : [0, 20, 40, 60],
+	ticks : 17
 };
 var north3 = { 
 	speed: 40, // movement in pixels per second
+	originalspeed : 55,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	name : 'Player Three',
+	position : 'Player Three',
+	//animation
+	currFrame : 0,
+	frameX : [0, 20, 40, 60],
+	ticks : 15
 };
 var north4 = { 
 	speed: 40, // movement in pixels per second
+	originalspeed : 55,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	name : 'Player Four',
+	position : 'Player Four',
+	//animation
+	currFrame : 0,
+	frameX : [0, 20, 40, 60],
+	ticks : 10
 };
 var north5 = { 
 	speed: 40, // movement in pixels per second
+	originalspeed : 55,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	name : 'Player Five',
+	position : 'Player Five',
+	//animation
+	currFrame : 0,
+	frameX : [0, 20, 40, 60],
+	ticks : 10
 };
 
 var north6 = { 
 	speed: 40, // movement in pixels per second
+	originalspeed : 55,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
+	strength : 50,
 	x : 0,
 	y : 0,
-	lock : 0
+	lock : 0,
+	name : 'Player Six',
+	position : 'Player Six',
+	//animation
+	currFrame : 0,
+	frameX : [0, 20, 40, 60],
+	ticks : 12
 };
 
 //ball
@@ -267,7 +370,7 @@ var target = {
 	//animation
 	currFrame : 0,
 	frameX : [0, 500, 1000, 1500, 2000, 2500, 3000],
-	ticks : 10
+	ticks : 20
 };
 
 //tackle count
@@ -305,6 +408,9 @@ var PTB = 0;
 //$canvas.on('mousedown', function(e) {
 
 canvas.onmousedown =  function(e) {
+	
+	var pageX = e.pageX - canvas.offsetLeft;
+	var pageY = e.pageY - canvas.offsetTop;
 		
 // mousedown on a player should pass to that player
 // if epage equals any of the playerx and ys we will try and pass to that player?
@@ -312,63 +418,63 @@ var pass = 0
 
 if (attackReady == 1) {
 
-	if 	( north1.x <= (e.pageX + 50)
-		&& e.pageX <= (north1.x + 50)
-		&& north1.y <= (e.pageY + 40)
-		&& e.pageY <= (north1.y + 40)) 
+	if 	( north1.x <= (pageX + 50)
+		&& pageX <= (north1.x + 50)
+		&& north1.y <= (pageY + 40)
+		&& pageY <= (north1.y + 40)) 
 		{	
 		    pass = 1;
-			ballCarrier = "M1";
+			ballCarrier = "N1";
 			if (north1.y > ball.y){forwardPass();}
 		}
 	
-	if 	( north2.x <= (e.pageX + 50)
-		&& e.pageX <= (north2.x + 50)
-		&& north2.y <= (e.pageY + 40)
-		&& e.pageY <= (north2.y + 40)) 
+	if 	( north2.x <= (pageX + 50)
+		&& pageX <= (north2.x + 50)
+		&& north2.y <= (pageY + 40)
+		&& pageY <= (north2.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "M2";	
+			ballCarrier = "N2";	
 			if (north2.y > ball.y){forwardPass();}
 		}
 		
-	if 	( north3.x <= (e.pageX + 50)
-		&& e.pageX <= (north3.x + 50)
-		&& north3.y <= (e.pageY + 40)
-		&& e.pageY <= (north3.y + 40)) 
+	if 	( north3.x <= (pageX + 50)
+		&& pageX <= (north3.x + 50)
+		&& north3.y <= (pageY + 40)
+		&& pageY <= (north3.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "M3";	
+			ballCarrier = "N3";	
 			if (north3.y > ball.y){forwardPass();}
 		}
 		
-	if 	( north4.x <= (e.pageX + 50)
-		&& e.pageX <= (north4.x + 50)
-		&& north4.y <= (e.pageY + 40)
-		&& e.pageY <= (north4.y + 40)) 
+	if 	( north4.x <= (pageX + 50)
+		&& pageX <= (north4.x + 50)
+		&& north4.y <= (pageY + 40)
+		&& pageY <= (north4.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "M4";	
+			ballCarrier = "N4";	
 			if (north4.y > ball.y){forwardPass();}
 		}
 
-	if 	( north5.x <= (e.pageX + 50)
-		&& e.pageX <= (north5.x + 50)
-		&& north5.y <= (e.pageY + 40)
-		&& e.pageY <= (north5.y + 40)) 
+	if 	( north5.x <= (pageX + 50)
+		&& pageX <= (north5.x + 50)
+		&& north5.y <= (pageY + 40)
+		&& pageY <= (north5.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "M5";	
+			ballCarrier = "N5";	
 			if (north5.y > ball.y){forwardPass();}
 		}
 		
-	if 	( north6.x <= (e.pageX + 50)
-		&& e.pageX <= (north6.x + 50)
-		&& north6.y <= (e.pageY + 40)
-		&& e.pageY <= (north6.y + 40)) 
+	if 	( north6.x <= (pageX + 50)
+		&& pageX <= (north6.x + 50)
+		&& north6.y <= (pageY + 40)
+		&& pageY <= (north6.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "M6";	
+			ballCarrier = "N6";	
 			if (north6.y > ball.y){forwardPass();}
 		}
 		
@@ -378,137 +484,137 @@ if (attackReady == 1) {
 					
 if (pass == 0){		
 
-	target.x = e.pageX;
-	target.y = e.pageY;
+	target.x = pageX;
+	target.y = pageY;
 
 // on mouse down we set the targets of the user players
 
-	mTargetx = e.pageX - 20;
-	mTargety = e.pageY;
+	mTargetx = pageX - 20;
+	mTargety = pageY;
 
-	mTargetx2 = e.pageX - 100;
-	mTargety2 = e.pageY - 40;
+	mTargetx2 = pageX - 100;
+	mTargety2 = pageY - 40;
 
-	mTargetx3 = e.pageX + 100;
-	mTargety3 = e.pageY - 40;
+	mTargetx3 = pageX + 100;
+	mTargety3 = pageY - 40;
 	
-	mTargetx4 = e.pageX - 200;
-	mTargety4 = e.pageY - 40;
+	mTargetx4 = pageX - 200;
+	mTargety4 = pageY - 40;
 	
-	mTargetx5 = e.pageX + 200;
-	mTargety5 = e.pageY - 40;
+	mTargetx5 = pageX + 200;
+	mTargety5 = pageY - 40;
 	
-	mTargetx6 = e.pageX - 250;
-	mTargety6 = e.pageY - 40;
+	mTargetx6 = pageX - 250;
+	mTargety6 = pageY - 40;
 	
 	
 	
 	////on mouse down when a player has the ball, that player dictates the target//////////
 	
-	if (ballCarrier == "M2") {
-		mTargetx = e.pageX + 100;
-		mTargety = e.pageY -40;
+	if (ballCarrier == "N2") {
+		mTargetx = pageX + 100;
+		mTargety = pageY -40;
 		
-		mTargetx2 = e.pageX -20;
-		mTargety2 = e.pageY;
+		mTargetx2 = pageX -20;
+		mTargety2 = pageY;
 		
-		mTargetx3 = e.pageX + 200;
-		mTargety3 = e.pageY -40;
+		mTargetx3 = pageX + 200;
+		mTargety3 = pageY -40;
 
-		mTargetx4 = e.pageX - 100;
-		mTargety4 = e.pageY -40;
+		mTargetx4 = pageX - 100;
+		mTargety4 = pageY -40;
 		
-		mTargetx5 = e.pageX + 300;
-		mTargety5 = e.pageY -40;
+		mTargetx5 = pageX + 300;
+		mTargety5 = pageY -40;
 		
-		mTargetx6 = e.pageX - 200;
-		mTargety6 = e.pageY -40;
+		mTargetx6 = pageX - 200;
+		mTargety6 = pageY -40;
 		
 		
 		
 	}
 		
-	if (ballCarrier == "M3") {
-		mTargetx = e.pageX - 100;
-		mTargety = e.pageY - 40;
+	if (ballCarrier == "N3") {
+		mTargetx = pageX - 100;
+		mTargety = pageY - 40;
 		
-		mTargetx2 = e.pageX - 200;
-		mTargety2 = e.pageY -40;
+		mTargetx2 = pageX - 200;
+		mTargety2 = pageY -40;
 		
-		mTargetx3 = e.pageX -20;
-		mTargety3 = e.pageY;
+		mTargetx3 = pageX -20;
+		mTargety3 = pageY;
 		
-		mTargetx4 = e.pageX - 300;
-		mTargety4 = e.pageY -40;
+		mTargetx4 = pageX - 300;
+		mTargety4 = pageY -40;
 		
-		mTargetx5 = e.pageX + 100;
-		mTargety5 = e.pageY -40;
+		mTargetx5 = pageX + 100;
+		mTargety5 = pageY -40;
 		
-		mTargetx6 = e.pageX - 400;
-		mTargety6 = e.pageY -40;
+		mTargetx6 = pageX - 400;
+		mTargety6 = pageY -40;
 		
 	}
 	
-	if (ballCarrier == "M4") {
-		mTargetx = e.pageX + 200;
-		mTargety = e.pageY - 40;
+	if (ballCarrier == "N4") {
+		mTargetx = pageX + 200;
+		mTargety = pageY - 40;
 		
-		mTargetx2 = e.pageX + 100;
-		mTargety2 = e.pageY -40;
+		mTargetx2 = pageX + 100;
+		mTargety2 = pageY -40;
 		
-		mTargetx3 = e.pageX + 300;
-		mTargety3 = e.pageY -40;
+		mTargetx3 = pageX + 300;
+		mTargety3 = pageY -40;
 
-		mTargetx4 = e.pageX -20;
-		mTargety4 = e.pageY 
+		mTargetx4 = pageX -20;
+		mTargety4 = pageY 
 		
-		mTargetx5 = e.pageX + 400;
-		mTargety5 = e.pageY -40;
+		mTargetx5 = pageX + 400;
+		mTargety5 = pageY -40;
 		
-		mTargetx6 = e.pageX -100;
-		mTargety6 = e.pageY -40;
-		
-	}
-	
-	if (ballCarrier == "M5") {
-		mTargetx = e.pageX - 200;
-		mTargety = e.pageY - 40;
-		
-		mTargetx2 = e.pageX - 300;
-		mTargety2 = e.pageY -40;
-		
-		mTargetx3 = e.pageX - 100;
-		mTargety3 = e.pageY -40;
-		
-		mTargetx4 = e.pageX  - 400;
-		mTargety4 = e.pageY -40;
-		
-		mTargetx5 = e.pageX -20;
-		mTargety5 = e.pageY;
-		
-		mTargetx6 = e.pageX -500;
-		mTargety6 = e.pageY -40;
+		mTargetx6 = pageX -100;
+		mTargety6 = pageY -40;
 		
 	}
 	
-		if (ballCarrier == "M6") {
-		mTargetx = e.pageX + 200;
-		mTargety = e.pageY - 40;
+	if (ballCarrier == "N5") {
+		mTargetx = pageX - 200;
+		mTargety = pageY - 40;
 		
-		mTargetx2 = e.pageX +300;
-		mTargety2 = e.pageY -40;
+		mTargetx2 = pageX - 300;
+		mTargety2 = pageY -40;
 		
-		mTargetx3 = e.pageX +400;
-		mTargety3 = e.pageY -40;
+		mTargetx3 = pageX - 100;
+		mTargety3 = pageY -40;
 		
-		mTargetx4 = e.pageX  +100;
-		mTargety4 = e.pageY -40;
+		mTargetx4 = pageX  - 400;
+		mTargety4 = pageY -40;
 		
-		mTargetx5 = e.pageX +500;
-		mTargety5 = e.pageY -40;
+		mTargetx5 = pageX -20;
+		mTargety5 = pageY;
 		
-		mTargetx6 = e.pageX -20;
-		mTargety6 = e.pageY;
+		mTargetx6 = pageX -500;
+		mTargety6 = pageY -40;
+		
+	}
+	
+		if (ballCarrier == "N6") {
+		mTargetx = pageX + 200;
+		mTargety = pageY - 40;
+		
+		mTargetx2 = pageX +300;
+		mTargety2 = pageY -40;
+		
+		mTargetx3 = pageX +400;
+		mTargety3 = pageY -40;
+		
+		mTargetx4 = pageX  +100;
+		mTargety4 = pageY -40;
+		
+		mTargetx5 = pageX +500;
+		mTargety5 = pageY -40;
+		
+		mTargetx6 = pageX -20;
+		mTargety6 = pageY;
 		
 	}
 	
@@ -622,6 +728,8 @@ var reset = function (message) {
 	
 	if (init == 0) {
 	var message = "Welcome to Rugby League All-Stars"
+	
+	
 	}
 	//alert(message);
 };
@@ -698,6 +806,9 @@ function continueS() {
 // Reset the game when the player catches a north
 var Try = function () {
 	
+	restoreSpeeds();
+	$("#Pow").hide();
+	
 	buildOnce ();
 	bigCheer.play();
 	crowdAmb.volume = 0.50;
@@ -705,6 +816,7 @@ var Try = function () {
 	
 	if (score != -1) {
 	$(BigScreen).text("TRY!");
+	$(BigScreen).append("<h1>" + tryScorer() + "</h1>")
 	$(BigScreen).addClass( "large" );
 	tackleCount = 0;
 	}
@@ -757,7 +869,7 @@ if (init == 1) {
 	ball.x = 400;
 	ball.y = 150;
 	
-	ballCarrier = "M1"
+	ballCarrier = "N1"
 	lockAll();
 	tackleCount = 0;
 		
@@ -765,6 +877,11 @@ if (init == 1) {
 	$(PTBbutton).show();
 	
 	$(BigScreen).show();
+	$("#BigScreen").css("left", ball.x + canvas.offsetLeft - 310);
+	$("#BigScreen").css("top", ball.y + canvas.offsetTop + 150 );
+	
+	$("#PTBbutton").css("left", ball.x + canvas.offsetLeft - 50);
+	$("#PTBbutton").css("top", ball.y + canvas.offsetTop + 150 );
 	
 
 }
@@ -775,37 +892,45 @@ if (init == 1) {
 
 // Tackle occurs, set all targets to onside and lets play on
 var tackle = function (message) {
+	
+
+	
 // set the onside if the mons have it
 Monside = ball.y - 50;
 MdummyHalf = ball.x
 $( "canvas" ).effect( "shake",{distance:10});
 
+restoreSpeeds();
+$("#Pow").hide();
+
 //ptb
 PTB = 1;
 $(PTBbutton).text("Play The Ball");
 $(PTBbutton).show();
+$("#PTBbutton").css("left", ball.x + canvas.offsetLeft - 50);
+$("#PTBbutton").css("top", ball.y + canvas.offsetTop + 150 );
 
 //back 100 for the souths
 Honside = ball.y + 100;
 
 //lock the player with the ball
 
-if (ballCarrier == "M1"){
+if (ballCarrier == "N1"){
 	north1.lock = 1;
 }
-if (ballCarrier == "M2"){
+if (ballCarrier == "N2"){
 	north2.lock = 1;
 }
-if (ballCarrier == "M3"){
+if (ballCarrier == "N3"){
 	north3.lock = 1;
 }
-if (ballCarrier == "M4"){
+if (ballCarrier == "N4"){
 	north4.lock = 1;
 }
-if (ballCarrier == "M5"){
+if (ballCarrier == "N5"){
 	north5.lock = 1;
 }
-if (ballCarrier == "M6"){
+if (ballCarrier == "N6"){
 	north6.lock = 1;
 }
 
@@ -895,7 +1020,7 @@ if (init == 1) {
 	ball.x = 400;
 	ball.y = 150;
 	
-	ballCarrier = "M1"
+	ballCarrier = "N1"
 	lockAll();
 	tackleCount = 0;
 		
@@ -970,7 +1095,7 @@ if (init == 1) {
 	ball.x = 400;
 	ball.y = 150;
 	
-	ballCarrier = "M1"
+	ballCarrier = "N1"
 	lockAll();
 	tackleCount = 0;
 		
@@ -1130,20 +1255,20 @@ if (north6.y > ball.y && north6.onside == 1 && ball.team == 1) {mTargety6 = ball
 
 	
 //north one needs to get to dummy half
-if (ballCarrier != "M1" && attackReady == 0){
+if (ballCarrier != "N1" && attackReady == 0){
 	mTargetx = ball.x;
 	mTargety = ball.y;
 }
 
-if (ballCarrier == "M1" && attackReady == 0){
+if (ballCarrier == "N1" && attackReady == 0){
 	mTargetx2 = ball.x;
 	mTargety2 = ball.y;
 }
 
 //dummy half 
-if (ballCarrier != "M1" && attackReady == 0 && north1.x >= ball.x -20 && north1.x < ball.x +20  && north1.y >= ball.y -70 && north1.y <= ball.y -10 && PTB == 0){
+if (ballCarrier != "N1" && attackReady == 0 && north1.x >= ball.x -20 && north1.x < ball.x +20  && north1.y >= ball.y -70 && north1.y <= ball.y -10 && PTB == 0){
 	attackReady = 1;
-	ballCarrier = "M1";
+	ballCarrier = "N1";
 
 	north1.lock = 0;
 	north2.lock = 0;		
@@ -1153,10 +1278,10 @@ if (ballCarrier != "M1" && attackReady == 0 && north1.x >= ball.x -20 && north1.
 	north6.lock = 0;
 }
 
-//dummy half if our m1 gets tackled
-if (ballCarrier == "M1" && attackReady == 0 && north2.x >= ball.x -20 && north2.x < ball.x +20  && north2.y >= ball.y -70 && north1.y <= ball.y -10 && PTB == 0){
+//dummy half if our N1 gets tackled
+if (ballCarrier == "N1" && attackReady == 0 && north2.x >= ball.x -20 && north2.x < ball.x +20  && north2.y >= ball.y -70 && north1.y <= ball.y -10 && PTB == 0){
 	attackReady = 1;
-	ballCarrier = "M2";
+	ballCarrier = "N2";
 	
 	north1.lock = 0;
 	north2.lock = 0;		
@@ -1168,36 +1293,36 @@ if (ballCarrier == "M1" && attackReady == 0 && north2.x >= ball.x -20 && north2.
 
 	
 //are they onside
-if (north1.y <= Monside && north1.onside == 0 && attackReady == 1) {north1.onside = 1}
-if (north2.y <= Monside && north2.onside == 0 && attackReady == 1) {north2.onside = 1}
-if (north3.y <= Monside && north3.onside == 0 && attackReady == 1) {north3.onside = 1}
-if (north4.y <= Monside && north4.onside == 0 && attackReady == 1) {north4.onside = 1}
-if (north5.y <= Monside && north5.onside == 0 && attackReady == 1) {north5.onside = 1}
-if (north6.y <= Monside && north6.onside == 0 && attackReady == 1) {north6.onside = 1}
+if (north1.y <= Monside && north1.onside == 0 && attackReady == 1) {north1.onside = 1;}
+if (north2.y <= Monside && north2.onside == 0 && attackReady == 1) {north2.onside = 1;}
+if (north3.y <= Monside && north3.onside == 0 && attackReady == 1) {north3.onside = 1;}
+if (north4.y <= Monside && north4.onside == 0 && attackReady == 1) {north4.onside = 1;}
+if (north5.y <= Monside && north5.onside == 0 && attackReady == 1) {north5.onside = 1;}
+if (north6.y <= Monside && north6.onside == 0 && attackReady == 1) {north6.onside = 1;}
 
 // are the south onside
-if (south1.y >= Honside && south1.onside == 0 && attackReady == 1) {south1.onside = 1}
-if (south2.y >= Honside && south2.onside == 0 && attackReady == 1) {south2.onside = 1}
-if (south3.y >= Honside && south3.onside == 0 && attackReady == 1) {south3.onside = 1}
-if (south4.y >= Honside && south4.onside == 0 && attackReady == 1) {south4.onside = 1}
-if (south5.y >= Honside && south5.onside == 0 && attackReady == 1) {south5.onside = 1}
-if (south6.y >= Honside && south6.onside == 0 && attackReady == 1) {south6.onside = 1}
+if (south1.y >= Honside && south1.onside == 0 && attackReady == 1) {south1.onside = 1;}
+if (south2.y >= Honside && south2.onside == 0 && attackReady == 1) {south2.onside = 1;}
+if (south3.y >= Honside && south3.onside == 0 && attackReady == 1) {south3.onside = 1;}
+if (south4.y >= Honside && south4.onside == 0 && attackReady == 1) {south4.onside = 1;}
+if (south5.y >= Honside && south5.onside == 0 && attackReady == 1) {south5.onside = 1;}
+if (south6.y >= Honside && south6.onside == 0 && attackReady == 1) {south6.onside = 1;}
 
 // gerrum onside
-if (north1.y > Monside && north1.onside == 0) {mTargety = Monside - 10}
-if (north2.y > Monside && north2.onside == 0) {mTargety2 = Monside - 10}
-if (north3.y > Monside && north3.onside == 0) {mTargety3 = Monside - 40}
-if (north4.y > Monside && north4.onside == 0) {mTargety4 = Monside - 40}
-if (north5.y > Monside && north5.onside == 0) {mTargety5 = Monside - 40}
-if (north6.y > Monside && north6.onside == 0) {mTargety6 = Monside - 40}
+if (north1.y > Monside && north1.onside == 0) {mTargety = Monside - 10;}
+if (north2.y > Monside && north2.onside == 0) {mTargety2 = Monside - 10;}
+if (north3.y > Monside && north3.onside == 0) {mTargety3 = Monside - 40;}
+if (north4.y > Monside && north4.onside == 0) {mTargety4 = Monside - 40;}
+if (north5.y > Monside && north5.onside == 0) {mTargety5 = Monside - 40;}
+if (north6.y > Monside && north6.onside == 0) {mTargety6 = Monside - 40;}
 
 // gerrum onside south
-if (south1.y < Honside && south1.onside == 0) {hTargety = Honside + 10}
-if (south2.y < Honside && south2.onside == 0) {hTargety2 = Honside + 10}
-if (south3.y < Honside && south3.onside == 0) {hTargety3 = Honside + 10}
-if (south4.y < Honside && south4.onside == 0) {hTargety4 = Honside + 10}
-if (south5.y < Honside && south5.onside == 0) {hTargety5 = Honside + 10}
-if (south6.y < Honside && south6.onside == 0) {hTargety6 = Honside + 10}
+if (south1.y < Honside && south1.onside == 0) {hTargety = Honside + 10;}
+if (south2.y < Honside && south2.onside == 0) {hTargety2 = Honside + 10;}
+if (south3.y < Honside && south3.onside == 0) {hTargety3 = Honside + 10;}
+if (south4.y < Honside && south4.onside == 0) {hTargety4 = Honside + 10;}
+if (south5.y < Honside && south5.onside == 0) {hTargety5 = Honside + 10;}
+if (south6.y < Honside && south6.onside == 0) {hTargety6 = Honside + 10;}
 
 // lock check
 if (north1.lock == 1) {mTargety = north1.y; mTargetx = north1.x; }
@@ -1220,33 +1345,33 @@ if (south6.lock == 1) {hTargety6 = south6.y; hTargetx6 = south6.x; }
 
 
 //ball movement homing
-if (ballCarrier == "M1") {
-	ball.bTargetx = north1.x + 10; 
+if (ballCarrier == "N1") {
+	ball.bTargetx = north1.x + 5; 
     ball.bTargety = north1.y +14; 
 }
 
-if (ballCarrier == "M2") {
-	ball.bTargetx = north2.x + 5; 
+if (ballCarrier == "N2") {
+	ball.bTargetx = north2.x + 1; 
     ball.bTargety = north2.y +14; 
 }	
 
-if (ballCarrier == "M3") {
-	ball.bTargetx = north3.x + 10; 
+if (ballCarrier == "N3") {
+	ball.bTargetx = north3.x + 1; 
     ball.bTargety = north3.y +14; 
 }
 
-if (ballCarrier == "M4") {
-	ball.bTargetx = north4.x + 10; 
+if (ballCarrier == "N4") {
+	ball.bTargetx = north4.x + 1; 
     ball.bTargety = north4.y +14; 
 }
 
-if (ballCarrier == "M5") {
-	ball.bTargetx = north5.x + 10; 
+if (ballCarrier == "N5") {
+	ball.bTargetx = north5.x + 1; 
     ball.bTargety = north5.y +14; 
 }
 
-if (ballCarrier == "M6") {
-	ball.bTargetx = north6.x + 10; 
+if (ballCarrier == "N6") {
+	ball.bTargetx = north6.x + 1; 
     ball.bTargety = north6.y +14; 
 }
 
@@ -1309,12 +1434,12 @@ if (ballCarrier == "M6") {
 	if (north4.y <= 58 ) {north4.y = 58;}
 	
 	
-	if (south5.y >= 810 ) {south5.y = 810; south5.onside == 1;}
-	if (south3.y >= 810 ) {south3.y = 810; south3.onside == 1;}
-	if (south2.y >= 810 ) {south2.y = 810; south2.onside == 1;}
-	if (south1.y >= 810 ) {south1.y = 810; south1.onside == 1;}
-	if (south4.y >= 810 ) {south4.y = 810; south4.onside == 1;}
-	if (south6.y >= 810 ) {south6.y = 810; south6.onside == 1;}
+	if (south5.y >= 810 ) {south5.y = 810; Honside = 805;}
+	if (south3.y >= 810 ) {south3.y = 810; Honside = 805;}
+	if (south2.y >= 810 ) {south2.y = 810; Honside = 805;}
+	if (south1.y >= 810 ) {south1.y = 810; Honside = 805;}
+	if (south4.y >= 810 ) {south4.y = 810; Honside = 805;}
+	if (south6.y >= 810 ) {south6.y = 810; Honside = 805;}
 	
 	
 	
@@ -1333,6 +1458,7 @@ if (ballCarrier == "M6") {
 	if (north1.x < mTargetx) { // 
 		north1.x += north1.speed * modifier;
 	}
+	
 	
 	// target
 	if (north2.y > mTargety2) { //
@@ -1408,6 +1534,7 @@ if (ballCarrier == "M6") {
 	if (north6.x < mTargetx6) { // 
 		north6.x += north6.speed * modifier;
 	}
+	
 	
 	
 	//south Target
@@ -1508,63 +1635,28 @@ if (ballCarrier == "M6") {
 			Try();
 		}
 	
-		if (
-			( south1.x <= (ball.x + 40)
-			&& ball.x <= (south1.x + 40)
-			&& south1.y <= (ball.y + 3)
-			&& ball.y <= (south1.y + 3))
-			||
-			( south2.x <= (ball.x + 40)
-			&& ball.x <= (south2.x + 40)
-			&& south2.y <= (ball.y + 3)
-			&& ball.y <= (south2.y + 3))
-			||
-			( south3.x <= (ball.x + 40)
-			&& ball.x <= (south3.x + 40)
-			&& south3.y <= (ball.y + 3)
-			&& ball.y <= (south3.y + 3))
-			||
-			( south4.x <= (ball.x + 40)
-			&& ball.x <= (south4.x + 40)
-			&& south4.y <= (ball.y + 3)
-			&& ball.y <= (south4.y + 3))
-			||
-			( south5.x <= (ball.x + 40)
-			&& ball.x <= (south5.x + 40)
-			&& south5.y <= (ball.y + 3)
-			&& ball.y <= (south5.y + 3))
-			||
-			( south6.x <= (ball.x + 40)
-			&& ball.x <= (south6.x + 40)
-			&& south6.y <= (ball.y + 3)
-			&& ball.y <= (south6.y + 3))
-			)
+	var tackler = 0;
+	
+		if ( south1.x <= (ball.x + 40) && ball.x <= (south1.x + 40) && south1.y <= (ball.y + 3) && ball.y <= (south1.y + 3)) {
+				tackler = south1; }
+		if ( south2.x <= (ball.x + 40) && ball.x <= (south2.x + 40) && south2.y <= (ball.y + 3) && ball.y <= (south2.y + 3)) {
+				tackler = south2; }
+		if ( south3.x <= (ball.x + 40) && ball.x <= (south3.x + 40) && south3.y <= (ball.y + 3) && ball.y <= (south3.y + 3)) {
+				tackler = south3; }	
+		if ( south4.x <= (ball.x + 40) && ball.x <= (south4.x + 40) && south4.y <= (ball.y + 3) && ball.y <= (south4.y + 3)) {
+				tackler = south4; }
+		if ( south5.x <= (ball.x + 40) && ball.x <= (south5.x + 40) && south5.y <= (ball.y + 3) && ball.y <= (south5.y + 3)) {
+				tackler = south5; }
+		if ( south6.x <= (ball.x + 40) && ball.x <= (south6.x + 40) && south6.y <= (ball.y + 3) && ball.y <= (south6.y + 3)) {
+				tackler = south6; }
+				
+		if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false){  ++tackleCount; tackle(); }
 		
-			{ 
-			
-				if (attackReady == 1){
-				++tackleCount;
-					//alert("a south makes the tackle");
-						if (init == 0){
-							reset("tackle : " + tackleCount ); 
-						}
-						else 
-						{
-							tackle();
-							
-							//full back tackle applause
-							if ( south6.x <= (ball.x + 40)
-								&& ball.x <= (south6.x + 40)
-								&& south6.y <= (ball.y + 3)
-								&& ball.y <= (south6.y + 3))
-								{
-									clap.play();
-								}
-							
-							
-						}
-				}
-			}
+		if (tackler != 0 && init == 0){ reset("tackle : " + tackleCount ); }
+		
+		
+		//extra function full back tackle applause
+		if ( south6.x <= (ball.x + 40) && ball.x <= (south6.x + 40)	&& south6.y <= (ball.y + 3) && ball.y <= (south6.y + 3)) { clap.play(); }
 				
 	} 
 	 
@@ -1584,33 +1676,51 @@ if (inplay == 1) {
 	}
 	
 	if (targetReady) {
-		ctx.drawImage(targetImage, spriteFrame(target), 0, 500, 500, target.x, target.y, 50, 50);
+		ctx.drawImage(targetImage, spriteFrame(target), 0, 500, 500, target.x -15, target.y -15, 30, 30);
     };   
 		
 		
 	}
 
-	if (southReady) {
-		ctx.drawImage(southImageCap, south1.x, south1.y);
-		ctx.drawImage(southImage, south2.x, south2.y);
-		ctx.drawImage(southImage, south3.x, south3.y);
-		ctx.drawImage(southImage, south4.x, south4.y);
-		ctx.drawImage(southImage, south5.x, south5.y);
-		ctx.drawImage(southImage, south6.x, south6.y);
-	}
+
 
 	if (northReady) {
-		ctx.drawImage(northImage, north1.x, north1.y);
-		ctx.drawImage(northImage, north2.x, north2.y);
-		ctx.drawImage(northImage, north3.x, north3.y);
-		ctx.drawImage(northImage, north4.x, north4.y);
-		ctx.drawImage(northImageCap, north5.x, north5.y);
-		ctx.drawImage(northImageCap, north6.x, north6.y);
+		stopStillNorth();
+		//ctx.drawImage(northImage, north1.x, north1.y);
+		//ctx.drawImage(northImage, north2.x, north2.y);
+		//ctx.drawImage(northImage, north3.x, north3.y);
+		//ctx.drawImage(northImage, north4.x, north4.y);
+		//ctx.drawImage(northImageCap, north5.x, north5.y);
+		//ctx.drawImage(northImageCap, north6.x, north6.y);
+		ctx.drawImage(NorthImageSprite, spriteFrame(north1), 0, 21, 26, north1.x - 10, north1.y, 30, 40);
+		ctx.drawImage(NorthImageSprite, spriteFrame(north2), 0, 21, 26, north2.x - 10, north2.y, 30, 40);
+		ctx.drawImage(NorthImageSprite, spriteFrame(north3), 0, 21, 26, north3.x - 10, north3.y, 30, 40);
+		ctx.drawImage(NorthImageSprite, spriteFrame(north4), 0, 21, 26, north4.x - 10, north4.y, 30, 40);
+		ctx.drawImage(NorthImageSprite, spriteFrame(north5), 0, 21, 26, north5.x - 10, north5.y, 30, 40);
+		ctx.drawImage(NorthImageSprite, spriteFrame(north6), 0, 21, 26, north6.x - 10, north6.y, 30, 40);
 	}
 	
-	if (ballReady){
-		ctx.drawImage(ballImage, ball.x, ball.y);
+		if (ballReady){
+		ctx.drawImage(ballImage, ball.x - 7, ball.y -2);
 	}
+	
+		if (southReady) {
+		stopStillSouth();
+		//ctx.drawImage(southImageCap, south1.x, south1.y);
+		//ctx.drawImage(southImage, south2.x, south2.y);
+		//ctx.drawImage(southImage, south3.x, south3.y);
+		//ctx.drawImage(southImage, south4.x, south4.y);
+		//ctx.drawImage(southImage, south5.x, south5.y);
+		//ctx.drawImage(southImage, south6.x, south6.y);
+		ctx.drawImage(SouthImageSprite, spriteFrame(south1), 0, 21, 26, south1.x - 10, south1.y, 30, 40);
+		ctx.drawImage(SouthImageSprite, spriteFrame(south2), 0, 21, 26, south2.x - 10, south2.y, 30, 40);
+		ctx.drawImage(SouthImageSprite, spriteFrame(south3), 0, 21, 26, south3.x - 10, south3.y, 30, 40);
+		ctx.drawImage(SouthImageSprite, spriteFrame(south4), 0, 21, 26, south4.x - 10, south4.y, 30, 40);
+		ctx.drawImage(SouthImageSprite, spriteFrame(south5), 0, 21, 26, south5.x - 10, south5.y, 30, 40);
+		ctx.drawImage(SouthImageSprite, spriteFrame(south6), 0, 21, 26, south6.x - 10, south6.y, 30, 40);
+	}
+	
+
 		
 	if (start == 1 ){
 		time--;
@@ -1629,7 +1739,7 @@ if (inplay == 1) {
 	ctx.textAlign = "left";
 	ctx.textBaseline = "top";
 	ctx.font = "24px EuroTag";
-	ctx.fillText("RUGBY  LEAGUE  ALL-STARS", 180, 10);
+	ctx.fillText("RUGBY  LEAGUE  ALL-STARS", 180, 0);
 	ctx.font = "24px HeadsUp";
 	ctx.fillStyle = "rgb(250, 250, 250)";
 	ctx.fillText("Tackle: " + tackleCount, 200, 50);

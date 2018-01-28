@@ -2,9 +2,12 @@
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
-	  background-color : #25288c;
+	  background-color : #000000;
     }
 	
+	.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th  {
+     border-top: 1px solid #ddd0 !important;
+}
    
 	.img-responsive {
 		max-width : 150px;
@@ -13,9 +16,10 @@
 	
 	
 	  #logo {
-		width : 150px;
-		padding-top : 10px;
-		margin-left : 10%;
+		    width: 250px;
+			padding-top: 15px;
+			right: 50%;
+			left: 50%;
     }
 	
 	 #stars {
