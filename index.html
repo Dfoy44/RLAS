@@ -4,7 +4,7 @@
 <head>
     <title>Rugby League All-Stars</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5,  user-scalable=0">
 
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -31,6 +31,8 @@
 			<button id="PTBbutton" hidden="true" onclick="PTBall()" class="PTB">PLAY THE BALL</button>
 			<button id="BigScreen" hidden="true" onclick="continueS()" class="BigScreen">Welcome To Rugby League All-Stars</button>
 			<button id="Pow" hidden="true" class="Pow"></button>
+			<div class="centerComB" id="typedP">...<div class="centerCom" id="typedA"></div></div>
+			
 <div class="menu">
 
     <div ng-app="myApp" ng-controller="myCtrl">
@@ -72,6 +74,12 @@
             <h2 style="text-align : center;">RUGBY LEAGUE ALL-STARS</h2>
 			<h5 style="text-align : center;">Select Squad</h5>
            
+		   
+		 <!-- typed -->
+		
+
+		
+		   
             <table class="table hover text-center" id="mytable">
                 <thead>
                     <tr>
@@ -81,7 +89,7 @@
                         <th class="text-center">Strength</th>
                         <th class="text-center">Passing</th>
 						<th class="text-center">Select</th>
-						<th class="text-center">Position</th>
+						<th class="text-center">Match Position</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -263,6 +271,8 @@
 <script src="js/helper.js"></script>
 <script src="js/menu.js"></script>
 <script src="js/sprite.js"></script>
+<script src="js/typed.min.js"></script>
+<script src="js/commentary.js"></script>
 
 <script>
     //angular control of list
@@ -380,7 +390,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mathew Johns",
+			  "Name" : "Bobby Goulding",
 			  "Position" : "Scrum Half",
 			  "Speed" : "70",
 			  "Strength" : "60",
@@ -388,7 +398,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Paul Harragan",
+			  "Name" : "Paul Newlove",
 			  "Position" : "Front Row",
 			  "Speed" : "68",
 			  "Strength" : "88",
@@ -404,49 +414,49 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Tony Butterfield",
+			  "Name" : "Chris Joynt",
 			  "Position" : "Front Row",
-			  "Speed" : "57",
+			  "Speed" : "55",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mark Sargant",
-			  "Position" : "Front Row",
-			  "Speed" : "57",
+			  "Name" : "Anthony Sullivan",
+			  "Position" : "Winger",
+			  "Speed" : "88",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Akilua Uate",
+			  "Name" : "Paul Wellens",
 			  "Position" : "Centre",
-			  "Speed" : "57",
+			  "Speed" : "66",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Adam MacDougall",
+			  "Name" : "Alan Hunte",
 			  "Position" : "Wing",
-			  "Speed" : "57",
+			  "Speed" : "88",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Danny Buderas",
+			  "Name" : "Neil Holding",
 			  "Position" : "Hooker",
-			  "Speed" : "57",
+			  "Speed" : "65",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mark Granville",
+			  "Name" : "Paul Sculthorpe",
 			  "Position" : "Lock",
-			  "Speed" : "100",
+			  "Speed" : "55",
 			  "Strength" : "100",
 			  "Passing" : "56",
 			  "Selected" : "",
@@ -468,15 +478,15 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mathew Johns",
-			  "Position" : "Scrum Half",
+			  "Name" : "Steve Renouf",
+			  "Position" : "Centre",
 			  "Speed" : "70",
 			  "Strength" : "60",
 			  "Passing" : "80",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Paul Harragan",
+			  "Name" : "Kerrod Walters",
 			  "Position" : "Front Row",
 			  "Speed" : "68",
 			  "Strength" : "88",
@@ -484,7 +494,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Robbie ODavis",
+			  "Name" : "Wendel Sailor",
 			  "Position" : "Full Back",
 			  "Speed" : "100",
 			  "Strength" : "67",
@@ -492,7 +502,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Tony Butterfield",
+			  "Name" : "Gorden Tallis",
 			  "Position" : "Front Row",
 			  "Speed" : "57",
 			  "Strength" : "76",
@@ -500,15 +510,15 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mark Sargant",
+			  "Name" : "Shane Webcke",
 			  "Position" : "Front Row",
-			  "Speed" : "57",
+			  "Speed" : "77",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Akilua Uate",
+			  "Name" : "Michael Hancock",
 			  "Position" : "Centre",
 			  "Speed" : "57",
 			  "Strength" : "76",
@@ -516,25 +526,25 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Adam MacDougall",
-			  "Position" : "Wing",
-			  "Speed" : "57",
+			  "Name" : "Justin Hodges",
+			  "Position" : "Centre",
+			  "Speed" : "66",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Danny Buderas",
-			  "Position" : "Hooker",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Mark Granville",
+			  "Name" : "Corey Parker",
 			  "Position" : "Lock",
-			  "Speed" : "100",
+			  "Speed" : "77",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Darren Lockyer",
+			  "Position" : "Stand-Off",
+			  "Speed" : "76",
 			  "Strength" : "100",
 			  "Passing" : "56",
 			  "Selected" : "",
@@ -556,7 +566,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mathew Johns",
+			  "Name" : "Shaun Edwards",
 			  "Position" : "Scrum Half",
 			  "Speed" : "70",
 			  "Strength" : "60",
@@ -564,7 +574,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Paul Harragan",
+			  "Name" : "Kelvim Skerrit",
 			  "Position" : "Front Row",
 			  "Speed" : "68",
 			  "Strength" : "88",
@@ -572,7 +582,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Robbie ODavis",
+			  "Name" : "Chris Radlinski",
 			  "Position" : "Full Back",
 			  "Speed" : "100",
 			  "Strength" : "67",
@@ -580,7 +590,15 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Tony Butterfield",
+			  "Name" : "Terry OConnor",
+			  "Position" : "Front Row",
+			  "Speed" : "37",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Barry Mcdermott",
 			  "Position" : "Front Row",
 			  "Speed" : "57",
 			  "Strength" : "76",
@@ -588,15 +606,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mark Sargant",
-			  "Position" : "Front Row",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Akilua Uate",
+			  "Name" : "Garry Connolly",
 			  "Position" : "Centre",
 			  "Speed" : "57",
 			  "Strength" : "76",
@@ -604,15 +614,15 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Adam MacDougall",
+			  "Name" : "Jason Robinson",
 			  "Position" : "Wing",
-			  "Speed" : "57",
+			  "Speed" : "94",
 			  "Strength" : "76",
 			  "Passing" : "70",
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Danny Buderas",
+			  "Name" : "Joe Egan",
 			  "Position" : "Hooker",
 			  "Speed" : "57",
 			  "Strength" : "76",
@@ -620,7 +630,7 @@
 			  "Selected" : "",
 			},
 			{
-			  "Name" : "Mark Granville",
+			  "Name" : "Sean OLougjlin",
 			  "Position" : "Lock",
 			  "Speed" : "100",
 			  "Strength" : "100",
@@ -685,6 +695,8 @@
 		
 			$scope.team[index].Selected = "Starting at " +  ($scope.selectorN +1);
 			console.log ($scope.team[index].Name + " now playing as "  + $scope.team[0].TeamName + ($scope.selectorN +1));
+			newLine ([$scope.team[index].Name + " now playing as "  + $scope.team[0].TeamName + " " + ($scope.selectorN +1)]);
+			
 			$( "#north" + ($scope.selectorN +1) + "Name" ).text($scope.team[index].Name);
 			
 			$scope.selectorN ++;

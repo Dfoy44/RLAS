@@ -32,6 +32,44 @@
       background-color: #f2f2f2;
       padding: 25px;
     }
+	
+	.centerCom {
+    color: #FFB300;
+    font-family: 'BigScreen', Arial, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #616161;
+    position: fixed;
+    bottom: 10px;
+    background-color: #000;
+    background-size: 100%;
+    border: 0px;
+	position: fixed;
+	bottom: 0px;
+	width : 100%;
+    text-align : center;
+	z-index : 9999;
+  
+}
+
+	.centerComB {
+    color: #FFB300;
+    font-family: 'BigScreen', Arial, sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    text-shadow: 0px 0px 0px #616161;
+    position: fixed;
+    bottom: 10px;
+    background-color: #000;
+    background-size: 100%;
+    border: 0px;
+	position: fixed;
+	bottom: 0px;
+	width : 100%;
+    text-align : center;
+	z-index : 9999;
+  
+}
 
 
   /* Hide the carousel text when the screen is less than 600 pixels wide */

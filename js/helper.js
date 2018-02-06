@@ -4,7 +4,36 @@ var northTeam = [north1, north2, north3, north4, north5, north6];
 var northTargetX = [mTargetx, mTargetx2, mTargetx3, mTargetx4, mTargetx5, mTargetx6]; 
 var northTargetY = [mTargety, mTargety2, mTargety3, mTargety4, mTargety5, mTargety6]; 
 
-var inRange = function (player) {
+var checkSouthRange = function () {
+
+var southTeam = [south1, south2, south3, south4, south5, south6];
+
+for (i = 0; i < southTeam.length ; i++) {
+		inRanger(southTeam[i]); 
+	}
+}
+
+var inRanger = function (player) {
+	
+	if (player.x + 50 > ball.x && player.y + 50 > player.y && player.x - 50 < ball.x && player.y - 50 < ball.y) { 
+		console.log(player.name + "Drawn")
+		
+		
+		if (player == north1) { mTargetx = ball.x;  mTargety = ball.y; }
+		if (player == north2) { mTargetx2 = ball.x;  mTargety2 = ball.y; }
+		if (player == north3) { mTargetx3 = ball.x;  mTargety3 = ball.y; }
+		if (player == north4) { mTargetx4 = ball.x;  mTargety4 = ball.y; }
+		if (player == north5) { mTargetx5 = ball.x;  mTargety5 = ball.y; }
+		if (player == north6) { mTargetx6 = ball.x;  mTargety6 = ball.y; }
+		
+		if (player == south1) { hTargetx = ball.x;  hTargety = ball.y; }
+		if (player == south2) { hTargetx2 = ball.x;  hTargety2 = ball.y; }
+		if (player == south3) { hTargetx3 = ball.x;  hTargety3 = ball.y; }
+		if (player == south4) { hTargetx4 = ball.x;  hTargety4 = ball.y; }
+		if (player == south5) { hTargetx5 = ball.x;  hTargety5 = ball.y; }
+		if (player == south6) { hTargetx6 = ball.x;  hTargety6 = ball.y; }
+
+	}
 	
 }
 
@@ -15,7 +44,7 @@ var TackleBroken = function(tackler) {
     //original ticks 
     for (var i = 0; i < northTeam.length; i++) {
         if (ballCarrier == allBallCarrierArray[i]) {
-            if (northTeam[i].strength + Math.floor((Math.random() * 20) + 1) > tackler.strength + Math.floor((Math.random() * 15) + 1)) {
+            if (northTeam[i].strength + Math.floor((Math.random() * 20) + 1) > tackler.strength + Math.floor((Math.random() * 20) + 1) + 5) {
                 console.log("Missed Tackle" + tackler.x );
 				tackler.speed = tackler.speed / 2;
 				tackler.y = tackler.y - Math.floor((Math.random() * 10) + 1)

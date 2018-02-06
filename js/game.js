@@ -44,6 +44,8 @@ var init = 0;
 // Cache elements
 var $canvas = $('canvas');
 
+
+
 // Background image
 var bgReady = false;
 var bgImage = new Image();
@@ -99,6 +101,9 @@ targetImage.src = "images/red_star2.png";
 SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
 NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
 
+//XorY
+var XorY = "X";
+
 //ball target
 var ballCarrier = "N1";
 
@@ -141,6 +146,7 @@ function startGame() {
 	crowdAmb.play();
 	clicked = 1;
 	gameInfo();
+	gameStart();
 	
 	//styling
 	$("canvas").css("padding-left", "0");
@@ -418,63 +424,69 @@ var pass = 0
 
 if (attackReady == 1) {
 
-	if 	( north1.x <= (pageX + 50)
-		&& pageX <= (north1.x + 50)
+	if 	( north1.x <= (pageX + 60)
+		&& pageX <= (north1.x + 60)
 		&& north1.y <= (pageY + 40)
 		&& pageY <= (north1.y + 40)) 
 		{	
 		    pass = 1;
 			ballCarrier = "N1";
+			inPossesion(north1);
 			if (north1.y > ball.y){forwardPass();}
 		}
 	
-	if 	( north2.x <= (pageX + 50)
-		&& pageX <= (north2.x + 50)
+	if 	( north2.x <= (pageX + 60)
+		&& pageX <= (north2.x + 60)
 		&& north2.y <= (pageY + 40)
 		&& pageY <= (north2.y + 40)) 
 		{	
 			pass = 1;
 			ballCarrier = "N2";	
+			inPossesion(north2);
 			if (north2.y > ball.y){forwardPass();}
 		}
 		
-	if 	( north3.x <= (pageX + 50)
-		&& pageX <= (north3.x + 50)
+	if 	( north3.x <= (pageX + 60)
+		&& pageX <= (north3.x + 60)
 		&& north3.y <= (pageY + 40)
 		&& pageY <= (north3.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "N3";	
+			ballCarrier = "N3";
+			inPossesion(north3);			
 			if (north3.y > ball.y){forwardPass();}
 		}
 		
-	if 	( north4.x <= (pageX + 50)
-		&& pageX <= (north4.x + 50)
+	if 	( north4.x <= (pageX + 60)
+		&& pageX <= (north4.x + 60)
 		&& north4.y <= (pageY + 40)
 		&& pageY <= (north4.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "N4";	
+			ballCarrier = "N4";
+			inPossesion(north4);			
 			if (north4.y > ball.y){forwardPass();}
 		}
 
-	if 	( north5.x <= (pageX + 50)
-		&& pageX <= (north5.x + 50)
+	if 	( north5.x <= (pageX + 60)
+		&& pageX <= (north5.x + 60)
 		&& north5.y <= (pageY + 40)
 		&& pageY <= (north5.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "N5";	
+			ballCarrier = "N5";
+			inPossesion(north5);	
 			if (north5.y > ball.y){forwardPass();}
 		}
 		
-	if 	( north6.x <= (pageX + 50)
-		&& pageX <= (north6.x + 50)
+	if 	( north6.x <= (pageX + 60)
+		&& pageX <= (north6.x + 60)
 		&& north6.y <= (pageY + 40)
 		&& pageY <= (north6.y + 40)) 
 		{	
 			pass = 1;
-			ballCarrier = "N6";	
+			ballCarrier = "N6";
+			inPossesion(north6);	
 			if (north6.y > ball.y){forwardPass();}
 		}
 		
@@ -1238,20 +1250,23 @@ if (start == 1){
 	hTargety6 = south2.y + 200;
 	
 	if (ball.y > south1.y +10 && ball.y > south2.y +10 && ball.y > south3.y +10 && ball.y > south4.y +10 && ball.y > south5.y +10){
-	hTargety6 = ball.y +10;
+	hTargety6 = ball.y +5
+	hTargetx6 = ball.x;
 	crowdAmb.volume = .99;
 	buildOnce();
 	}
 	
+	checkSouthRange();
+	
 }
 	
 	// get behind the ball - may need to change this
-if (north1.y > ball.y && north1.onside == 1 && ball.team == 1) {mTargety = ball.y -10}
-if (north2.y > ball.y && north2.onside == 1 && ball.team == 1) {mTargety2 = ball.y -10}
-if (north3.y > ball.y && north3.onside == 1 && ball.team == 1) {mTargety3 = ball.y -20}
-if (north4.y > ball.y && north4.onside == 1 && ball.team == 1) {mTargety4 = ball.y - 20}
-if (north5.y > ball.y && north5.onside == 1 && ball.team == 1) {mTargety5 = ball.y - 20}
-if (north6.y > ball.y && north6.onside == 1 && ball.team == 1) {mTargety6 = ball.y - 20}
+if (north1.y > ball.y && north1.onside == 1 && ball.team == 1) {mTargety = ball.y -20}
+if (north2.y > ball.y && north2.onside == 1 && ball.team == 1) {mTargety2 = ball.y -20}
+if (north3.y > ball.y && north3.onside == 1 && ball.team == 1) {mTargety3 = ball.y -30}
+if (north4.y > ball.y && north4.onside == 1 && ball.team == 1) {mTargety4 = ball.y - 30}
+if (north5.y > ball.y && north5.onside == 1 && ball.team == 1) {mTargety5 = ball.y - 40}
+if (north6.y > ball.y && north6.onside == 1 && ball.team == 1) {mTargety6 = ball.y - 40}
 
 	
 //north one needs to get to dummy half
@@ -1311,8 +1326,8 @@ if (south6.y >= Honside && south6.onside == 0 && attackReady == 1) {south6.onsid
 // gerrum onside
 if (north1.y > Monside && north1.onside == 0) {mTargety = Monside - 10;}
 if (north2.y > Monside && north2.onside == 0) {mTargety2 = Monside - 10;}
-if (north3.y > Monside && north3.onside == 0) {mTargety3 = Monside - 40;}
-if (north4.y > Monside && north4.onside == 0) {mTargety4 = Monside - 40;}
+if (north3.y > Monside && north3.onside == 0) {mTargety3 = Monside - 30;}
+if (north4.y > Monside && north4.onside == 0) {mTargety4 = Monside - 30;}
 if (north5.y > Monside && north5.onside == 0) {mTargety5 = Monside - 40;}
 if (north6.y > Monside && north6.onside == 0) {mTargety6 = Monside - 40;}
 
@@ -1379,20 +1394,34 @@ if (ballCarrier == "N6") {
 		
 	//ball target
 	
-
-	if (ball.y > ball.bTargety) { //
-		ball.y -= ball.speed * modifier;
-	}
-	if (ball.y < ball.bTargety) { // 
-		ball.y += ball.speed * modifier;
-	}
-	if (ball.x > ball.bTargetx) { // 
+if (XorY == "X" || ball.y > ball.bTargety -150 || ball.y < ball.bTargety +150) {
+	
+	if (ball.x > ball.bTargetx) { 
 		ball.x -= ball.speed * modifier;
 	}
-	if (ball.x < ball.bTargetx) { // 
+	
+	if (ball.x < ball.bTargetx) {  
 		ball.x += ball.speed * modifier;
 	}
 
+}
+
+if (XorY == "Y" || ball.x > ball.bTargetx -150 || ball.x < ball.bTargetx +150) {
+	
+	if (ball.y > ball.bTargety) { 
+		ball.y -= ball.speed * modifier;
+	}
+	
+	if (ball.y < ball.bTargety) {  
+		ball.y += ball.speed * modifier;
+	}
+
+}	
+
+if (XorY == "X") {XorY = "Y";}
+if (XorY == "Y") {XorY = "X";} 
+
+	
 	//no going out of play	
 	if (north5.x >= 640 ) {north5.x = 640;}
 	if (north3.x >= 640 ) {north3.x = 640;}
@@ -1649,8 +1678,9 @@ if (ballCarrier == "N6") {
 				tackler = south5; }
 		if ( south6.x <= (ball.x + 40) && ball.x <= (south6.x + 40) && south6.y <= (ball.y + 3) && ball.y <= (south6.y + 3)) {
 				tackler = south6; }
+
 				
-		if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false){  ++tackleCount; tackle(); }
+		if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false){  ++tackleCount; tackle(); tacklerCredit(tackler);}
 		
 		if (tackler != 0 && init == 0){ reset("tackle : " + tackleCount ); }
 		
