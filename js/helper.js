@@ -57,6 +57,8 @@ var TackleBroken = function(tackler) {
 				$(".Pow").css("top", ball.y + canvas.offsetTop);
 				$( "#Pow" ).delay( 800 ).fadeOut(80);
 				
+				chargesForward(northTeam[i]);
+				
 				return true;
             }
         }
