@@ -490,7 +490,11 @@ if (attackReady == 1) {
 			if (north6.y > ball.y){forwardPass();}
 		}
 		
+		
+		
+	
 }	
+
 
 
 					
@@ -1210,6 +1214,9 @@ var update = function (modifier) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////targets section loops////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
 if ( time == 0) {
 	
 	 endGame ();
@@ -1232,6 +1239,24 @@ if (ball.y > 600){
 }
 	
 //souths need targets////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var PassCheck = function() {
+    var northTeam = [north1, north2, north3, north4, north5, north6];
+	var southTeam = [south1, south2, south3, south4, south5, south6]; 
+    var northBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
+	var southBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6"];
+
+    //north with the ball 
+    for (var i = 0; i < northTeam.length; i++) {
+        if (ballCarrier == northBallCarrierArray[i]) {
+         
+		 if ( northTeam[i].x > ball.x + 30 || northTeam[i].x < ball.x -30 ) {
+			 return true
+		}			
+	  }
+	}
+}
+
 
 if (start == 1){
 	hTargetx = north1.x;
@@ -1394,7 +1419,11 @@ if (ballCarrier == "N6") {
 		
 	//ball target
 	
-if (XorY == "X" || ball.y > ball.bTargety -150 || ball.y < ball.bTargety +150) {
+	bxDist =  Math.abs(ball.x - ball.bTargetx);
+	byDist =  Math.abs(ball.y - ball.bTargety);
+	
+	
+if (bxDist > byDist) {
 	
 	if (ball.x > ball.bTargetx) { 
 		ball.x -= ball.speed * modifier;
@@ -1406,7 +1435,7 @@ if (XorY == "X" || ball.y > ball.bTargety -150 || ball.y < ball.bTargety +150) {
 
 }
 
-if (XorY == "Y" || ball.x > ball.bTargetx -150 || ball.x < ball.bTargetx +150) {
+if (byDist > bxDist) {
 	
 	if (ball.y > ball.bTargety) { 
 		ball.y -= ball.speed * modifier;
@@ -1421,6 +1450,7 @@ if (XorY == "Y" || ball.x > ball.bTargetx -150 || ball.x < ball.bTargetx +150) {
 if (XorY == "X") {XorY = "Y";}
 if (XorY == "Y") {XorY = "X";} 
 
+	
 	
 	//no going out of play	
 	if (north5.x >= 640 ) {north5.x = 640;}
@@ -1471,8 +1501,7 @@ if (XorY == "Y") {XorY = "X";}
 	if (south6.y >= 810 ) {south6.y = 810; Honside = 805;}
 	
 	
-	
-	
+		
 	//north target
 	if (north1.y > mTargety) { //
 		north1.y -= north1.speed * modifier;
@@ -1651,7 +1680,12 @@ if (XorY == "Y") {XorY = "X";}
 		south6.x += south6.speed * modifier;
 	}
 	
-	
+	if (PassCheck() == true){
+		StayBackNorth();
+
+		}
+		
+
 	
 	
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

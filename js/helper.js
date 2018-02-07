@@ -4,6 +4,18 @@ var northTeam = [north1, north2, north3, north4, north5, north6];
 var northTargetX = [mTargetx, mTargetx2, mTargetx3, mTargetx4, mTargetx5, mTargetx6]; 
 var northTargetY = [mTargety, mTargety2, mTargety3, mTargety4, mTargety5, mTargety6]; 
 
+var StayBackNorth = function () {
+	
+var northTeam = [north1, north2, north3, north4, north5, north6]; 
+	
+	for (var i = 0; i < northTeam.length; i++) {
+		 if (northTeam[i].y + 15 >= ball.y) {
+			northTeam[i].y = northTeam[i].y - 1;
+		   //alert("Get Back " + northTeam[i].name)
+		 }
+	}
+}
+
 var checkSouthRange = function () {
 
 var southTeam = [south1, south2, south3, south4, south5, south6];
@@ -97,6 +109,8 @@ var DefensiveSpeed = function() {
 	}	
   
 }
+
+
 
 
 var restoreSpeeds = function () {
