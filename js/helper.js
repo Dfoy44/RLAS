@@ -9,8 +9,8 @@ var StayBackNorth = function () {
 var northTeam = [north1, north2, north3, north4, north5, north6]; 
 	
 	for (var i = 0; i < northTeam.length; i++) {
-		 if (northTeam[i].y + 15 >= ball.y) {
-			northTeam[i].y = northTeam[i].y - 1;
+		 if (northTeam[i].y + 5 >= ball.y) {
+			northTeam[i].y = northTeam[i].y - 0.00000001;
 		   //alert("Get Back " + northTeam[i].name)
 		 }
 	}
@@ -92,7 +92,7 @@ var DefensiveSpeed = function() {
         if (ballCarrier == northBallCarrierArray[i]) {
           
 		for (var i = 0; i < southTeam.length; i++) {
-			southTeam[i].speed = southTeam[i].speed - 20;
+			southTeam[i].speed = southTeam[i].speed - 25;
 			console.log(southTeam[i].speed);
 		}			
 	  }
@@ -103,7 +103,7 @@ var DefensiveSpeed = function() {
         if (ballCarrier == southBallCarrierArray[i]) {
           
 		for (var i = 0; i < northTeam.length; i++) {
-			northTeam[i].speed = northTeam[i].speed - 20;
+			northTeam[i].speed = northTeam[i].speed - 25;
 		}			
 	  }
 	}	

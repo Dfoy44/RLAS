@@ -73,42 +73,14 @@
         <div class="container" style="background: white;">
             <h2 style="text-align : center;">RUGBY LEAGUE ALL-STARS</h2>
 			<h5 style="text-align : center;">Select Squad</h5>
-           
-		   
-		 <!-- typed -->
-		
-
-		
-		   
-            <table class="table hover text-center" id="mytable">
-                <thead>
-                    <tr>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Position</th>
-                        <th class="text-center">Speed</th>
-                        <th class="text-center">Strength</th>
-                        <th class="text-center">Passing</th>
-						<th class="text-center">Select</th>
-						<th class="text-center">Match Position</th>
-                    </tr>
-                </thead>
-                <tbody>
-				    <tr ng-repeat="x in team"  ng-if="$index>0">
-						<td>{{x.Name}}</td>
-						<td>{{x.Position}}</td>
-						<td>{{x.Speed}}</td>  
-						<td>{{x.Strength}}</td>  
-						<td>{{x.Passing}}</td> 
-						<td><button ng-Click="addPlayer($index)" class="btn btn-warning active btn-block">ADD</button></td>
-						<td>{{x.Selected}}</td> 
-				    </tr>
-                </tbody>
-            </table>
+			
+		 <!-- typed -->    
 			<div style="text-align : center;">
 			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Login User</button>
 			<button type="button" ng-Click="teamSelect('team')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Your Team</button>
 			<button type="button" ng-Click="teamSelect('op')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Opponent Team</button>
 			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#squadSelect">Squad Select</button>			
 			<button id="StartButton" onclick="startGame()" class="btn btn-success btn-lg">Start Match</button>
 			</div>
         </div>
@@ -140,6 +112,13 @@
 </body>
 
 <!-- MODALS -->
+
+
+
+
+
+
+
 
 <!-- Modal Opening-->
   <div class="modal fade" id="splashScreen" role="dialog">
@@ -191,6 +170,46 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Modal Select Team-->
+  <div class="modal fade" id="squadSelect" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+		 <table class="table hover text-center" id="mytable">
+                <thead>
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Position</th>
+                        <th class="text-center">Speed</th>
+                        <th class="text-center">Strength</th>
+                        <th class="text-center">Passing</th>
+						<th class="text-center">Select</th>
+						<th class="text-center">Match Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+				    <tr ng-repeat="x in team"  ng-if="$index>0">
+						<td>{{x.Name}}</td>
+						<td>{{x.Position}}</td>
+						<td>{{x.Speed}}</td>  
+						<td>{{x.Strength}}</td>  
+						<td>{{x.Passing}}</td> 
+						<td><button ng-Click="addPlayer($index)" class="btn btn-warning active btn-block">ADD</button></td>
+						<td>{{x.Selected}}</td> 
+				    </tr>
+                </tbody>
+            </table>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Done</button>
+		  <button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
+		  <button type="button" class="btn btn-danger" data-dismiss="modal">Clear</button>
         </div>
       </div>
     </div>
@@ -254,7 +273,7 @@
             </table>
         </div>
         <div class="modal-footer">
-          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-primary active btn-block">Start Match</button>
+          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-success active btn-block">Start Match</button>
         </div>
       </div>
     </div>

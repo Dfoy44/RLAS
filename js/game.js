@@ -535,16 +535,16 @@ if (pass == 0){
 		mTargety2 = pageY;
 		
 		mTargetx3 = pageX + 200;
-		mTargety3 = pageY -40;
+		mTargety3 = pageY -50;
 
 		mTargetx4 = pageX - 100;
-		mTargety4 = pageY -40;
+		mTargety4 = pageY -50;
 		
 		mTargetx5 = pageX + 300;
-		mTargety5 = pageY -40;
+		mTargety5 = pageY -50;
 		
 		mTargetx6 = pageX - 200;
-		mTargety6 = pageY -40;
+		mTargety6 = pageY -50;
 		
 		
 		
@@ -555,19 +555,19 @@ if (pass == 0){
 		mTargety = pageY - 40;
 		
 		mTargetx2 = pageX - 200;
-		mTargety2 = pageY -40;
+		mTargety2 = pageY -50;
 		
 		mTargetx3 = pageX -20;
 		mTargety3 = pageY;
 		
 		mTargetx4 = pageX - 300;
-		mTargety4 = pageY -40;
+		mTargety4 = pageY -50;
 		
 		mTargetx5 = pageX + 100;
-		mTargety5 = pageY -40;
+		mTargety5 = pageY -50;
 		
 		mTargetx6 = pageX - 400;
-		mTargety6 = pageY -40;
+		mTargety6 = pageY -50;
 		
 	}
 	
@@ -576,58 +576,58 @@ if (pass == 0){
 		mTargety = pageY - 40;
 		
 		mTargetx2 = pageX + 100;
-		mTargety2 = pageY -40;
+		mTargety2 = pageY -50;
 		
 		mTargetx3 = pageX + 300;
-		mTargety3 = pageY -40;
+		mTargety3 = pageY -50;
 
 		mTargetx4 = pageX -20;
 		mTargety4 = pageY 
 		
 		mTargetx5 = pageX + 400;
-		mTargety5 = pageY -40;
+		mTargety5 = pageY -50;
 		
 		mTargetx6 = pageX -100;
-		mTargety6 = pageY -40;
+		mTargety6 = pageY -50;
 		
 	}
 	
 	if (ballCarrier == "N5") {
 		mTargetx = pageX - 200;
-		mTargety = pageY - 40;
+		mTargety = pageY - 50;
 		
 		mTargetx2 = pageX - 300;
-		mTargety2 = pageY -40;
+		mTargety2 = pageY -50;
 		
 		mTargetx3 = pageX - 100;
-		mTargety3 = pageY -40;
+		mTargety3 = pageY -50;
 		
 		mTargetx4 = pageX  - 400;
-		mTargety4 = pageY -40;
+		mTargety4 = pageY -50;
 		
 		mTargetx5 = pageX -20;
 		mTargety5 = pageY;
 		
 		mTargetx6 = pageX -500;
-		mTargety6 = pageY -40;
+		mTargety6 = pageY -50;
 		
 	}
 	
 		if (ballCarrier == "N6") {
 		mTargetx = pageX + 200;
-		mTargety = pageY - 40;
+		mTargety = pageY - 50;
 		
 		mTargetx2 = pageX +300;
-		mTargety2 = pageY -40;
+		mTargety2 = pageY -50;
 		
 		mTargetx3 = pageX +400;
-		mTargety3 = pageY -40;
+		mTargety3 = pageY -50;
 		
 		mTargetx4 = pageX  +100;
-		mTargety4 = pageY -40;
+		mTargety4 = pageY -50;
 		
 		mTargetx5 = pageX +500;
-		mTargety5 = pageY -40;
+		mTargety5 = pageY -50;
 		
 		mTargetx6 = pageX -20;
 		mTargety6 = pageY;
@@ -1286,12 +1286,12 @@ if (start == 1){
 }
 	
 	// get behind the ball - may need to change this
-if (north1.y > ball.y && north1.onside == 1 && ball.team == 1) {mTargety = ball.y -20}
-if (north2.y > ball.y && north2.onside == 1 && ball.team == 1) {mTargety2 = ball.y -20}
-if (north3.y > ball.y && north3.onside == 1 && ball.team == 1) {mTargety3 = ball.y -30}
-if (north4.y > ball.y && north4.onside == 1 && ball.team == 1) {mTargety4 = ball.y - 30}
-if (north5.y > ball.y && north5.onside == 1 && ball.team == 1) {mTargety5 = ball.y - 40}
-if (north6.y > ball.y && north6.onside == 1 && ball.team == 1) {mTargety6 = ball.y - 40}
+if (north1.y > ball.y && north1.onside == 1 && ball.team == 1) {mTargety = ball.y -5}
+if (north2.y > ball.y && north2.onside == 1 && ball.team == 1) {mTargety2 = ball.y -5}
+if (north3.y > ball.y && north3.onside == 1 && ball.team == 1) {mTargety3 = ball.y -10}
+if (north4.y > ball.y && north4.onside == 1 && ball.team == 1) {mTargety4 = ball.y - 10}
+if (north5.y > ball.y && north5.onside == 1 && ball.team == 1) {mTargety5 = ball.y - 20}
+if (north6.y > ball.y && north6.onside == 1 && ball.team == 1) {mTargety6 = ball.y - 20}
 
 	
 //north one needs to get to dummy half
@@ -1700,17 +1700,18 @@ if (XorY == "Y") {XorY = "X";}
 	
 	var tackler = 0;
 	
-		if ( south1.x <= (ball.x + 40) && ball.x <= (south1.x + 40) && south1.y <= (ball.y + 3) && ball.y <= (south1.y + 3)) {
+
+		if ( (south1.x <= ball.x + 30 && south1.x > ball.x - 30) && (south1.y <= ball.y + 3 && ball.y <= south1.y + 3)) {
 				tackler = south1; }
-		if ( south2.x <= (ball.x + 40) && ball.x <= (south2.x + 40) && south2.y <= (ball.y + 3) && ball.y <= (south2.y + 3)) {
+		if ( (south2.x <= ball.x + 30 && south2.x > ball.x - 30) && (south2.y <= ball.y + 3 && ball.y <= south2.y + 3)) {
 				tackler = south2; }
-		if ( south3.x <= (ball.x + 40) && ball.x <= (south3.x + 40) && south3.y <= (ball.y + 3) && ball.y <= (south3.y + 3)) {
+		if ( (south3.x <= ball.x + 30 && south3.x > ball.x - 30) && (south3.y <= ball.y + 3 && ball.y <= south3.y + 3)) {
 				tackler = south3; }	
-		if ( south4.x <= (ball.x + 40) && ball.x <= (south4.x + 40) && south4.y <= (ball.y + 3) && ball.y <= (south4.y + 3)) {
+		if ( (south4.x <= ball.x + 30 && south4.x > ball.x - 30) && (south4.y <= ball.y + 3 && ball.y <= south4.y + 3)) {
 				tackler = south4; }
-		if ( south5.x <= (ball.x + 40) && ball.x <= (south5.x + 40) && south5.y <= (ball.y + 3) && ball.y <= (south5.y + 3)) {
+		if ( (south5.x <= ball.x + 30 && south5.x > ball.x - 30) && (south5.y <= ball.y + 3 && ball.y <= south5.y + 3)) {
 				tackler = south5; }
-		if ( south6.x <= (ball.x + 40) && ball.x <= (south6.x + 40) && south6.y <= (ball.y + 3) && ball.y <= (south6.y + 3)) {
+		if ( (south6.x <= ball.x + 30 && south6.x > ball.x - 30) && (south6.y <= ball.y + 3 && ball.y <= south6.y + 3)) {
 				tackler = south6; }
 
 				
