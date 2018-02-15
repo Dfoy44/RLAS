@@ -1,7 +1,7 @@
 <?php
-$DB_SERVER = "test";
-$DB_USER = "ifarm";
-$DB_PASS = "Z93GZBj5Ljt23gDo";
-$DB_NAME = "ifarm";
+$DB_SERVER = "sql12.freesqldatabase.com";
+$DB_USER = "sql12217253";
+$DB_PASS = "JJwQ7QWq6h";
+$DB_NAME = "sql12217253";
 
 ?>

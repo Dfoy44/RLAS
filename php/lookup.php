@@ -13,7 +13,6 @@ else {
 //	echo "Connected successfully"; 
 }
 
-// 2. Select ifarm db to use 
 $db_select = mysqli_select_db($connection, $DB_NAME);
 if (!$db_select) {
     die("Database selection failed:". mysqli_error());
@@ -24,45 +23,46 @@ else {
 
 // 3. modify the query based on parameters
 
-$queryString = "SELECT * from members where 1=1 ";
+$queryString = "";
 
-if(isset($_GET['email']))
+if(isset($_GET['userName']))
 {
-         $queryString = $queryString . " and email LIKE '%" .$_GET['email'] ."%'";	 
+		 $queryString = "SELECT * from Users where username = '" .$_GET['userName'] . "' and password = '" .$_GET['password'] . "' ";
 }
 
-if(isset($_GET['firstname']))
+
+
+if(isset($_GET['trysAndAssists']))
 {
-         $queryString = $queryString . " and firstname LIKE '%" .$_GET['firstname'] . "%'";
+         $queryString = "SELECT * from Players";
+        
 }
 
-if(isset($_GET['surname']))
+if(isset($_GET['matchData']))
 {
-         $queryString = $queryString . " and surname LIKE '%" .$_GET['surname'] . "%'";
+          $queryString = "SELECT * from MatchData";
 }
 
-//echo $queryString;
+if(isset($_GET['teamData']))
+{
+          $queryString = "SELECT * from Players";
+		  $queryString = $queryString . " where TeamName = '" .$_GET['teamData'] ."'";
+}
 
-// 4. return all rows
+// 4. return all relative rows
 
 $result = mysqli_query($connection, $queryString) or die('Could not query');
 
 if(mysqli_num_rows($result)){ 
 
-//  echo "Here is the Data:";   
-  
+//  echo "Here is the Data:";     
 //  $return=mysqli_fetch_assoc($result);
     
-	while($return=mysqli_fetch_assoc($result)){
-		
-		$rows[] = $return;
-		
+	while($return=mysqli_fetch_assoc($result)){		
+		$rows[] = $return;		
 	}
 			
-        echo json_encode($rows);
-		
-		
-    
+        echo json_encode($rows);	
  
 }
 

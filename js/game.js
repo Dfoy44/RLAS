@@ -185,6 +185,8 @@ var south1 = {
 	currFrame : 0,
 	frameX : [0, 21, 42, 63],
 	ticks : 20
+    
+ 
 };
 var south2 = {
 	speed: 27, // movement in pixels per second
@@ -426,8 +428,8 @@ if (attackReady == 1) {
 
 	if 	( north1.x <= (pageX + 60)
 		&& pageX <= (north1.x + 60)
-		&& north1.y <= (pageY + 40)
-		&& pageY <= (north1.y + 40)) 
+		&& north1.y <= (pageY + 60)
+		&& pageY <= (north1.y + 60)) 
 		{	
 		    pass = 1;
 			ballCarrier = "N1";
@@ -437,8 +439,8 @@ if (attackReady == 1) {
 	
 	if 	( north2.x <= (pageX + 60)
 		&& pageX <= (north2.x + 60)
-		&& north2.y <= (pageY + 40)
-		&& pageY <= (north2.y + 40)) 
+		&& north2.y <= (pageY + 60)
+		&& pageY <= (north2.y + 60)) 
 		{	
 			pass = 1;
 			ballCarrier = "N2";	
@@ -448,8 +450,8 @@ if (attackReady == 1) {
 		
 	if 	( north3.x <= (pageX + 60)
 		&& pageX <= (north3.x + 60)
-		&& north3.y <= (pageY + 40)
-		&& pageY <= (north3.y + 40)) 
+		&& north3.y <= (pageY + 60)
+		&& pageY <= (north3.y + 60)) 
 		{	
 			pass = 1;
 			ballCarrier = "N3";
@@ -459,8 +461,8 @@ if (attackReady == 1) {
 		
 	if 	( north4.x <= (pageX + 60)
 		&& pageX <= (north4.x + 60)
-		&& north4.y <= (pageY + 40)
-		&& pageY <= (north4.y + 40)) 
+		&& north4.y <= (pageY + 60)
+		&& pageY <= (north4.y + 60)) 
 		{	
 			pass = 1;
 			ballCarrier = "N4";
@@ -470,8 +472,8 @@ if (attackReady == 1) {
 
 	if 	( north5.x <= (pageX + 60)
 		&& pageX <= (north5.x + 60)
-		&& north5.y <= (pageY + 40)
-		&& pageY <= (north5.y + 40)) 
+		&& north5.y <= (pageY + 60)
+		&& pageY <= (north5.y + 60)) 
 		{	
 			pass = 1;
 			ballCarrier = "N5";
@@ -481,8 +483,8 @@ if (attackReady == 1) {
 		
 	if 	( north6.x <= (pageX + 60)
 		&& pageX <= (north6.x + 60)
-		&& north6.y <= (pageY + 40)
-		&& pageY <= (north6.y + 40)) 
+		&& north6.y <= (pageY + 60)
+		&& pageY <= (north6.y + 60)) 
 		{	
 			pass = 1;
 			ballCarrier = "N6";
@@ -490,9 +492,6 @@ if (attackReady == 1) {
 			if (north6.y > ball.y){forwardPass();}
 		}
 		
-		
-		
-	
 }	
 
 
@@ -1386,32 +1385,32 @@ if (south6.lock == 1) {hTargety6 = south6.y; hTargetx6 = south6.x; }
 
 //ball movement homing
 if (ballCarrier == "N1") {
-	ball.bTargetx = north1.x + 5; 
+	ball.bTargetx = north1.x + 3; 
     ball.bTargety = north1.y +14; 
 }
 
 if (ballCarrier == "N2") {
-	ball.bTargetx = north2.x + 1; 
+	ball.bTargetx = north2.x + 3; 
     ball.bTargety = north2.y +14; 
 }	
 
 if (ballCarrier == "N3") {
-	ball.bTargetx = north3.x + 1; 
+	ball.bTargetx = north3.x + 3; 
     ball.bTargety = north3.y +14; 
 }
 
 if (ballCarrier == "N4") {
-	ball.bTargetx = north4.x + 1; 
+	ball.bTargetx = north4.x + 3; 
     ball.bTargety = north4.y +14; 
 }
 
 if (ballCarrier == "N5") {
-	ball.bTargetx = north5.x + 1; 
+	ball.bTargetx = north5.x + 3; 
     ball.bTargety = north5.y +14; 
 }
 
 if (ballCarrier == "N6") {
-	ball.bTargetx = north6.x + 1; 
+	ball.bTargetx = north6.x + 3; 
     ball.bTargety = north6.y +14; 
 }
 
@@ -1701,17 +1700,17 @@ if (XorY == "Y") {XorY = "X";}
 	var tackler = 0;
 	
 
-		if ( (south1.x <= ball.x + 30 && south1.x > ball.x - 30) && (south1.y <= ball.y + 3 && ball.y <= south1.y + 3)) {
+		if ( (south1.x <= ball.x + 30 && south1.x > ball.x - 30) && (south1.y <= ball.y + 3 && ball.y <= south1.y + 20)) {
 				tackler = south1; }
-		if ( (south2.x <= ball.x + 30 && south2.x > ball.x - 30) && (south2.y <= ball.y + 3 && ball.y <= south2.y + 3)) {
+		if ( (south2.x <= ball.x + 30 && south2.x > ball.x - 30) && (south2.y <= ball.y + 3 && ball.y <= south2.y + 20)) {
 				tackler = south2; }
-		if ( (south3.x <= ball.x + 30 && south3.x > ball.x - 30) && (south3.y <= ball.y + 3 && ball.y <= south3.y + 3)) {
+		if ( (south3.x <= ball.x + 30 && south3.x > ball.x - 30) && (south3.y <= ball.y + 3 && ball.y <= south3.y + 20)) {
 				tackler = south3; }	
-		if ( (south4.x <= ball.x + 30 && south4.x > ball.x - 30) && (south4.y <= ball.y + 3 && ball.y <= south4.y + 3)) {
+		if ( (south4.x <= ball.x + 30 && south4.x > ball.x - 30) && (south4.y <= ball.y + 3 && ball.y <= south4.y + 20)) {
 				tackler = south4; }
-		if ( (south5.x <= ball.x + 30 && south5.x > ball.x - 30) && (south5.y <= ball.y + 3 && ball.y <= south5.y + 3)) {
+		if ( (south5.x <= ball.x + 30 && south5.x > ball.x - 30) && (south5.y <= ball.y + 3 && ball.y <= south5.y + 20)) {
 				tackler = south5; }
-		if ( (south6.x <= ball.x + 30 && south6.x > ball.x - 30) && (south6.y <= ball.y + 3 && ball.y <= south6.y + 3)) {
+		if ( (south6.x <= ball.x + 30 && south6.x > ball.x - 30) && (south6.y <= ball.y + 3 && ball.y <= south6.y + 20)) {
 				tackler = south6; }
 
 				

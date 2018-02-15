@@ -9,8 +9,8 @@ var StayBackNorth = function () {
 var northTeam = [north1, north2, north3, north4, north5, north6]; 
 	
 	for (var i = 0; i < northTeam.length; i++) {
-		 if (northTeam[i].y + 5 >= ball.y) {
-			northTeam[i].y = northTeam[i].y - 0.00000001;
+		 if (northTeam[i].y + 1 >= ball.y) {
+			northTeam[i].y = northTeam[i].y - 0.0000000;
 		   //alert("Get Back " + northTeam[i].name)
 		 }
 	}
