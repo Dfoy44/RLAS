@@ -56,7 +56,7 @@ var TackleBroken = function(tackler) {
     //original ticks 
     for (var i = 0; i < northTeam.length; i++) {
         if (ballCarrier == allBallCarrierArray[i]) {
-            if (northTeam[i].strength + Math.floor((Math.random() * 20) + 1) > tackler.strength + Math.floor((Math.random() * 20) + 1) + 5) {
+            if (northTeam[i].strength + Math.floor((Math.random() * 20) + 1) > tackler.strength + Math.floor((Math.random() * 20) + 1) + 25) {
                 console.log("Missed Tackle" + tackler.x );
 				tackler.speed = tackler.speed / 2;
 				tackler.y = tackler.y - Math.floor((Math.random() * 10) + 1)
@@ -92,7 +92,7 @@ var DefensiveSpeed = function() {
         if (ballCarrier == northBallCarrierArray[i]) {
           
 		for (var i = 0; i < southTeam.length; i++) {
-			southTeam[i].speed = southTeam[i].speed - 25;
+			southTeam[i].speed = southTeam[i].speed - 35;
 			console.log(southTeam[i].speed);
 		}			
 	  }
@@ -103,7 +103,7 @@ var DefensiveSpeed = function() {
         if (ballCarrier == southBallCarrierArray[i]) {
           
 		for (var i = 0; i < northTeam.length; i++) {
-			northTeam[i].speed = northTeam[i].speed - 25;
+			northTeam[i].speed = northTeam[i].speed - 35;
 		}			
 	  }
 	}	

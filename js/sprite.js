@@ -7,7 +7,7 @@ var	loadPlayerSpriteN = function (teamName) {
 			case "QLD Irish":
 				return "sprites/NorthImageSpriteQLDI.png";
 				break; 
-			case "Newcastle-Hunter":
+			case "Hunter-Newcastle":
 				return "sprites/NorthImageSpriteNEWC.png";
 				break; 
 			case "Brisbane":

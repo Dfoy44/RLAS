@@ -74,6 +74,7 @@
   left: 280px;
   background-color: rgba(0, 0, 0, 0);
    border-color: #FFB300;
+   z-index : 2;
 }
 
   .Pow {

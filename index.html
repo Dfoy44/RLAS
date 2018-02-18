@@ -987,19 +987,18 @@
 			//exisitng player avatar takes values of json object player
 			
 			for (i=1; i < 7; i++) {
-			Team[$scope.selectorS].speed = 50;
-			Team[$scope.selectorS].originalspeed = 50;
-			Team[$scope.selectorS].name = "";
-			Team[$scope.selectorS].passing = 50;
-			Team[$scope.selectorS].strength = 50;
+			Team[$scope.selectorS].speed = $scope.teamOP[i].Speed;
+			Team[$scope.selectorS].originalspeed = $scope.teamOP[i].Speed;
+			Team[$scope.selectorS].name = $scope.teamOP[i].Name;
+			Team[$scope.selectorS].passing = $scope.teamOP[i].Passing;
+			Team[$scope.selectorS].strength = $scope.teamOP[i].Strength;
 		
 			console.log ($scope.teamOP[i].Name + " now playing as "  + $scope.teamOP[0].TeamName + ($scope.selectorS +1));
 			$( "#south" + (i) + "Name" ).text($scope.teamOP[i].Name);
 			
 			$scope.selectorS ++;
-			
 			}
-		
+				newLine ([$scope.teamOP[0].TeamName + " Ready for Kick Off"]);
 		}
 		
 		$scope.clearTeamPlayers = function() {
