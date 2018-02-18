@@ -76,12 +76,45 @@
 			
 		<div class="container">
 		
-		<div class="col-md-6">
-		<div style="background-image: url(images/BigScreen2.png); background-size: 100% 100%; background-color: #00000075; height : 30%;" >
-		 <table style="border-top: 1px solid #ddd0 !important;" class="StartingLineUps table hover text-center" id="StartingLineup">
+			<div class="col-md-2"></div>
+			<div class="col-md-8" style="background-color:#F0FFFF; margin : 10px;">
+			<div style="background-image: url(images/BigScreen2.png); background-size: 100% 100%; height : 30%;" >
+			 <table style="border-top: 1px solid #ddd0 !important;" class="StartingLineUps table hover text-center" id="StartingLineup">
+					<thead>
+						<tr>
+							<th class="text-center">Tonights Matchup</th>
+						</tr> 
+					</thead>
+					<tbody>
+						<tr style="border-top: 1px solid #ddd0 !important;">
+							<td><div id="north0Name">All-Star Blue</div> Vs. <div id="south0Name">All-Star Red</div>
+							<div style="font-size : 70%; margin : 10px;"><span class="blink_me"> * </span>Live From {{Ground}}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</div>
+			<div class="col-md-2"></div>
+		
+
+			<div class="col-md-12" style="margin : 10px;">
+			<div style="text-align : center;">
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Login User</button>
+			<button type="button" ng-Click="teamSelect('team')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Your Team</button>
+			<button type="button" ng-Click="teamSelect('op')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Opponent Team</button>
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#squadSelect">Squad Select</button>			
+			<button id="StartButton" onclick="startGame()" class="btn btn-success btn-lg">Start Match</button>
+			</div>
+			</div>
+		
+		<div class="col-md-6" style="margin : 10px; border : 1px; border-style: double;">
+		<div style="background-size: 100% 100%; height : 30%;" >
+		 <table style="border-top: 1px solid #ddd0 !important;" class="table hover text-center" id="StartingLineup">
                 <thead>
 					<tr>
-                        <th class="text-center">Your Stats</th>
+                        <p class="text-center">Welcome Guest, Your Stats</p>
                     </tr> 
 					
 					<tr>
@@ -103,38 +136,41 @@
         </div>
 		</div>
 		
-		<div class="col-md-6" style="background-color:#F0FFFF;">
-		<div style="background-image: url(images/BigScreen2.png); background-size: 100% 100%; background-color: #00000075; height : 30%;" >
-		 <table style="border-top: 1px solid #ddd0 !important;" class="StartingLineUps table hover text-center" id="StartingLineup">
+		<div class="col-md-5" style="margin : 10px; border : 1px; border-style: double;"> 
+		<div style="background-size: 100% 100%; height : 30%;" >
+		 <table style="border-top: 1px solid #ddd0 !important;" class="table hover text-center" id="StartingLineup">
                 <thead>
 					<tr>
-                        <th class="text-center">Tonights Matchup</th>
+                        <p class="text-center">Top points scorers</p>
+                    </tr> 
+					
+					<tr>
+                        <th class="text-center">Name</th>
+						<th class="text-center">Tries</th>
+						<th class="text-center">Assists</th>
+						<th class="text-center">Matches</th>
                     </tr> 
                 </thead>
                 <tbody>
 				    <tr style="border-top: 1px solid #ddd0 !important;">
-						<td><div id="north0Name"></div> Vs. <div id="south0Name"></div></td>
+						<td>Player A</td>
+						<td>4</td>
+						<td>3</td>
+						<td>7</td>
 					</tr>
                 </tbody>
             </table>
         </div>
 		</div>
-	
 			
+		 <!-- typed -->
 			
-		 <!-- typed -->    
-			<div style="text-align : center;">
-			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Login User</button>
-			<button type="button" ng-Click="teamSelect('team')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Your Team</button>
-			<button type="button" ng-Click="teamSelect('op')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Opponent Team</button>
-			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
-			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#squadSelect">Squad Select</button>			
-			<button id="StartButton" onclick="startGame()" class="btn btn-success btn-lg">Start Match</button>
-			</div>
-        </div>
+        
+		</div>
 
         <div class="container text-left"  style="background: white">
             <div class="row text-center">
+		
                 <div class="col-sm-4" id="col1">
                     <h3 style="margin-bottom : 0px">Rules</h3>
 					<img src="images/promo_1_2x.jpg" alt="Image"></br>
@@ -153,18 +189,9 @@
                 </div>
             </div>
         </div>
-
-
 </body>
 
 <!-- MODALS -->
-
-
-
-
-
-
-
 
 <!-- Modal Opening-->
   <div class="modal fade" id="splashScreen" role="dialog">
@@ -208,7 +235,10 @@
 				    <tr ng-repeat="x in teamListArray | orderBy : 'this[0].TeamName'" style="border-top: 1px solid #ddd0 !important;">
 						<td>{{x[0].TeamName}}</td>
 						<td>{{x[0].TeamNation}}</td>
-						<td><button ng-Click="addTeam(x[0].TeamIndex)" style="background-color: transparent;" data-dismiss="modal" data-toggle="modal" data-target="#squadSelect" type="btn btn-primary">Select</button></td>
+						<td>
+						<button ng-hide="teamID == 'S'" ng-Click="addTeam(x[0].TeamIndex)" style="background-color: transparent;" ng-Click="teamSelect();" data-dismiss="modal" data-toggle="modal" data-target="#squadSelect" type="btn btn-primary">Select</button>
+						<button ng-hide="teamID == 'N'" ng-Click="addTeam(x[0].TeamIndex)" style="background-color: transparent;" ng-Click="teamSelect();" data-dismiss="modal" data-toggle="modal" type="btn btn-primary">Select</button>
+						</td>
 				    </tr>
                 </tbody>
             </table>
@@ -320,7 +350,7 @@
             </table>
         </div>
         <div class="modal-footer">
-          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-success active btn-block">Start Match</button>
+          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-default active btn-block">Start Match</button>
         </div>
       </div>
     </div>
@@ -332,11 +362,10 @@
   
 </html>
 
-
+<script src="js/sprite.js"></script>
 <script src="js/game.js"></script>
 <script src="js/helper.js"></script>
 <script src="js/menu.js"></script>
-<script src="js/sprite.js"></script>
 <script src="js/typed.min.js"></script>
 <script src="js/commentary.js"></script>
 
@@ -793,7 +822,97 @@
 			}
 		]
 		
-		$scope.teamListArray = [$scope.teamA, $scope.teamB, $scope.teamC, $scope.teamD, $scope.teamE];
+		$scope.teamF = [
+			{
+			  "TeamName" : "Paris St.Germain '97",
+			  "TeamNation" : "Custom",
+			  "TeamIndex" : 5
+			},
+			{
+			  "Name" : "Deon Bird",
+			  "Position" : "Full Back",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Pierre Chamorin",
+			  "Position" : "Scrum Half",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Fabien Devecci",
+			  "Position" : "Centre",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Paul Evans",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Anthony Hancock",
+			  "Position" : "Scrum Half",
+			  "Speed" : "37",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "David Lomax",
+			  "Position" : "Centre",
+			  "Speed" : "87",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Michael Hogue",
+			  "Position" : "Centre",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Jason Martin",
+			  "Position" : "Wing",
+			  "Speed" : "94",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Matt OConnor",
+			  "Position" : "Hooker",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Craig Menkins",
+			  "Position" : "Lock",
+			  "Speed" : "100",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+		
+		$scope.teamListArray = [$scope.teamA, $scope.teamB, $scope.teamC, $scope.teamD, $scope.teamE, $scope.teamF];
+		$scope.groundArray = ["Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
+		$scope.Ground =  $scope.groundArray[Math.floor(Math.random() * 5) + 0  ];
 		$scope.team = 0;
 		$scope.teamOP = 0;
 		
@@ -803,6 +922,7 @@
             var lookupURL = "api.php?action=teamLoad&team="+$scope.selectedTeam ;
             $scope.teamObject = $scope.myFunc(lookupURL);
         };
+		
 
 		$scope.teamSelect = function(teamSelect) {
 			
@@ -825,12 +945,15 @@
 				$scope.team = $scope.teamListArray[index];
 				$scope.selectorN = 0;
 				$( "#north0Name" ).text($scope.team[0].TeamName);
+				NorthTeam = $scope.team[0].TeamName;
+				NorthImageSprite.src = loadPlayerSpriteN(NorthTeam);
 			}
 			
 			if ($scope.teamID == "S"){
 				$scope.teamOP = $scope.teamListArray[index];
 				$( "#south0Name" ).text($scope.teamOP[0].TeamName);
 				$scope.addOppositionPlayers();
+				SouthTeam = $scope.team[0].TeamName;
 			}
 			
 		}
@@ -939,9 +1062,20 @@
 			});
 		}; 
     });
+	
+	
 </script>
 
 
 <script>
 $('#splashScreen').modal('show');
+
+
+function blinker() {
+    $('.blink_me').fadeOut(500);
+    $('.blink_me').fadeIn(500);
+}
+
+setInterval(blinker, 1000);
+
 </script>

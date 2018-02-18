@@ -101,6 +101,9 @@ targetImage.src = "images/red_star2.png";
 SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
 NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
 
+
+
+
 //XorY
 var XorY = "X";
 
@@ -170,6 +173,13 @@ function PTB() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Game objects ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//teams
+var NorthTeam = "Team1";
+var SouthTeam = "Team2";
+
+
+//SouthImageSprite.src = loadPlayerSpriteS(SouthTeam);
 
 //souths
 var south1 = {
@@ -419,6 +429,19 @@ canvas.onmousedown =  function(e) {
 	
 	var pageX = e.pageX - canvas.offsetLeft;
 	var pageY = e.pageY - canvas.offsetTop;
+	
+	var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i); 
+	
+	if (isMobile) {
+	
+	//scale click for scaled canvas
+	scaleX = innerWidth / canvas.width ;
+	scaleY = innerHeight / canvas.height ;
+	
+	pageX = pageX / scaleX;
+	pageY = pageY / scaleY;	
+	
+	}
 		
 // mousedown on a player should pass to that player
 // if epage equals any of the playerx and ys we will try and pass to that player?

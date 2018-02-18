@@ -1,21 +1,30 @@
-
-	function spriteFrame2 (spObject, currFrame) {
-		//spriteFrame(target, 0)
+var	loadPlayerSpriteN = function (teamName) {
 		
-		switch (objName) {
-			
-			case target:
-				return objName.frameX[currFrame+1];
+		switch (teamName) {
+			default: 
+				return "sprites/NorthImageSpriteBasic.png";
+				break;				
+			case "QLD Irish":
+				return "sprites/NorthImageSpriteQLDI.png";
 				break; 
-			case playerN:
-				return objName.frameX[currFrame+1];
+			case "Newcastle-Hunter":
+				return "sprites/NorthImageSpriteNEWC.png";
 				break; 
-			case playerS:
-				return objName.frameX[currFrame+1];
+			case "Brisbane":
+				return "sprites/NorthImageSpriteBRIS.png";
 				break;
+			case "Wigan":
+				return "sprites/NorthImageSpriteWIGN.png";
+				break;
+			case "St.Helens":
+				return "sprites/NorthImageSpriteSTHN.png";
+				break;
+			case "Paris St.Germain '97":
+				return "sprites/NorthImageSpritePSG97.png";
+				break;	
 		}
 	
-	}
+}
 	
 var spriteFrame	= function (spObject) {
 		
