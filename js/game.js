@@ -183,8 +183,8 @@ var SouthTeam = "Team2";
 
 //souths
 var south1 = {
-	speed: 27, // movement in pixels per second
-	originalspeed : 30,
+	speed: 36, // movement in pixels per second
+	originalspeed : 36,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -199,8 +199,8 @@ var south1 = {
  
 };
 var south2 = {
-	speed: 27, // movement in pixels per second
-	originalspeed : 30,
+	speed: 36, // movement in pixels per second
+	originalspeed : 36,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -213,8 +213,8 @@ var south2 = {
 	ticks : 20
 };
 var south3 = {
-	speed: 27, // movement in pixels per second
-	originalspeed : 30,
+	speed: 36, // movement in pixels per second
+	originalspeed : 36,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -228,8 +228,8 @@ var south3 = {
 };
 
 var south4 = {
-	speed: 27, // movement in pixels per second
-	originalspeed : 30,
+	speed: 36, // movement in pixels per second
+	originalspeed : 36,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -243,8 +243,8 @@ var south4 = {
 }
 
 var south5 = {
-	speed: 27, // movement in pixels per second
-	originalspeed : 30,
+	speed: 36, // movement in pixels per second
+	originalspeed : 36,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -259,7 +259,7 @@ var south5 = {
 
 var south6 = {
 	speed: 36, // movement in pixels per second
-	originalspeed : 30,
+	originalspeed : 36,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -378,6 +378,7 @@ var ball = {
 	team: 1, // 0 - free ball - 1 top team in posession - 2 bottom team in possession
 	//bTargetx : 300,
 	//bTargety : 300,
+	
 };
 
 //click Marker
@@ -531,19 +532,19 @@ if (pass == 0){
 	mTargety = pageY;
 
 	mTargetx2 = pageX - 100;
-	mTargety2 = pageY - 40;
+	mTargety2 = ball.y - 10;
 
 	mTargetx3 = pageX + 100;
-	mTargety3 = pageY - 40;
+	mTargety3 = ball.y - 10;
 	
 	mTargetx4 = pageX - 200;
-	mTargety4 = pageY - 40;
+	mTargety4 = ball.y - 20;
 	
 	mTargetx5 = pageX + 200;
-	mTargety5 = pageY - 40;
+	mTargety5 = ball.y - 40;
 	
 	mTargetx6 = pageX - 250;
-	mTargety6 = pageY - 40;
+	mTargety6 = ball.y - 40;
 	
 	
 	
@@ -551,22 +552,22 @@ if (pass == 0){
 	
 	if (ballCarrier == "N2") {
 		mTargetx = pageX + 100;
-		mTargety = pageY -40;
+		mTargety = ball.y -10;
 		
 		mTargetx2 = pageX -20;
 		mTargety2 = pageY;
 		
 		mTargetx3 = pageX + 200;
-		mTargety3 = pageY -50;
+		mTargety3 = ball.y -10;
 
 		mTargetx4 = pageX - 100;
-		mTargety4 = pageY -50;
+		mTargety4 = ball.y -20;
 		
 		mTargetx5 = pageX + 300;
-		mTargety5 = pageY -50;
+		mTargety5 = ball.y -40;
 		
 		mTargetx6 = pageX - 200;
-		mTargety6 = pageY -50;
+		mTargety6 = ball.y -40;
 		
 		
 		
@@ -574,82 +575,82 @@ if (pass == 0){
 		
 	if (ballCarrier == "N3") {
 		mTargetx = pageX - 100;
-		mTargety = pageY - 40;
+		mTargety = ball.y - 20;
 		
 		mTargetx2 = pageX - 200;
-		mTargety2 = pageY -50;
+		mTargety2 = ball.y -10;
 		
 		mTargetx3 = pageX -20;
 		mTargety3 = pageY;
 		
 		mTargetx4 = pageX - 300;
-		mTargety4 = pageY -50;
+		mTargety4 = ball.y -10;
 		
 		mTargetx5 = pageX + 100;
-		mTargety5 = pageY -50;
+		mTargety5 = ball.y -40;
 		
 		mTargetx6 = pageX - 400;
-		mTargety6 = pageY -50;
+		mTargety6 = ball.y -40;
 		
 	}
 	
 	if (ballCarrier == "N4") {
 		mTargetx = pageX + 200;
-		mTargety = pageY - 40;
+		mTargety = ball.y - 30;
 		
 		mTargetx2 = pageX + 100;
-		mTargety2 = pageY -50;
+		mTargety2 = ball.y -20;
 		
 		mTargetx3 = pageX + 300;
-		mTargety3 = pageY -50;
+		mTargety3 = ball.y -10;
 
 		mTargetx4 = pageX -20;
 		mTargety4 = pageY 
 		
 		mTargetx5 = pageX + 400;
-		mTargety5 = pageY -50;
+		mTargety5 = ball.y -10;
 		
 		mTargetx6 = pageX -100;
-		mTargety6 = pageY -50;
+		mTargety6 = ball.y -30;
 		
 	}
 	
 	if (ballCarrier == "N5") {
 		mTargetx = pageX - 200;
-		mTargety = pageY - 50;
+		mTargety = ball.y - 30;
 		
 		mTargetx2 = pageX - 300;
-		mTargety2 = pageY -50;
+		mTargety2 = ball.y -20;
 		
 		mTargetx3 = pageX - 100;
-		mTargety3 = pageY -50;
+		mTargety3 = ball.y -20;
 		
 		mTargetx4 = pageX  - 400;
-		mTargety4 = pageY -50;
+		mTargety4 = ball.y -10;
 		
 		mTargetx5 = pageX -20;
 		mTargety5 = pageY;
 		
 		mTargetx6 = pageX -500;
-		mTargety6 = pageY -50;
+		mTargety6 = ball.y -10;
 		
 	}
 	
 		if (ballCarrier == "N6") {
 		mTargetx = pageX + 200;
-		mTargety = pageY - 50;
+		mTargety = ball.y - 30;
 		
 		mTargetx2 = pageX +300;
-		mTargety2 = pageY -50;
+		mTargety2 = ball.y -30;
 		
 		mTargetx3 = pageX +400;
-		mTargety3 = pageY -50;
+		mTargety3 = ball.y -20;
 		
 		mTargetx4 = pageX  +100;
-		mTargety4 = pageY -50;
+		mTargety4 = ball.y -10;
 		
 		mTargetx5 = pageX +500;
-		mTargety5 = pageY -50;
+		mTargety5 = ball.y -10;
 		
 		mTargetx6 = pageX -20;
 		mTargety6 = pageY;
@@ -845,6 +846,7 @@ function continueS() {
 var Try = function () {
 	
 	restoreSpeeds();
+	onsideAll();
 	$("#Pow").hide();
 	
 	buildOnce ();
@@ -1077,7 +1079,7 @@ function turnOver () {
 	
 	boo.play();
 	crowdAmb.volume = 0.20;
-	
+	onsideAll();
 	
 	if (score != -1) {
 	$(BigScreen).text("Turnover - 10 Second Penalty");
@@ -1171,7 +1173,7 @@ if (init == 1) {
 	ball.y = 150;
 	
 	lockAll();
-	tackleCount = "G O";
+	tackleCount = "GAME OVER";
 		
 	$(PTBbutton).text("Game Over - Play Again");
 	$(PTBbutton).show();
@@ -1737,10 +1739,9 @@ if (XorY == "Y") {XorY = "X";}
 				tackler = south6; }
 
 				
-		if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false){  ++tackleCount; tackle(); tacklerCredit(tackler);}
+		if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false && tackler.onside == 1 && !ballInAir() ){  ++tackleCount; tackle(); tacklerCredit(tackler);}
 		
 		if (tackler != 0 && init == 0){ reset("tackle : " + tackleCount ); }
-		
 		
 		//extra function full back tackle applause
 		if ( south6.x <= (ball.x + 40) && ball.x <= (south6.x + 40)	&& south6.y <= (ball.y + 3) && ball.y <= (south6.y + 3)) { clap.play(); }

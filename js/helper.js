@@ -25,6 +25,16 @@ for (i = 0; i < southTeam.length ; i++) {
 	}
 }
 
+var ballInAir = function () {
+	ballxDist =  Math.abs(ball.x - ball.bTargetx);
+	ballyDist =  Math.abs(ball.y - ball.bTargety);
+	
+	if (ballxDist > 20 || ballyDist > 20) {
+		return true;
+	}
+		return false;		
+}
+
 var inRanger = function (player) {
 	
 	if (player.x + 50 > ball.x && player.y + 50 > player.y && player.x - 50 < ball.x && player.y - 50 < ball.y) { 
@@ -92,7 +102,7 @@ var DefensiveSpeed = function() {
         if (ballCarrier == northBallCarrierArray[i]) {
           
 		for (var i = 0; i < southTeam.length; i++) {
-			southTeam[i].speed = southTeam[i].speed - 35;
+			southTeam[i].speed = southTeam[i].speed - 30;
 			console.log(southTeam[i].speed);
 		}			
 	  }
@@ -103,7 +113,7 @@ var DefensiveSpeed = function() {
         if (ballCarrier == southBallCarrierArray[i]) {
           
 		for (var i = 0; i < northTeam.length; i++) {
-			northTeam[i].speed = northTeam[i].speed - 35;
+			northTeam[i].speed = northTeam[i].speed - 30;
 		}			
 	  }
 	}	
