@@ -175,16 +175,17 @@ function PTB() {
 // Game objects ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 //teams
-var NorthTeam = "Team1";
-var SouthTeam = "Team2";
+var NorthTeam = "Yorkshire";
+var SouthTeam = "Queensland";
 
 
 //SouthImageSprite.src = loadPlayerSpriteS(SouthTeam);
 
 //souths
 var south1 = {
-	speed: 36, // movement in pixels per second
-	originalspeed : 36,
+	name : "Queensland 1",
+	speed: 76, // movement in pixels per second
+	originalspeed : 76,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -195,12 +196,14 @@ var south1 = {
 	currFrame : 0,
 	frameX : [0, 21, 42, 63],
 	ticks : 20
+	
     
  
 };
 var south2 = {
-	speed: 36, // movement in pixels per second
-	originalspeed : 36,
+	name : "Queensland 2",
+	speed: 76, // movement in pixels per second
+	originalspeed : 76,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -213,8 +216,9 @@ var south2 = {
 	ticks : 20
 };
 var south3 = {
-	speed: 36, // movement in pixels per second
-	originalspeed : 36,
+	name : "Queensland 3",
+	speed: 76, // movement in pixels per second
+	originalspeed : 76,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -228,8 +232,9 @@ var south3 = {
 };
 
 var south4 = {
-	speed: 36, // movement in pixels per second
-	originalspeed : 36,
+	name : "Queensland 4",
+	speed: 76, // movement in pixels per second
+	originalspeed : 66,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -243,8 +248,9 @@ var south4 = {
 }
 
 var south5 = {
-	speed: 36, // movement in pixels per second
-	originalspeed : 36,
+	name : "Queensland 5",
+	speed: 66, // movement in pixels per second
+	originalspeed : 66,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -258,8 +264,9 @@ var south5 = {
 }
 
 var south6 = {
-	speed: 36, // movement in pixels per second
-	originalspeed : 36,
+	name : "Queensland 6",
+	speed: 66, // movement in pixels per second
+	originalspeed : 66,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
@@ -274,32 +281,32 @@ var south6 = {
 
 
 //norths
-var north1 = { 
-	speed: 55, // movement in pixels per second
-	originalspeed : 55,
+var north1 = {
+ 	name : "Yorkshire 1",
+	speed: 75, // movement in pixels per second
+	originalspeed : 75,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
 	x : 0,
 	y : 0,
 	lock : 0,
-	name : 'Player One',
 	position : 'Player One',
 	//animation
 	currFrame : 0,
 	frameX : [0, 20, 40, 60],
 	ticks : 11
 };
-var north2 = { 
-	speed: 55, // movement in pixels per second
-	originalspeed : 55,
+var north2 = {
+	name : "Yorkshire 2",	
+	speed: 65, // movement in pixels per second
+	originalspeed : 65,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
 	x : 0,
 	y : 0,
 	lock : 0,
-	name : 'Player Two',
 	position : 'Player Two',
 	//animation
 	currFrame : 0,
@@ -307,47 +314,47 @@ var north2 = {
 	ticks : 17
 };
 var north3 = { 
-	speed: 40, // movement in pixels per second
-	originalspeed : 55,
+	name : "Yorkshire 3",
+	speed: 70, // movement in pixels per second
+	originalspeed : 75,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
 	x : 0,
 	y : 0,
 	lock : 0,
-	name : 'Player Three',
 	position : 'Player Three',
 	//animation
 	currFrame : 0,
 	frameX : [0, 20, 40, 60],
 	ticks : 15
 };
-var north4 = { 
-	speed: 40, // movement in pixels per second
-	originalspeed : 55,
+var north4 = {
+	name : "Yorkshire 4",
+	speed: 60, // movement in pixels per second
+	originalspeed : 65,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
 	x : 0,
 	y : 0,
 	lock : 0,
-	name : 'Player Four',
 	position : 'Player Four',
 	//animation
 	currFrame : 0,
 	frameX : [0, 20, 40, 60],
 	ticks : 10
 };
-var north5 = { 
-	speed: 40, // movement in pixels per second
-	originalspeed : 55,
+var north5 = {
+	name : "Yorkshire 5",
+	speed: 70, // movement in pixels per second
+	originalspeed : 75,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
 	x : 0,
 	y : 0,
 	lock : 0,
-	name : 'Player Five',
 	position : 'Player Five',
 	//animation
 	currFrame : 0,
@@ -355,16 +362,16 @@ var north5 = {
 	ticks : 10
 };
 
-var north6 = { 
-	speed: 40, // movement in pixels per second
-	originalspeed : 55,
+var north6 = {
+	name : "Yorkshire 6",	
+	speed: 60, // movement in pixels per second
+	originalspeed : 65,
 	passing: 100, // speed at which a player passes the ball
 	onside : 1,
 	strength : 50,
 	x : 0,
 	y : 0,
 	lock : 0,
-	name : 'Player Six',
 	position : 'Player Six',
 	//animation
 	currFrame : 0,
@@ -532,7 +539,7 @@ if (pass == 0){
 	mTargety = pageY;
 
 	mTargetx2 = pageX - 100;
-	mTargety2 = ball.y - 10;
+	mTargety2 = ball.y - 5;
 
 	mTargetx3 = pageX + 100;
 	mTargety3 = ball.y - 10;
@@ -541,10 +548,10 @@ if (pass == 0){
 	mTargety4 = ball.y - 20;
 	
 	mTargetx5 = pageX + 200;
-	mTargety5 = ball.y - 40;
+	mTargety5 = ball.y - 20;
 	
 	mTargetx6 = pageX - 250;
-	mTargety6 = ball.y - 40;
+	mTargety6 = ball.y - 20;
 	
 	
 	
@@ -552,7 +559,7 @@ if (pass == 0){
 	
 	if (ballCarrier == "N2") {
 		mTargetx = pageX + 100;
-		mTargety = ball.y -10;
+		mTargety = ball.y -5;
 		
 		mTargetx2 = pageX -20;
 		mTargety2 = pageY;
@@ -561,13 +568,13 @@ if (pass == 0){
 		mTargety3 = ball.y -10;
 
 		mTargetx4 = pageX - 100;
-		mTargety4 = ball.y -20;
+		mTargety4 = ball.y -10;
 		
 		mTargetx5 = pageX + 300;
-		mTargety5 = ball.y -40;
+		mTargety5 = ball.y -20;
 		
 		mTargetx6 = pageX - 200;
-		mTargety6 = ball.y -40;
+		mTargety6 = ball.y -20;
 		
 		
 		
@@ -575,10 +582,10 @@ if (pass == 0){
 		
 	if (ballCarrier == "N3") {
 		mTargetx = pageX - 100;
-		mTargety = ball.y - 20;
+		mTargety = ball.y - 10;
 		
 		mTargetx2 = pageX - 200;
-		mTargety2 = ball.y -10;
+		mTargety2 = ball.y -5;
 		
 		mTargetx3 = pageX -20;
 		mTargety3 = pageY;
@@ -587,22 +594,22 @@ if (pass == 0){
 		mTargety4 = ball.y -10;
 		
 		mTargetx5 = pageX + 100;
-		mTargety5 = ball.y -40;
+		mTargety5 = ball.y -20;
 		
 		mTargetx6 = pageX - 400;
-		mTargety6 = ball.y -40;
+		mTargety6 = ball.y -20;
 		
 	}
 	
 	if (ballCarrier == "N4") {
 		mTargetx = pageX + 200;
-		mTargety = ball.y - 30;
+		mTargety = ball.y - 20;
 		
 		mTargetx2 = pageX + 100;
-		mTargety2 = ball.y -20;
+		mTargety2 = ball.y -10;
 		
 		mTargetx3 = pageX + 300;
-		mTargety3 = ball.y -10;
+		mTargety3 = ball.y -5;
 
 		mTargetx4 = pageX -20;
 		mTargety4 = pageY 
@@ -611,22 +618,22 @@ if (pass == 0){
 		mTargety5 = ball.y -10;
 		
 		mTargetx6 = pageX -100;
-		mTargety6 = ball.y -30;
+		mTargety6 = ball.y -20;
 		
 	}
 	
 	if (ballCarrier == "N5") {
 		mTargetx = pageX - 200;
-		mTargety = ball.y - 30;
+		mTargety = ball.y - 20;
 		
 		mTargetx2 = pageX - 300;
 		mTargety2 = ball.y -20;
 		
 		mTargetx3 = pageX - 100;
-		mTargety3 = ball.y -20;
+		mTargety3 = ball.y -10;
 		
 		mTargetx4 = pageX  - 400;
-		mTargety4 = ball.y -10;
+		mTargety4 = ball.y -5;
 		
 		mTargetx5 = pageX -20;
 		mTargety5 = pageY;
@@ -638,19 +645,19 @@ if (pass == 0){
 	
 		if (ballCarrier == "N6") {
 		mTargetx = pageX + 200;
-		mTargety = ball.y - 30;
+		mTargety = ball.y - 20;
 		
 		mTargetx2 = pageX +300;
-		mTargety2 = ball.y -30;
+		mTargety2 = ball.y -20;
 		
 		mTargetx3 = pageX +400;
-		mTargety3 = ball.y -20;
+		mTargety3 = ball.y -10;
 		
 		mTargetx4 = pageX  +100;
 		mTargety4 = ball.y -10;
 		
 		mTargetx5 = pageX +500;
-		mTargety5 = ball.y -10;
+		mTargety5 = ball.y -5;
 		
 		mTargetx6 = pageX -20;
 		mTargety6 = pageY;
@@ -1296,7 +1303,7 @@ if (start == 1){
 	hTargety3 = north3.y;
 	hTargety4 = north4.y;
 	hTargety5 = north5.y;
-	hTargety6 = south2.y + 200;
+	hTargety6 = ball.y + 120;
 	
 	if (ball.y > south1.y +10 && ball.y > south2.y +10 && ball.y > south3.y +10 && ball.y > south4.y +10 && ball.y > south5.y +10){
 	hTargety6 = ball.y +5
@@ -1736,15 +1743,13 @@ if (XorY == "Y") {XorY = "X";}
 		if ( (south5.x <= ball.x + 30 && south5.x > ball.x - 30) && (south5.y <= ball.y + 3 && ball.y <= south5.y + 20)) {
 				tackler = south5; }
 		if ( (south6.x <= ball.x + 30 && south6.x > ball.x - 30) && (south6.y <= ball.y + 3 && ball.y <= south6.y + 20)) {
-				tackler = south6; }
+				tackler = south6; clap.play(); }
 
 				
 		if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false && tackler.onside == 1 && !ballInAir() ){  ++tackleCount; tackle(); tacklerCredit(tackler);}
 		
 		if (tackler != 0 && init == 0){ reset("tackle : " + tackleCount ); }
 		
-		//extra function full back tackle applause
-		if ( south6.x <= (ball.x + 40) && ball.x <= (south6.x + 40)	&& south6.y <= (ball.y + 3) && ball.y <= (south6.y + 3)) { clap.play(); }
 				
 	} 
 	 
