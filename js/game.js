@@ -1228,7 +1228,7 @@ if (init == 1) {
 	ball.y = 150;
 	
 	lockAll();
-	tackleCount = "GAME OVER";
+	tackleCount = 99;
 		
 	$(PTBbutton).text("Game Over - Play Again");
 	$(PTBbutton).show();
@@ -1254,7 +1254,7 @@ function PTBall() {
 		PTB = 0
 	}
 	
-	if (tackleCount == "G O"){
+	if (tackleCount > 98){
 		
 		 location.reload();
 		
