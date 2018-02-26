@@ -101,6 +101,8 @@ var DefensiveSpeed = function() {
     for (var i = 0; i < northTeam.length; i++) {
         if (ballCarrier == northBallCarrierArray[i]) {
           
+			southTeam[5].strength = southTeam[5].strength +20;
+			
 		for (var i = 0; i < southTeam.length -1; i++) {
 			southTeam[i].speed = southTeam[i].speed - 30;
 			console.log(southTeam[i].speed);
@@ -112,6 +114,8 @@ var DefensiveSpeed = function() {
     for (var i = 0; i < southTeam.length; i++) {
         if (ballCarrier == southBallCarrierArray[i]) {
           
+		  northTeam[5].strength = northTeam[5].strength +20;
+		  
 		for (var i = 0; i < northTeam.length -1; i++) {
 			northTeam[i].speed = northTeam[i].speed - 30;
 		}			

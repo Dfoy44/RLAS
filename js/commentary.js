@@ -67,7 +67,7 @@ newLine([preline[random] + ' ' + player.name]);
 var chargesForward = function (player) {
 
 var postline = ['Charges Forward', 'making ground', 'takes em on', 'making headway'];
-var preline = ['Charging forward now is', 'A run from', 'Taking on the defence is', 'The hard yards from'];
+var preline = ['Charging forward now is', 'A good run from', 'Taking on the defence is', 'The hard yards from'];
 var random = Math.floor(Math.random() * Math.floor(4));
 var randomB = Math.floor(Math.random() * Math.floor(4));
 

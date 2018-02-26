@@ -151,6 +151,12 @@ function startGame() {
 	gameInfo();
 	gameStart();
 	
+	var screen = $(window)    
+	if (screen.width() < 640) {
+	viewport = document.querySelector("meta[name=viewport]");
+	viewport.setAttribute('content', 'width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0');
+	}
+	
 	//styling
 	$("canvas").css("padding-left", "0");
 	$("canvas").css("padding-right", "0");
@@ -530,6 +536,8 @@ if (attackReady == 1) {
 					
 if (pass == 0){		
 
+
+
 	target.x = pageX;
 	target.y = pageY;
 
@@ -664,10 +672,24 @@ if (pass == 0){
 		
 	}
 	
+		
 	init = 1;
 	
 	
 	}
+	
+	if (PTB == 1) {
+		mTargety = ball.y - 120;
+		mTargety2 = ball.y - 120;
+		mTargety3 = ball.y - 120;
+		mTargety4 = ball.y - 120;
+		mTargety5 = ball.y - 120;
+		mTargety6 = ball.y - 120;
+	}
+	
+	
+	
+	
 
 };
 
@@ -952,13 +974,39 @@ $("#Pow").hide();
 
 //ptb
 PTB = 1;
+
+
+var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i); 
+	
+	if (isMobile) {
+	//scale click for scaled canvas
+	scaleX = innerWidth / canvas.width ;
+	scaleY = innerHeight / canvas.height ;
+	var ballx = ball.x / scaleX;
+	var bally = ball.y / scaleY;	
+	}
+	
+	var ballx = ball.x;
+	var bally = ball.y;		
+	
+	if (bally > 700) {bally = 400;}
+
 $(PTBbutton).text("Play The Ball");
 $(PTBbutton).show();
-$("#PTBbutton").css("left", ball.x + canvas.offsetLeft - 50);
-$("#PTBbutton").css("top", ball.y + canvas.offsetTop + 150 );
+$("#PTBbutton").css("left", ballx + canvas.offsetLeft - 50);
+$("#PTBbutton").css("top", bally + canvas.offsetTop + 150 );
 
 //back 100 for the souths
 Honside = ball.y + 100;
+
+	if (PTB == 1) {
+		mTargety = ball.y - 100;
+		mTargety2 = ball.y - 110;
+		mTargety3 = ball.y - 110;
+		mTargety4 = ball.y - 110;
+		mTargety5 = ball.y - 130;
+		mTargety6 = ball.y - 130;
+	}
 
 //lock the player with the ball
 
@@ -1290,6 +1338,8 @@ var PassCheck = function() {
 
 
 if (start == 1){
+	
+if (ball.x < 200) {	
 	hTargetx = north1.x;
 	hTargetx2 = north2.x;
 	hTargetx3 = north3.x;
@@ -1304,6 +1354,27 @@ if (start == 1){
 	hTargety4 = north4.y;
 	hTargety5 = north5.y;
 	hTargety6 = ball.y + 120;
+}
+
+if (ball.x > 200) {	
+	hTargetx = north1.x;
+	hTargetx2 = north2.x;
+	hTargetx3 = north3.x;
+	hTargetx4 = north4.x;
+	hTargetx5 = north5.x;
+	hTargetx6 = ball.x -20;
+	
+	
+	hTargety = north1.y;
+	hTargety2 = north2.y;
+	hTargety3 = north3.y;
+	hTargety4 = north4.y;
+	hTargety5 = north5.y;
+	hTargety6 = ball.y + 120;
+}
+
+
+
 	
 	if (ball.y > south1.y +10 && ball.y > south2.y +10 && ball.y > south3.y +10 && ball.y > south4.y +10 && ball.y > south5.y +10){
 	hTargety6 = ball.y +5
