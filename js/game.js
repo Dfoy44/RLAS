@@ -79,6 +79,9 @@ northImage.onload = function () {
 	northReady = true;
 };
 
+//greenArrow
+var greenArrow = new Image();
+
 // Ball image
 var ballReady = false;
 var ballImage = new Image();
@@ -97,6 +100,7 @@ targetImage.onload = function () {
 northImage.src = "images/north.png";
 northImageCap.src = "images/northRed.png";
 ballImage.src = "images/Ball.png";
+greenArrow.src = "images/GreenArrow.png";
 targetImage.src = "images/red_star2.png";
 SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
 NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
@@ -109,6 +113,9 @@ var XorY = "X";
 
 //ball target
 var ballCarrier = "N1";
+
+//ball target
+var teamPoss = "N";
 
 //time 
 var time = 8000
@@ -134,11 +141,15 @@ var clicked = 0;
 //ticks
 var gameTicks = 0;
 
+//ballCarrierOBJ
+var ballCarrierOBJ;
+
 ///////////////its a button thing/////////
 
 function startGame() {
 	$( ".menu" ).hide();
 	document.body.appendChild(canvas);
+		DefensiveSpeed();
 	//alert("oh my");
 	//$(boom).text("DON'T PUSH ME");
 	inplay = 1;
@@ -150,6 +161,7 @@ function startGame() {
 	clicked = 1;
 	gameInfo();
 	gameStart();
+
 	
 	var screen = $(window)    
 	if (screen.width() < 640) {
@@ -1517,7 +1529,36 @@ if (ballCarrier == "N6") {
     ball.bTargety = north6.y +14; 
 }
 
+//ball movement homing
+if (ballCarrier == "S1") {
+	ball.bTargetx = south1.x + 3; 
+    ball.bTargety = south1.y ; 
+}
 
+if (ballCarrier == "S2") {
+	ball.bTargetx = south2.x + 3; 
+    ball.bTargety = south2.y; 
+}	
+
+if (ballCarrier == "S3") {
+	ball.bTargetx = south3.x + 3; 
+    ball.bTargety = south3.y; 
+}
+
+if (ballCarrier == "S4") {
+	ball.bTargetx = south4.x + 3; 
+    ball.bTargety = south4.y; 
+}
+
+if (ballCarrier == "S5") {
+	ball.bTargetx = south5.x + 3; 
+    ball.bTargety = south5.y; 
+}
+
+if (ballCarrier == "S6") {
+	ball.bTargetx = south6.x + 3; 
+    ball.bTargety = south6.y ; 
+}
 		
 	//ball target
 	
@@ -1865,7 +1906,9 @@ if (inplay == 1) {
 	}
 	
 		if (ballReady){
-		ctx.drawImage(ballImage, ball.x - 7, ball.y -2);
+	    matchUpdate();	
+		ctx.drawImage(ballImage, ball.x - 4, ball.y -2);
+		ctx.drawImage(greenArrow, ballCarrierOBJ.x - 4, ballCarrierOBJ.y -24);
 	}
 	
 		if (southReady) {
@@ -1883,6 +1926,7 @@ if (inplay == 1) {
 		ctx.drawImage(SouthImageSprite, spriteFrame(south5), 0, 21, 26, south5.x - 10, south5.y, 30, 40);
 		ctx.drawImage(SouthImageSprite, spriteFrame(south6), 0, 21, 26, south6.x - 10, south6.y, 30, 40);
 	}
+	
 	
 
 		

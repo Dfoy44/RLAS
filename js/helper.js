@@ -4,6 +4,7 @@ var northTeam = [north1, north2, north3, north4, north5, north6];
 var northTargetX = [mTargetx, mTargetx2, mTargetx3, mTargetx4, mTargetx5, mTargetx6]; 
 var northTargetY = [mTargety, mTargety2, mTargety3, mTargety4, mTargety5, mTargety6]; 
 
+
 var StayBackNorth = function () {
 	
 var northTeam = [north1, north2, north3, north4, north5, north6]; 
@@ -35,26 +36,68 @@ var ballInAir = function () {
 		return false;		
 }
 
+var whichTeam = function () {
+	var NorthBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
+	var SouthBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6"];
+	
+	 for (var i = 0; i < NorthBallCarrierArray.length; i++) {
+	    if (ballCarrier == NorthBallCarrierArray[i]) {
+			//you know what to do
+		}
+	 }
+	 
+	 for (var i = 0; i < SouthBallCarrierArray.length; i++) {
+		 if (ballCarrier == SouthBallCarrierArray[i]) {
+			//you know wgat to do
+			
+		}
+	 
+	 }
+		
+}
+
+var whichBallCarrier = function () {
+	var NorthBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
+	var SouthBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6"];
+	
+	 for (var i = 0; i < NorthBallCarrierArray.length; i++) {
+	    if (ballCarrier == NorthBallCarrierArray[i]) {
+			//you know what to do
+		}
+	 }
+	 
+	 for (var i = 0; i < SouthBallCarrierArray.length; i++) {
+		 if (ballCarrier == SouthBallCarrierArray[i]) {
+			//you know wgat to do
+			
+		}
+	 
+	 }
+		
+}
+
 var inRanger = function (player) {
 	
 	if (player.x + 50 > ball.x && player.y + 50 > player.y && player.x - 50 < ball.x && player.y - 50 < ball.y) { 
-		console.log(player.name + "Drawn")
+	//	console.log(player.name + "Drawn")
 		
-		
+	if (ball.team == 2) {	
 		if (player == north1) { mTargetx = ball.x;  mTargety = ball.y; }
 		if (player == north2) { mTargetx2 = ball.x;  mTargety2 = ball.y; }
 		if (player == north3) { mTargetx3 = ball.x;  mTargety3 = ball.y; }
 		if (player == north4) { mTargetx4 = ball.x;  mTargety4 = ball.y; }
 		if (player == north5) { mTargetx5 = ball.x;  mTargety5 = ball.y; }
 		if (player == north6) { mTargetx6 = ball.x;  mTargety6 = ball.y; }
-		
+	}	
+	
+	if (ball.team == 1) {		
 		if (player == south1) { hTargetx = ball.x;  hTargety = ball.y; }
 		if (player == south2) { hTargetx2 = ball.x;  hTargety2 = ball.y; }
 		if (player == south3) { hTargetx3 = ball.x;  hTargety3 = ball.y; }
 		if (player == south4) { hTargetx4 = ball.x;  hTargety4 = ball.y; }
 		if (player == south5) { hTargetx5 = ball.x;  hTargety5 = ball.y; }
 		if (player == south6) { hTargetx6 = ball.x;  hTargety6 = ball.y; }
-
+		}
 	}
 	
 }
@@ -100,10 +143,10 @@ var DefensiveSpeed = function() {
     //north with the ball 
     for (var i = 0; i < northTeam.length; i++) {
         if (ballCarrier == northBallCarrierArray[i]) {
-          
 			southTeam[5].strength = southTeam[5].strength +20;
 			
 		for (var i = 0; i < southTeam.length -1; i++) {
+
 			southTeam[i].speed = southTeam[i].speed - 30;
 			console.log(southTeam[i].speed);
 		}			
@@ -113,8 +156,8 @@ var DefensiveSpeed = function() {
 	 //south with the ball 
     for (var i = 0; i < southTeam.length; i++) {
         if (ballCarrier == southBallCarrierArray[i]) {
-          
-		  northTeam[5].strength = northTeam[5].strength +20;
+           ballCarrierOBJ = southTeam[i]; 
+			northTeam[5].strength = northTeam[5].strength +20;
 		  
 		for (var i = 0; i < northTeam.length -1; i++) {
 			northTeam[i].speed = northTeam[i].speed - 30;
@@ -124,7 +167,34 @@ var DefensiveSpeed = function() {
   
 }
 
+var matchUpdate = function() {
+    var northTeam = [north1, north2, north3, north4, north5, north6];
+	var southTeam = [south1, south2, south3, south4, south5, south6]; 
+    var northBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
+	var southBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6"];
 
+    //north with the ball 
+    for (var i = 0; i < northTeam.length; i++) {
+        if (ballCarrier == northBallCarrierArray[i]) {
+		    ballCarrierOBJ = northTeam[i]; 
+			ball.team = 1;
+		for (var i = 0; i < southTeam.length -1; i++) {
+
+		}			
+	  }
+	}	
+	
+	 //south with the ball 
+    for (var i = 0; i < southTeam.length; i++) {
+        if (ballCarrier == southBallCarrierArray[i]) {
+          ballCarrierOBJ = southTeam[i]; 
+		  ball.team = 2;
+		for (var i = 0; i < northTeam.length -1; i++) {
+		}			
+	  }
+	}	
+  
+}
 
 
 var restoreSpeeds = function () {
