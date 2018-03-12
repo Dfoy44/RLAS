@@ -1,4 +1,6 @@
+//
 
+//
 var allBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
 var northTeam = [north1, north2, north3, north4, north5, north6]; 
 var northTargetX = [mTargetx, mTargetx2, mTargetx3, mTargetx4, mTargetx5, mTargetx6]; 
@@ -240,4 +242,90 @@ var statCollector = function () {
 	}
 }
 
+var dummyHalfInPosition = function () {
 
+	if (ball.team == 1) {		
+	
+	if (ballCarrier != "N1" && north1.x > ball.x -30 && north1.x < ball.x +30  ) 
+	{ $(PTBbutton).removeAttr('disabled');	};
+
+	if (ballCarrier == "N1" && north2.x > ball.x -30 && north2.x < ball.x +30  ) 
+	{ $(PTBbutton).removeAttr('disabled');	};
+
+	}
+
+	if (ball.team == 2) {		
+	
+	$(PTBbutton).removeAttr('disabled');
+	
+	if (ballCarrier != "S1" && south1.x > ball.x -30 && south1.x < ball.x +30  ) 
+	{ $(PTBbutton).removeAttr('disabled');	};
+
+	if (ballCarrier == "S1" && south2.x > ball.x -30 && south2.x < ball.x +30  ) 
+	{ $(PTBbutton).removeAttr('disabled');	};
+
+	}
+
+}
+
+
+var dropOut = function () {
+
+
+	if (ball.team == 1 && ball.y < 100) {		
+		turnOver();
+
+	}
+	
+	if (ball.team == 2 && ball.y > 800) {		
+		turnOver();
+
+	}
+}
+
+//CPU LOGIC
+
+var CPULoadPlay = function () {
+
+	SouthOnside = ball.y;
+	
+	//dummy half south
+ if (ballCarrier != "S1" && attackReady == 0) {
+  hTargetx = ball.x;
+  hTargety = ball.y +10;
+ }
+ 
+ if (ballCarrier == "S1" && attackReady == 0) {
+  hTargetx2 = ball.x;
+  hTargety2 = ball.y +10;
+ }
+
+ if (southPlayOn == 1) {
+ 
+ //dummy half 
+ if (ballCarrier != "S1" && attackReady == 0 && south1.x >= ball.x - 20 && south1.x < ball.x + 20 && south1.y > ball.y && south1.y <= ball.y + 30 ) {
+  ballCarrier = "S1";
+  
+  south1.lock = 0; south2.lock = 0; south3.lock = 0; south4.lock = 0; south5.lock = 0; south6.lock = 0;
+  attackReady = 1;
+ }
+
+ //dummy half if our N1 gets tackled
+ if (ballCarrier == "S1" && attackReady == 0 && south2.x >= ball.x - 20 && south2.x < ball.x + 20 && south2.y > ball.y && south2.y <= ball.y + 30) {
+  ballCarrier = "S2";
+  
+  south1.lock = 0; south2.lock = 0; south3.lock = 0; south4.lock = 0; south5.lock = 0; south6.lock = 0;
+  attackReady = 1;
+ }
+  
+	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx2 = 100; hTargety2 = 0; hTargety1 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 3 &&  attackReady == 1) {ballCarrier = "S3"; hTargetx3 = 200; hTargety3 = 0; hTargety2 = ball.y +50; hTargety1 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S4"; hTargetx4 = 300; hTargety4 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety1 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 5 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 6 &&  attackReady == 1) {ballCarrier = "S6"; hTargetx6 = 600; hTargety6 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety1 = ball.y +50;}	
+
+}
+
+}

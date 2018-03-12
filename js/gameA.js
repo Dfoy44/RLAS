@@ -105,8 +105,7 @@ SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
 NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
 
 
-//play on
-var southPlayOn = 1;
+
 
 //XorY
 var XorY = "X";
@@ -181,6 +180,8 @@ function startGame() {
 function PTB() {
 
  //if the dummy half is near enough
+
+
  if (PTB == 1) {
   PTB = 0;
   $(PTBbutton).hide();
@@ -215,6 +216,9 @@ var south1 = {
  currFrame: 0,
  frameX: [0, 21, 42, 63],
  ticks: 20
+
+
+
 };
 var south2 = {
  name: "Queensland 2",
@@ -442,8 +446,7 @@ var locked = 1;
 var PTB = 0;
 
 
-//init 
- init = 1;
+
 
 
 // Click Events ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -532,85 +535,40 @@ canvas.onmousedown = function(e) {
 
  }
 
+
+
+
  if (pass == 0) {
+
+
 
   target.x = pageX;
   target.y = pageY;
 
   // on mouse down we set the targets of the user players
-  //defensive positions
- 
-if (ball.y > pageY +100) {
-	
-  mTargetx = pageX;
+
+  mTargetx = pageX - 20;
   mTargety = pageY;
 
   mTargetx2 = pageX - 100;
-  mTargety2 = pageY;
+  mTargety2 = ball.y - 5;
 
   mTargetx3 = pageX + 100;
-  mTargety3 = pageY;
+  mTargety3 = ball.y - 10;
 
   mTargetx4 = pageX - 200;
-  mTargety4 = pageY;
+  mTargety4 = ball.y - 20;
 
   mTargetx5 = pageX + 200;
-  mTargety5 = pageY;
+  mTargety5 = ball.y - 20;
 
-  mTargetx6 = ball.x;
-  mTargety6 = pageY -100;
-  
-  //console.log("reg def");
-}
+  mTargetx6 = pageX - 250;
+  mTargety6 = ball.y - 20;
 
-if (ball.y < pageY +100) {
-	
- mTargetx = pageX;
-  mTargety = pageY;
-
-  mTargetx2 = pageX - 100;
-  mTargety2 = pageY;
-
-  mTargetx3 = pageX + 100;
-  mTargety3 = pageY;
-
-  mTargetx4 = pageX - 250;
-  mTargety4 = pageY;
-
-  mTargetx5 = pageX + 250;
-  mTargety5 = pageY;
-
-  mTargetx6 = ball.x;
-  mTargety6 = pageY -100;
-  
-  
- // console.log("scramble def");
-}
 
 
   ////on mouse down when a player has the ball, that player dictates the target//////////
 
-  if (ballCarrier == "N1") {
-   mTargetx = pageX -20;
-   mTargety = pageY;
-
-   mTargetx2 = pageX - 100;
-   mTargety2 = pageY -5;
-
-   mTargetx3 = pageX + 200;
-   mTargety3 = ball.y - 10;
-
-   mTargetx4 = pageX - 100;
-   mTargety4 = ball.y - 10;
-
-   mTargetx5 = pageX + 300;
-   mTargety5 = ball.y - 20;
-
-   mTargetx6 = pageX - 200;
-   mTargety6 = ball.y - 20;
-
-  }
-  
   if (ballCarrier == "N2") {
    mTargetx = pageX + 100;
    mTargety = ball.y - 5;
@@ -629,6 +587,8 @@ if (ball.y < pageY +100) {
 
    mTargetx6 = pageX - 200;
    mTargety6 = ball.y - 20;
+
+
 
   }
 
@@ -717,6 +677,9 @@ if (ball.y < pageY +100) {
   }
 
 
+  init = 1;
+
+
  }
 
  if (PTB == 1) {
@@ -728,15 +691,10 @@ if (ball.y < pageY +100) {
   mTargety6 = ball.y - 120;
  }
 
-if (attackReady == 1 && ball.team == 2) {
-	
-	//refer to cpu plays
 
-}
- 
- 
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////testing inputs ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 if (init == 0) {
@@ -761,22 +719,22 @@ if (init == 0) {
 
  //south target
 
- var hTargetx = 100;
+ var hTargetx = 400;
  var hTargety = 200;
 
- var hTargetx2 = 200;
+ var hTargetx2 = 400;
  var hTargety2 = 200;
 
- var hTargetx3 = 300;
+ var hTargetx3 = 400;
  var hTargety3 = 200;
 
  var hTargetx4 = 400;
  var hTargety4 = 200;
 
- var hTargetx5 = 500;
+ var hTargetx5 = 400;
  var hTargety5 = 200;
 
- var hTargetx6 = 600;
+ var hTargetx6 = 500;
  var hTargety6 = 500;
 
 }
@@ -845,6 +803,7 @@ var reset = function(message) {
  //alert(message);
 };
 
+
 function lockAll() {
 
  north1.lock = 1;
@@ -865,7 +824,7 @@ function lockAll() {
 
 }
 
-function unlockAll() { 
+function unlockAll() {
 
  north1.lock = 0;
  north2.lock = 0;
@@ -883,6 +842,7 @@ function unlockAll() {
 
  locked = 0;
 }
+
 
 function onsideAll() {
 
@@ -998,21 +958,16 @@ var Try = function() {
 }
 
 
+
+
+
 // Tackle occurs, set all targets to onside and lets play on
 var tackle = function(message) {
 
-if (ball.team == 1) {
+
  // set the onside if the mons have it
-  NorthOnside = ball.y - 50;
+ NorthOnside = ball.y - 50;
  MdummyHalf = ball.x
-}
- 
-if (ball.team == 2) {
- // set the onside if the mons have it
-  SouthOnside = ball.y;
-  NorthOnside = ball.y - 100;
-} 
- 
  $("canvas").effect("shake", {
   distance: 10
  });
@@ -1022,7 +977,6 @@ if (ball.team == 2) {
 
  //ptb
  PTB = 1;
- southPlayOn = 0;
 
 
  var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
@@ -1042,17 +996,10 @@ if (ball.team == 2) {
   bally = 400;
  }
 
- if (ball.team == 1) {
  $(PTBbutton).text("Play The Ball");
  $(PTBbutton).attr('disabled', 'disabled');
+
  $(PTBbutton).show();
- }
- 
-  if (ball.team == 2) {
- $(PTBbutton).text("Continue");
- $(PTBbutton).show();
- southPlayOn = 0;
- }
 
  $("#PTBbutton").css("left", ballx + canvas.offsetLeft - 50);
  $("#PTBbutton").css("top", bally + canvas.offsetTop + 150);
@@ -1060,7 +1007,7 @@ if (ball.team == 2) {
  //back 100 for the souths
  SouthOnside = ball.y + 100;
 
- if (PTB == 1 && ball.team == 1) {
+ if (PTB == 1) {
   mTargety = ball.y - 100;
   mTargety2 = ball.y - 110;
   mTargety3 = ball.y - 110;
@@ -1090,27 +1037,7 @@ if (ball.team == 2) {
   north6.lock = 1;
  }
 
- if (ballCarrier == "S1") {
-  south1.lock = 1;
- }
- if (ballCarrier == "S2") {
-  south2.lock = 1;
- }
- if (ballCarrier == "S3") {
-  south3.lock = 1;
- }
- if (ballCarrier == "S4") {
-  south4.lock = 1;
- }
- if (ballCarrier == "S5") {
-  south5.lock = 1;
- }
- if (ballCarrier == "S6") {
-  south6.lock = 1;
- }
- 
- 
- 
+
  //get the central man to dummy half
  attackReady = 0;
 
@@ -1289,79 +1216,6 @@ function turnOver() {
 
 }
 
-function turnOverToSouth() {
-
- boo.play();
- crowdAmb.volume = 0.20;
- NorthOnside = 650;
- onsideAll();
-
- if (score != -1) {
-  $(BigScreen).text("Turnover");
-  $(BigScreen).removeClass("large");
-  tackleCount = 0;
- }
-
-
- // Reset norths
- north1.x = 400;
- north1.y = 650;
-
- north2.x = 300;
- north2.y = 650;
-
- north3.x = 500;
- north3.y = 650;
-
- north4.x = 150;
- north4.y = 650;
-
- north5.x = 700;
- north5.y = 650;
-
- north6.x = 000;
- north6.y = 650;
-
-
-
- //souths
- south1.x = 400;
- south1.y = 750;
-
- south2.x = 300;
- south2.y = 750;
-
- south3.x = 500;
- south3.y = 750;
-
- south4.x = 100;
- south4.y = 750;
-
- south5.x = 700;
- south5.y = 750;
-
- south6.x = 500;
- south6.y = 750;
-
- //ball
- ball.x = 700;
- ball.y = 150;
-
- ballCarrier = "S1"
- lockAll();
- tackleCount = 0;
-
- $(PTBbutton).text("Tap Off");
- $(PTBbutton).show();
- $(PTBbutton).removeAttr('disabled');
-
- $(BigScreen).show();
- onsideAll();
-
-
-
-}
-
 
 function endGame() {
 
@@ -1422,12 +1276,6 @@ function PTBall() {
  $(PTBbutton).hide();
  $(BigScreen).hide();
  start = 1;
- 
- if(ball.team == 2) {
-	CPULoadPlay();
-	southPlayOn = 1;
- }
-	 
 
 
 }
@@ -1454,7 +1302,11 @@ var update = function(modifier) {
 
 
 
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //////targets section loops////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
  if (time == 0) {
 
@@ -1464,6 +1316,9 @@ var update = function(modifier) {
  if (tackleCount == 6) {
   turnOver();
  }
+
+
+
 
 
  //the cheeky minus 1 start
@@ -1478,7 +1333,10 @@ var update = function(modifier) {
   buildOnce();
  }
 
- 
+ //souths need targets////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
 
  var PassCheck = function() {
   var northTeam = [north1, north2, north3, north4, north5, north6];
@@ -1496,6 +1354,7 @@ var update = function(modifier) {
    }
   }
  }
+
 
 
 
@@ -1606,8 +1465,6 @@ var update = function(modifier) {
   north5.lock = 0;
   north6.lock = 0;
  }
- 
-
 
 
  //are they onside
@@ -1951,8 +1808,6 @@ var update = function(modifier) {
  }
 
 
- if (ball.team == 1) {
- 
  if (south5.y >= 810) {
   south5.y = 810;
   SouthOnside = 805;
@@ -1978,7 +1833,7 @@ var update = function(modifier) {
   SouthOnside = 805;
  }
 
- }
+
 
  //north target
  if (north1.y > mTargety) { //
@@ -2168,17 +2023,30 @@ var update = function(modifier) {
 
  if (ball.team == 2) {
 
-	CPULoadPlay();
-	
+
+
+  if (ballCarrier == "S4") {
+   hTargety = 0;
+
+   hTargety = 0;
+   hTargetx = 400;
+   hTargety2 = 400;
+   hTargety3 = 400;
+   hTargety4 = 400;
+   hTargety5 = 400;
+   hTargety6 = 400;
+
+   console.log("S4 with ball");
 
   }
 
+ }
 
  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  //////collisions //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  // Are they touching? is a tackle/intercept/catch made
 
- if (ball.team == 1) { //the north team is team one
+ if (ball.team == 1) { //the north team is team one, all these collisions must be tackles
 
   if (ball.y > 810) {
    Try();
@@ -2221,50 +2089,6 @@ var update = function(modifier) {
 
  }
 
- if (ball.team == 2) { //the north team is team two
-
-  if (ball.y < 100) {
-   Try();
-  }
-
-  var tackler = 0;
-
-
-  if ((north1.x <= ball.x + 30 && north1.x > ball.x - 30) && (north1.y <= ball.y + 20 && ball.y <= north1.y + 3)) {
-   tackler = north6;
-  }
-  if ((north2.x <= ball.x + 30 && north2.x > ball.x - 30) && (north2.y <= ball.y + 20 && ball.y <= north2.y + 3)) {
-   tackler = north2;
-  }
-  if ((north3.x <= ball.x + 30 && north3.x > ball.x - 30) && (north3.y <= ball.y + 20 && ball.y <= north3.y + 3)) {
-   tackler = north3;
-  }
-  if ((north4.x <= ball.x + 30 && north4.x > ball.x - 30) && (north4.y <= ball.y + 20 && ball.y <= north4.y + 3)) {
-   tackler = north4;
-  }
-  if ((north5.x <= ball.x + 30 && north5.x > ball.x - 30) && (north5.y <= ball.y + 20 && ball.y <= north5.y + 3)) {
-   tackler = north5;
-  }
-  if ((north6.x <= ball.x + 30 && north6.x > ball.x - 30) && (north6.y <= ball.y + 20 && ball.y <= north6.y + 3)) {
-   tackler = north1;
-   clap.play();
-  }
-
-
-  if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false && tackler.onside == 1 && !ballInAir()) {
-   ++tackleCount;
-   tackle();
-   tacklerCredit(tackler);
-  }
-
-  if (tackler != 0 && init == 0) {
-   reset("tackle : " + tackleCount);
-  }
-
-
- }
-
- 
 };
 
 // Draw everything ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2362,7 +2186,7 @@ var render = function() {
 
 
 // The main game loop
- var main = function() {
+var main = function() {
  var now = Date.now();
  var delta = now - then;
 
@@ -2383,4 +2207,3 @@ requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame
 var then = Date.now();
 reset();
 main();
-
