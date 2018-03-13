@@ -420,6 +420,7 @@ var tackleCount = 0;
 
 //score
 var score = -1;
+var scoreSouth = 0
 
 //onside lines
 var NorthOnside; //north
@@ -931,8 +932,12 @@ var Try = function() {
   tackleCount = 0;
  }
 
- if (init == 1) {
+ if (init == 1 && ball.team == 1) {
   score++;
+ }
+ 
+  if (init == 1 && ball.team == 2) {
+  scoreSouth++;
  }
 
  // Reset norths
@@ -1145,15 +1150,13 @@ function forwardPass() {
 
 
  if (score != -1) {
-  $(BigScreen).text("FORWARD PASS - 10 Second Penalty");
+  $(BigScreen).text("FORWARD PASS");
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
 
- if (init == 1) {
-  time = time - 10;
- }
-
+turnOverToSouth();
+ 
  // Reset norths
  north1.x = 400;
  north1.y = 150;
@@ -1221,14 +1224,11 @@ function turnOver() {
  onsideAll();
 
  if (score != -1) {
-  $(BigScreen).text("Turnover - 10 Second Penalty");
+  $(BigScreen).text("Turnover - 5M Tap " + NorthTeam);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
 
- if (init == 1) {
-  time = time - 10;
- }
 
  // Reset norths
  north1.x = 400;
@@ -1297,7 +1297,7 @@ function turnOverToSouth() {
  onsideAll();
 
  if (score != -1) {
-  $(BigScreen).text("Turnover");
+  $(BigScreen).text("Turnover - 5M Tap " + SouthTeam);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
@@ -1344,8 +1344,8 @@ function turnOverToSouth() {
  south6.y = 750;
 
  //ball
- ball.x = 700;
- ball.y = 150;
+ ball.x = 400;
+ ball.y = 700;
 
  ballCarrier = "S1"
  lockAll();
@@ -1461,10 +1461,15 @@ var update = function(modifier) {
   endGame();
  }
 
- if (tackleCount == 6) {
+ if (tackleCount == 6 && ball.team == 2) {
   turnOver();
  }
 
+  if (tackleCount == 6 && ball.team == 1) {
+  turnOverToSouth();
+ }
+
+ 
 
  //the cheeky minus 1 start
  if (score == -1 && init == 1 && clicked == 1) {
@@ -2343,18 +2348,17 @@ var render = function() {
 
  // Score - Heads Up Display
  ctx.fillStyle = "rgb(250, 250, 250)";
- ctx.font = "24px HeadsUp";
+ ctx.font = "16px HeadsUp";
  ctx.textAlign = "left";
  ctx.textBaseline = "top";
- ctx.font = "24px EuroTag";
- ctx.fillText("RUGBY  LEAGUE  ALL-STARS", 180, 0);
+ ctx.font = "16px EuroTag";
+ ctx.fillText("RUGBY  LEAGUE  ALL-STARS", 235, 0);
  ctx.font = "24px HeadsUp";
  ctx.fillStyle = "rgb(250, 250, 250)";
- ctx.fillText("Tackle: " + tackleCount, 200, 50);
- ctx.fillText("Time: " + min + ":" + sec, 560, 50);
- ctx.fillText("Score: " + score, 10, 50);
- ctx.fillText("Level: 1", 400, 50);
-
+ ctx.fillText("Tackle: " + tackleCount, 540, 55);
+ ctx.fillText("Time: " + min + ":" + sec, 540, 40);
+ ctx.fillText(NorthTeam + " " + score, 50, 40);
+ ctx.fillText(SouthTeam + " " + scoreSouth, 50, 55);
  //ticks
  gameTicks++;
 };
