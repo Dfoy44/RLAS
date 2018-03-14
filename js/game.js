@@ -482,7 +482,7 @@ canvas.onmousedown = function(e) {
    ballCarrier = "N1";
    inPossesion(north1);
    if (north1.y > ball.y) {
-    forwardPass();
+    turnOverToSouth();
    }
   }
 
@@ -491,7 +491,7 @@ canvas.onmousedown = function(e) {
    ballCarrier = "N2";
    inPossesion(north2);
    if (north2.y > ball.y) {
-    forwardPass();
+    turnOverToSouth();
    }
   }
 
@@ -500,7 +500,7 @@ canvas.onmousedown = function(e) {
    ballCarrier = "N3";
    inPossesion(north3);
    if (north3.y > ball.y) {
-    forwardPass();
+    turnOverToSouth();
    }
   }
 
@@ -509,7 +509,7 @@ canvas.onmousedown = function(e) {
    ballCarrier = "N4";
    inPossesion(north4);
    if (north4.y > ball.y) {
-    forwardPass();
+    turnOverToSouth();
    }
   }
 
@@ -518,7 +518,7 @@ canvas.onmousedown = function(e) {
    ballCarrier = "N5";
    inPossesion(north5);
    if (north5.y > ball.y) {
-    forwardPass();
+    turnOverToSouth();
    }
   }
 
@@ -527,7 +527,7 @@ canvas.onmousedown = function(e) {
    ballCarrier = "N6";
    inPossesion(north6);
    if (north6.y > ball.y) {
-    forwardPass();
+    turnOverToSouth();
    }
   }
 
@@ -1002,6 +1002,94 @@ var Try = function() {
 
 }
 
+var TryNorth = function() {
+
+ restoreSpeeds();
+ onsideAll();
+ $("#Pow").hide();
+
+ buildOnce();
+ bigCheer.play();
+ crowdAmb.volume = 0.50;
+ Cbuild = 0;
+
+ if (score != -1) {
+  $(BigScreen).text("TRY!");
+  $(BigScreen).append("<h1>" + tryScorer() + "</h1>")
+  $(BigScreen).addClass("large");
+  tackleCount = 0;
+ }
+
+ if (init == 1 && ball.team == 1) {
+  score++;
+ }
+ 
+  if (init == 1 && ball.team == 2) {
+  scoreSouth++;
+ }
+
+ // Reset norths
+ north1.x = 400;
+ north1.y = 650;
+
+ north2.x = 300;
+ north2.y = 650;
+
+ north3.x = 500;
+ north3.y = 650;
+
+ north4.x = 150;
+ north4.y = 650;
+
+ north5.x = 700;
+ north5.y = 650;
+
+ north6.x = 000;
+ north6.y = 650;
+
+
+
+ //souths
+ south1.x = 400;
+ south1.y = 750;
+
+ south2.x = 300;
+ south2.y = 750;
+
+ south3.x = 500;
+ south3.y = 750;
+
+ south4.x = 100;
+ south4.y = 750;
+
+ south5.x = 700;
+ south5.y = 750;
+
+ south6.x = 500;
+ south6.y = 750;
+
+ //ball
+ ball.x = 150;
+ ball.y = 750;
+
+ ballCarrier = "S1"
+ lockAll();
+ tackleCount = 0;
+
+ $(PTBbutton).text("Tap Off");
+ $(PTBbutton).show();
+ $(PTBbutton).removeAttr('disabled');
+
+ $(BigScreen).show();
+ $("#BigScreen").css("left",canvas.offsetLeft + 100);
+ $("#BigScreen").css("top", canvas.offsetTop + 400);
+
+ $("#PTBbutton").css("left", canvas.offsetLeft + 300);
+ $("#PTBbutton").css("top", canvas.offsetTop + 450);
+
+
+}
+
 
 // Tackle occurs, set all targets to onside and lets play on
 var tackle = function(message) {
@@ -1155,7 +1243,6 @@ function forwardPass() {
   tackleCount = 0;
  }
 
-turnOverToSouth();
  
  // Reset norths
  north1.x = 400;
@@ -1296,12 +1383,18 @@ function turnOverToSouth() {
  NorthOnside = 650;
  onsideAll();
 
- if (score != -1) {
+ if (score != -1 && tackleCount > 6) {
   $(BigScreen).text("Turnover - 5M Tap " + SouthTeam);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
 
+  if (score != -1 && tackleCount < 6) {
+  $(BigScreen).text("Forward Pass - 5M Tap " + SouthTeam);
+  $(BigScreen).removeClass("large");
+  tackleCount = 0;
+ }
+ 
 
  // Reset norths
  north1.x = 400;
@@ -1372,7 +1465,7 @@ function endGame() {
  aud.volume = 0.80;
 
  if (score != -1) {
-  $(BigScreen).text("Final Score :  " + score);
+  $(BigScreen).html("** Final Score **<br>" + NorthTeam + " : " + score + "<br>" + SouthTeam + " : " + scoreSouth);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
@@ -2186,7 +2279,7 @@ var update = function(modifier) {
  if (ball.team == 1) { //the north team is team one
 
   if (ball.y > 810) {
-   Try();
+   TryNorth();
   }
 
   var tackler = 0;

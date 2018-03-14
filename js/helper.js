@@ -1,8 +1,10 @@
 //
 
 //
-var allBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
-var northTeam = [north1, north2, north3, north4, north5, north6]; 
+var allBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"]; 
+var southBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6" ];
+var northTeam = [north1, north2, north3, north4, north5, north6];
+var southTeam = [south1, south2, south3, south4, south5, south6];  
 var northTargetX = [mTargetx, mTargetx2, mTargetx3, mTargetx4, mTargetx5, mTargetx6]; 
 var northTargetY = [mTargety, mTargety2, mTargety3, mTargety4, mTargety5, mTargety6]; 
 
@@ -228,6 +230,12 @@ var tryScorer = function () {
 	for (var x = 0; x < allBallCarrierArray.length; x++) {
 		if (ballCarrier == allBallCarrierArray[x]) {
 			return northTeam[x].name; 
+		}
+	}
+	
+	for (var x = 0; x < southBallCarrierArray.length; x++) {
+		if (ballCarrier == southBallCarrierArray[x]) {
+			return southTeam[x].name; 
 		}
 	}
 }
