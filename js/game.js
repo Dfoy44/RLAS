@@ -559,7 +559,7 @@ if (ball.y > pageY +100) {
   mTargety5 = pageY;
 
   mTargetx6 = ball.x;
-  mTargety6 = pageY -100;
+  mTargety6 = pageY -150;
   
   //console.log("reg def");
 }
@@ -582,7 +582,7 @@ if (ball.y < pageY +100) {
   mTargety5 = pageY;
 
   mTargetx6 = ball.x;
-  mTargety6 = pageY -100;
+  mTargety6 = pageY -150;
   
   
  // console.log("scramble def");
@@ -919,6 +919,7 @@ var Try = function() {
  restoreSpeeds();
  onsideAll();
  $("#Pow").hide();
+ 
 
  buildOnce();
  bigCheer.play();
@@ -956,7 +957,7 @@ var Try = function() {
  north5.x = 700;
  north5.y = 150;
 
- north6.x = 000;
+ north6.x = 600;
  north6.y = 150;
 
 
@@ -1044,8 +1045,8 @@ var TryNorth = function() {
  north5.x = 700;
  north5.y = 650;
 
- north6.x = 000;
- north6.y = 650;
+ north6.x = 400;
+ north6.y = 550;
 
 
 
@@ -1069,8 +1070,8 @@ var TryNorth = function() {
  south6.y = 750;
 
  //ball
- ball.x = 150;
- ball.y = 750;
+ ball.x = 400;
+ ball.y = 700;
 
  ballCarrier = "S1"
  lockAll();
@@ -1260,7 +1261,7 @@ function forwardPass() {
  north5.x = 700;
  north5.y = 150;
 
- north6.x = 000;
+ north6.x = 400;
  north6.y = 150;
 
 
@@ -1321,8 +1322,8 @@ function turnOver() {
  north1.x = 400;
  north1.y = 150;
 
- north2.x = 300;
- north2.y = 150;
+ north2.x = 400;
+ north2.y = 110;
 
  north3.x = 500;
  north3.y = 150;
@@ -1383,19 +1384,13 @@ function turnOverToSouth() {
  NorthOnside = 650;
  onsideAll();
 
- if (score != -1 && tackleCount > 6) {
+ if (score != -1) {
   $(BigScreen).text("Turnover - 5M Tap " + SouthTeam);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
 
-  if (score != -1 && tackleCount < 6) {
-  $(BigScreen).text("Forward Pass - 5M Tap " + SouthTeam);
-  $(BigScreen).removeClass("large");
-  tackleCount = 0;
- }
  
-
  // Reset norths
  north1.x = 400;
  north1.y = 650;
@@ -1412,8 +1407,8 @@ function turnOverToSouth() {
  north5.x = 700;
  north5.y = 650;
 
- north6.x = 000;
- north6.y = 650;
+ north6.x = 400;
+ north6.y = 550;
 
 
 
@@ -1465,7 +1460,7 @@ function endGame() {
  aud.volume = 0.80;
 
  if (score != -1) {
-  $(BigScreen).html("** Final Score **<br>" + NorthTeam + " : " + score + "<br>" + SouthTeam + " : " + scoreSouth);
+  $(BigScreen).html("*** Final Score ***<br>" + NorthTeam + " : " + score + "<br>" + SouthTeam + " : " + scoreSouth);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
