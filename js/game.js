@@ -540,9 +540,7 @@ canvas.onmousedown = function(e) {
 
   // on mouse down we set the targets of the user players
   //defensive positions
- 
-if (ball.y > pageY +100) {
-	
+
   mTargetx = pageX;
   mTargety = pageY;
 
@@ -562,30 +560,13 @@ if (ball.y > pageY +100) {
   mTargety6 = pageY -150;
   
   //console.log("reg def");
-}
 
-if (ball.y < pageY +100) {
+
+if (ball.y < north1.y) {
 	
- mTargetx = pageX;
-  mTargety = pageY;
-
-  mTargetx2 = pageX - 100;
-  mTargety2 = pageY;
-
-  mTargetx3 = pageX + 100;
-  mTargety3 = pageY;
-
-  mTargetx4 = pageX - 250;
-  mTargety4 = pageY;
-
-  mTargetx5 = pageX + 250;
-  mTargety5 = pageY;
-
   mTargetx6 = ball.x;
-  mTargety6 = pageY -150;
-  
-  
- // console.log("scramble def");
+  mTargety6 = ball.y;
+
 }
 
 
@@ -999,6 +980,7 @@ var Try = function() {
 
  $("#PTBbutton").css("left", ball.x + canvas.offsetLeft - 50);
  $("#PTBbutton").css("top", ball.y + canvas.offsetTop + 150);
+ restoreSpeeds();
 
 
 }
@@ -1087,7 +1069,7 @@ var TryNorth = function() {
 
  $("#PTBbutton").css("left", canvas.offsetLeft + 300);
  $("#PTBbutton").css("top", canvas.offsetTop + 450);
-
+ restoreSpeeds();
 
 }
 
@@ -1310,6 +1292,7 @@ function turnOver() {
  boo.play();
  crowdAmb.volume = 0.20;
  onsideAll();
+ 
 
  if (score != -1) {
   $(BigScreen).text("Turnover - 5M Tap " + NorthTeam);
@@ -1372,7 +1355,7 @@ function turnOver() {
 
  $(BigScreen).show();
  onsideAll();
-
+ restoreSpeeds();
 
 
 }
@@ -1445,6 +1428,7 @@ function turnOverToSouth() {
 
  $(BigScreen).show();
  onsideAll();
+ restoreSpeeds();
 
 
 
