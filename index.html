@@ -263,9 +263,6 @@
                     <tr>
                         <th class="text-center">Name</th>
                         <th class="text-center">Position</th>
-                        <th class="text-center">Speed</th>
-                        <th class="text-center">Strength</th>
-                        <th class="text-center">Passing</th>
 						<th class="text-center">Select</th>
 						<th class="text-center">Match Position</th>
                     </tr>
@@ -274,9 +271,6 @@
 				    <tr ng-repeat="x in team"  ng-if="$index>0">
 						<td>{{x.Name}}</td>
 						<td>{{x.Position}}</td>
-						<td>{{x.Speed}}</td>  
-						<td>{{x.Strength}}</td>  
-						<td>{{x.Passing}}</td> 
 						<td><button ng-Click="addPlayer($index)" ng-if="!x.Selected" class="btn btn-warning active btn-block">ADD Player</button>
 						<button ng-if="x.Selected" class="btn btn-success active btn-block">Selected</button></td>
 						<td>{{x.Selected}}</td> 
@@ -954,6 +948,7 @@
 				$( "#south0Name" ).text($scope.teamOP[0].TeamName);
 				$scope.addOppositionPlayers();
 				SouthTeam = $scope.teamOP[0].TeamName;
+				SouthImageSprite.src = loadPlayerSpriteS(SouthTeam)
 			}
 			
 		}

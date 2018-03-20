@@ -25,6 +25,35 @@ var	loadPlayerSpriteN = function (teamName) {
 		}
 	
 }
+
+
+var	loadPlayerSpriteS = function (teamName) {
+		
+		switch (teamName) {
+			default: 
+				return "sprites/SouthImageSpriteBasic.png";
+				break;				
+			case "QLD Irish":
+				return "sprites/SouthImageSpriteQLDI.png";
+				break; 
+			case "Hunter-Newcastle":
+				return "sprites/SouthImageSpriteNEWC.png";
+				break; 
+			case "Brisbane":
+				return "sprites/SouthImageSpriteBRIS.png";
+				break;
+			case "Wigan":
+				return "sprites/SouthImageSpriteWIGN.png";
+				break;
+			case "St.Helens":
+				return "sprites/SouthImageSpriteSTHN.png";
+				break;
+			case "Paris St.Germain '97":
+				return "sprites/SouthImageSpritePSG97.png";
+				break;	
+		}
+	
+}
 	
 var spriteFrame	= function (spObject) {
 		
