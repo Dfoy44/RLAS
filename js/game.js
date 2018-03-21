@@ -556,18 +556,10 @@ canvas.onmousedown = function(e) {
   mTargetx5 = pageX + 200;
   mTargety5 = pageY;
 
-  mTargetx6 = ball.x;
+  mTargetx6 = pageX;
   mTargety6 = pageY -150;
   
   //console.log("reg def");
-
-
-if (ball.y < north1.y) {
-	
-  mTargetx6 = ball.x;
-  mTargety6 = ball.y;
-
-}
 
 
   ////on mouse down when a player has the ball, that player dictates the target//////////

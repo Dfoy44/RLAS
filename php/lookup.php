@@ -30,8 +30,6 @@ if(isset($_GET['userName']))
 		 $queryString = "SELECT * from Users where username = '" .$_GET['userName'] . "' and password = '" .$_GET['password'] . "' ";
 }
 
-
-
 if(isset($_GET['trysAndAssists']))
 {
          $queryString = "SELECT * from Players";
@@ -46,7 +44,13 @@ if(isset($_GET['matchData']))
 if(isset($_GET['teamData']))
 {
           $queryString = "SELECT * from Players";
-		  $queryString = $queryString . " where TeamName = '" .$_GET['teamData'] ."'";
+	//	  $queryString = $queryString . " where TeamName = '" .$_GET['teamData'] ."'";
+}
+
+if(isset($_GET['tryScorer']))
+{
+          $queryString = "UPDATE Players SET Trys = Trys + 1";
+		  $queryString = $queryString . " Where Name = '" .$_GET['tryScorer'] ."'";
 }
 
 // 4. return all relative rows
