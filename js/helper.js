@@ -291,6 +291,22 @@ var dropOut = function () {
 	}
 }
 
+//ajax section
+
+var sendTry = function (tryScorer) {
+	
+	 $.ajax({
+                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?tryScorer=" + tryScorer,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+						console.log("TRY")
+						console.log(obj)
+				}               					
+        });
+}
+
+
 //CPU LOGIC
 
 var CPULoadPlay = function () {

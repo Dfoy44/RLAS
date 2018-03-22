@@ -7,7 +7,7 @@ var	loadPlayerSpriteN = function (teamName) {
 			case "QLD Irish":
 				return "sprites/NorthImageSpriteQLDI.png";
 				break; 
-			case "Hunter-Newcastle":
+			case "Newcastle-Hunter":
 				return "sprites/NorthImageSpriteNEWC.png";
 				break; 
 			case "Brisbane":
@@ -21,7 +21,10 @@ var	loadPlayerSpriteN = function (teamName) {
 				break;
 			case "Paris St.Germain '97":
 				return "sprites/NorthImageSpritePSG97.png";
-				break;	
+				break;
+			case "Oldham '88":
+				return "sprites/NorthImageSpriteOLDH.png";
+				break;				
 		}
 	
 }
@@ -36,7 +39,7 @@ var	loadPlayerSpriteS = function (teamName) {
 			case "QLD Irish":
 				return "sprites/SouthImageSpriteQLDI.png";
 				break; 
-			case "Hunter-Newcastle":
+			case "Newcastle-Hunter":
 				return "sprites/SouthImageSpriteNEWC.png";
 				break; 
 			case "Brisbane":
@@ -50,7 +53,10 @@ var	loadPlayerSpriteS = function (teamName) {
 				break;
 			case "Paris St.Germain '97":
 				return "sprites/SouthImageSpritePSG97.png";
-				break;	
+				break;
+			case "Oldham '88":
+				return "sprites/SouthImageSpriteOLDH.png";
+				break;			
 		}
 	
 }

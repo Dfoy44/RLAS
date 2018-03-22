@@ -905,6 +905,8 @@ var Try = function() {
   $(BigScreen).addClass("large");
   tackleCount = 0;
  }
+ 
+ sendTry(tryScorer());
 
  if (init == 1 && ball.team == 1) {
   score++;

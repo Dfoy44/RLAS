@@ -1,48 +1,1108 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Rugby League All-Stars</title>
-		<link href="js/style.css" type="text/css" rel="stylesheet" />
-		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-  
-		   <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<!-- https://stackoverflow.com/questions/13157586/full-screen-canvas-on-mobile-devices -->
-	
-	</head>
-	
-	<body>
-	<body background="images/LogoBG.png">
-	<button id="StartButton" hidden="true" onclick="startGame()" class="default">START</button>
-	<button id="PTBbutton" hidden="true" onclick="PTBall()" class="PTB">PLAY THE BALL</button>
-	<button id="BigScreen" hidden="true" onclick="continueS()" class="BigScreen">Welcome To Rugby League All-Stars</button>
+
+<head>
+    <title>Rugby League All-Stars</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.5,  user-scalable=0">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+   -->
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
 
 	
-	
-	<script src="js/game.js"></script>
-	<script src="js/helper.js"></script>
-	<script src="js/menu.js"></script>
-	
-   <!--  <div id="vid" class="video-background">
-        <video autoplay muted>
-            <source src="images/ETINTRO1.mp4" type="video/mp4">
-        </video>        
-    </div> -->
-	
-	<!-- <div id="Bpic" class="Bpic">
-        <img src="images/Title.jpg">        
+</head>
+
+<body style="background-color: black; background-size: 100% 100%;">
+
+			<button id="PTBbutton" hidden="true" onclick="PTBall()" class="PTB">PLAY THE BALL</button>
+			<button id="BigScreen" hidden="true" onclick="continueS()" class="BigScreen">Welcome To Rugby League All-Stars</button>
+			<button id="Pow" hidden="true" class="Pow"></button>
+			<div class="centerComB" id="typedP">...<div class="centerCom" id="typedA"></div></div>
+			
+<div class="menu">
+
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <div class="full width" id="stars" style="background-image: url(images/headerBackground.png); background-size: 100% 100%;">
+            <img id="logo" src="images/logo.png" alt="Rugby League All-Stars" />
+        </div>
+		
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
+                </div>
+                
+				<div class="collapse navbar-collapse" id="myNavbar">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Main Menu</a>
+                        </li>
+                        <li><a href="#">About</a>
+                        </li>
+                        <li><a href="#">Stats</a>
+                        </li>
+                        <li><a href="#">Contact</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#"></span>Login</a>
+                        </li>
+                    </ul>
+                </div>
+            
+			</div>
+        </nav>
+
+        <br/>
+
+
+        <div class="container" style="background: white;">
+            <h2 style="text-align : center;">RUGBY LEAGUE ALL-STARS</h2>
+			<h5 style="text-align : center;">Match Centre</h5>
+			
+		<div class="container">
+		
+			<div class="col-md-2"></div>
+			<div class="col-md-8" style="background-color:#F0FFFF; margin : 10px;">
+			<div style="background-image: url(images/BigScreen2.png); background-size: 100% 100%; height : 30%;" >
+			 <table style="border-top: 1px solid #ddd0 !important;" class="StartingLineUps table hover text-center" id="StartingLineup">
+					<thead>
+						<tr>
+							<th class="text-center">Tonights Matchup</th>
+						</tr> 
+					</thead>
+					<tbody>
+						<tr style="border-top: 1px solid #ddd0 !important;">
+							<td><div id="north0Name">Yorkshire</div> Vs. <div id="south0Name">Queensland</div>
+							<div style="font-size : 70%; margin : 10px;"><span class="blink_me"> * </span>Live From {{Ground}}</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			</div>
+			<div class="col-md-2"></div>
+		
+
+			<div class="col-md-12" style="margin : 10px;">
+			<div style="text-align : center;">
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Login User</button>
+			<button type="button" ng-Click="teamSelect('team')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Your Team</button>
+			<button type="button" ng-Click="teamSelect('op')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Opponent Team</button>
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#squadSelect">Squad Select</button>			
+			<button id="StartButton" onclick="startGame()" class="btn btn-success btn-lg">Start Match</button>
+			</div>
+			</div>
+		
+		<div class="col-md-6" style="margin : 10px; border : 1px; border-style: double;">
+		<div style="background-size: 100% 100%; height : 30%;" >
+		 <table style="border-top: 1px solid #ddd0 !important;" class="table hover text-center" id="StartingLineup">
+                <thead>
+					<tr>
+                        <p class="text-center">Welcome {{User[0].username}}, Your Stats</p>
+                    </tr> 
+					
+					<tr>
+                        <th class="text-center">Matches</th>
+						<th class="text-center">Wins</th>
+						<th class="text-center">Loses</th>
+						<th class="text-center">Rank</th>
+                    </tr> 
+                </thead>
+                <tbody>
+				    <tr style="border-top: 1px solid #ddd0 !important;">
+						<td>5</td>
+						<td>4</td>
+						<td>3</td>
+						<td>*All-Star*</td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+		</div>
+		
+		<div class="col-md-5" style="margin : 10px; border : 1px; border-style: double;"> 
+		<div style="background-size: 100% 100%; height : 30%;" >
+		 <table style="border-top: 1px solid #ddd0 !important;" class="table hover text-center" id="StartingLineup">
+                <thead>
+					<tr>
+                        <p class="text-center">Top points scorers</p>
+                    </tr> 
+					
+					<tr>
+                        <th class="text-center">Name</th>
+						<th class="text-center">Tries</th>
+						<th class="text-center">Assists</th>
+						<th class="text-center">Matches</th>
+                    </tr> 
+                </thead>
+                <tbody>
+				    <tr style="border-top: 1px solid #ddd0 !important;">
+						<td>Player A</td>
+						<td>4</td>
+						<td>3</td>
+						<td>7</td>
+					</tr>
+                </tbody>
+            </table>
+        </div>
+		</div>
+			
+		 <!-- typed -->
+			
+        
+		</div>
+
+        <div class="container text-left"  style="background: white">
+            <div class="row text-center">
+		
+                <div class="col-sm-4" id="col1">
+                    <h3 style="margin-bottom : 0px">Rules</h3>
+					<img src="images/promo_1_2x.jpg" alt="Image"></br>
+                    <small>Check out the Rules and Controls here.</small>
+                </div>
+                <div class="col-sm-4" id="col2">
+					<h3 style="margin-bottom: 0px">Teams</h3>
+                    <img src="images/promo_2_2x.jpg" alt="Image"></br>
+                    <small>Browse an index of teams.</small>
+                </div>
+                <div class="col-sm-4" id="col3">
+                    <h3 style="margin-bottom : 0px"> Match Statistics</h3>
+					<img src="images/promo_3_2x.jpg" alt="Image"></br>
+                    <small> Click here for game stats and analysis </small>
+
+                </div>
+            </div>
+        </div>
+</body>
+
+<!-- MODALS -->
+
+<!-- Modal Opening-->
+  <div class="modal fade" id="splashScreen" role="dialog">
+    <div class="modal-dialog modal-lg full-screen">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header modal-lg">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body modal-lg full-screen">
+         <img style="width : 100%" src="images\SplashScreen.jpg" alt="Splash Screen"> 
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal">Start</button>
+		  <button type="button" class="btn btn-warning pull-left" data-dismiss="modal">Login</button>
+		  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sign Up</button>
+        </div>
+      </div>
     </div>
-	
-	<div id="Front" class="Front">
-        <img src="images/BoxArt.png">        
+  </div>
+  
+<!-- Modal Select Team-->
+  <div class="modal fade" id="teamSelect" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header modal-lg">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body modal-lg">
+         <div class="modal-content StartingLineUps"  style="background-image: url(images/BigScreen2.png); background-size: 100% 100%; background-color: #00000075;" >
+		 <table style="border-top: 1px solid #ddd0 !important;" class="table hover text-center" id="StartingLineup">
+                <thead>
+					<tr>
+                        <th class="text-center">Team Name</th>
+						<th class="text-center">Country</th>
+						<th class="text-center">Add</th>
+                    </tr> 
+                </thead>
+                <tbody>
+				    <tr ng-repeat="x in teamListArray | orderBy : 'this[0].TeamName'" style="border-top: 1px solid #ddd0 !important;">
+						<td>{{x[0].TeamName}}</td>
+						<td>{{x[0].TeamNation}}</td>
+						<td>
+						<button ng-hide="teamID == 'S'" ng-Click="addTeam(x[0].TeamIndex)" style="background-color: transparent;" ng-Click="teamSelect();" data-dismiss="modal" data-toggle="modal" data-target="#squadSelect" type="btn btn-primary">Select</button>
+						<button ng-hide="teamID == 'N'" ng-Click="addTeam(x[0].TeamIndex)" style="background-color: transparent;" ng-Click="teamSelect();" data-dismiss="modal" data-toggle="modal" type="btn btn-primary">Select</button>
+						</td>
+				    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
     </div>
-	 -->
+  </div>
+  
+  
+  
+  <!-- Modal Select Team-->
+  <div class="modal fade" id="squadSelect" role="dialog">
+    <div class="modal-dialog modal-lg Full-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+		 <table class="table hover text-center" id="mytable">
+                <thead>
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Position</th>
+						<th class="text-center">Select</th>
+                    </tr>
+                </thead>
+                <tbody>
+				    <tr ng-repeat="x in team"  ng-if="$index>0">
+						<td>{{x.Name}}</td>
+						<td>{{x.Position}}</td>
+						<td><button ng-Click="addPlayer($index)" ng-if="!x.Selected" class="btn btn-warning active btn-block">ADD Player</button>
+						<button ng-if="x.Selected" class="btn btn-success active btn-block">Selected</button></td>
+				    </tr>
+                </tbody>
+            </table>
+        <div class="modal-footer">
+		  <button type="button" class="btn btn-warning" data-dismiss="modal" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
+		  <button type="button" ng-Click="clearTeamPlayers()" class="btn btn-danger">Clear</button>
+		  <button type="button" class="btn btn-success" data-dismiss="modal">Done</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal Starting Lineup-->
+  <div class="modal fade" id="startingLineups" role="dialog">
+    <div class="modal-dialog modal-lg" >
+      <!-- Modal content-->
+      <div class="modal-content StartingLineUps"  style="background-image: url(images/BigScreen2.png); background-size: 100% 100%; background-color: #00000075;" >
+        <div class="modal-header modal-lg">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body modal-lg">
+		 <table style="border-top: 1px solid #ddd0 !important;" class="table hover text-center" id="StartingLineup">
+                <thead>
+					<tr>
+                        <th class="text-center" id="north0Name"></th>
+						<th class="text-center"></th>
+						<th class="text-center" id="south0Name"></th>
+                    </tr>
+                    <tr>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Position</th>
+						<th class="text-center">Name</th>
+						
+                    </tr>
+                </thead>
+                <tbody>
+				    <tr style="border-top: 1px solid #ddd0 !important;">
+						<td id="north1Name"></td>
+						<td>Dummy Half</td>
+						<td id="south1Name"></td>
+				    </tr>
+					<tr>
+						<td id="north2Name"></td>
+						<td>Lock</td>
+						<td id="south2Name"></td>
+				    </tr>
+					<tr>
+						<td id="north3Name"></td>
+						<td>Right Centre / 2nd Row</td>
+						<td id="south3Name"></td>
+				    </tr>
+					<tr>
+						<td id="north4Name"></td>
+						<td>Left Centre / 2nd Row</td>
+						<td id="south4Name"></td>
+				    </tr>
+					<tr>
+						<td id="north5Name"></td>
+						<td>Right Wing</td>
+						<td id="south5Name"></td>
+				    </tr>
+					<tr>
+						<td id="north6Name"></td>
+						<td>Left Wing</td>
+						<td id="south6Name"></td>
+				    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-default active btn-block">Start Match</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    </div>
+</div>
+  
+  
+</html>
+
+<script src="js/sprite.js"></script>
+<script src="js/game.js"></script>
+<script src="js/helper.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/typed.min.js"></script>
+<script src="js/commentary.js"></script>
+
+<script>
+    //angular control of list
+
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope) {
+	$scope.selectorN = 0; //number of player to select
+	$scope.selectorS = 0; //number of player to select
+	$scope.teamID = "N"; //ID of team to edit	
+	$scope.User = [{user_ID: "0", username: "Guest", password: "nrlnrlnrl8!", games: "5", won: "3"}];
+	console.log($scope.User);
+	
+	
+		 $scope.teamA = [
+			{
+			  "TeamName" : "Hunter-Newcastle",
+			  "TeamLogo" : "./teams/HN.png",
+			  "TeamNation" : "Australia",
+			  "TeamIndex" : 0
+			},
+			{
+			  "Name" : "Andrew Johns",
+			  "Position" : "Stand-Off",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Mathew Johns",
+			  "Position" : "Scrum Half",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Paul Harragan",
+			  "Position" : "Front Row",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Robbie ODavis",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Tony Butterfield",
+			  "Position" : "Front Row",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Mark Sargant",
+			  "Position" : "Front Row",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Akilua Uate",
+			  "Position" : "Centre",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Adam MacDougall",
+			  "Position" : "Wing",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Danny Buderas",
+			  "Position" : "Hooker",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Mark Granville",
+			  "Position" : "Lock",
+			  "Speed" : "100",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+
+
+		$scope.teamB = [
+			{				
+			  "TeamName" : "St.Helens",
+			  "TeamNation" : "UK",
+			  "TeamLogo" : "./teams/SH.png",
+			  "TeamIndex" : 1
+			},
+			{
+			  "Name" : "James Roby",
+			  "Position" : "Stand-Off",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Bobby Goulding",
+			  "Position" : "Scrum Half",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Paul Newlove",
+			  "Position" : "Front Row",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Robbie ODavis",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Chris Joynt",
+			  "Position" : "Front Row",
+			  "Speed" : "55",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Anthony Sullivan",
+			  "Position" : "Winger",
+			  "Speed" : "88",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Paul Wellens",
+			  "Position" : "Centre",
+			  "Speed" : "66",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Alan Hunte",
+			  "Position" : "Wing",
+			  "Speed" : "88",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Neil Holding",
+			  "Position" : "Hooker",
+			  "Speed" : "65",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Paul Sculthorpe",
+			  "Position" : "Lock",
+			  "Speed" : "55",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+		
+		$scope.teamC = [
+			{
+			  "TeamName" : "Brisbane",
+			  "TeamNation" : "Australia",
+			  "TeamIndex" : 2
+			},
+			{
+			  "Name" : "Allan Langer",
+			  "Position" : "Stand-Off",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Steve Renouf",
+			  "Position" : "Centre",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Kerrod Walters",
+			  "Position" : "Front Row",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Wendel Sailor",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Gorden Tallis",
+			  "Position" : "Front Row",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Shane Webcke",
+			  "Position" : "Front Row",
+			  "Speed" : "77",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Michael Hancock",
+			  "Position" : "Centre",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Justin Hodges",
+			  "Position" : "Centre",
+			  "Speed" : "66",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Corey Parker",
+			  "Position" : "Lock",
+			  "Speed" : "77",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Darren Lockyer",
+			  "Position" : "Stand-Off",
+			  "Speed" : "76",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+		
+		$scope.teamD = [
+			{
+			  "TeamName" : "Wigan",
+			  "TeamNation" : "UK",
+			  "TeamIndex" : 3
+			},
+			{
+			  "Name" : "Andrew Farrell",
+			  "Position" : "Stand-Off",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Shaun Edwards",
+			  "Position" : "Scrum Half",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Kelvim Skerrit",
+			  "Position" : "Front Row",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Chris Radlinski",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Terry OConnor",
+			  "Position" : "Front Row",
+			  "Speed" : "37",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Barry Mcdermott",
+			  "Position" : "Front Row",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Garry Connolly",
+			  "Position" : "Centre",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Jason Robinson",
+			  "Position" : "Wing",
+			  "Speed" : "94",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Joe Egan",
+			  "Position" : "Hooker",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Sean OLougjlin",
+			  "Position" : "Lock",
+			  "Speed" : "100",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+		
+		$scope.teamE = [
+			{
+			  "TeamName" : "QLD Irish",
+			  "TeamNation" : "Custom",
+			  "TeamIndex" : 4
+			},
+			{
+			  "Name" : "Michael Quinn",
+			  "Position" : "Stand-Off",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Keelan OReilly",
+			  "Position" : "Scrum Half",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Jake Rowles",
+			  "Position" : "Centre",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Tristan Furniss",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Wally Pearce",
+			  "Position" : "Scrum Half",
+			  "Speed" : "37",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Gavin Baker",
+			  "Position" : "Centre",
+			  "Speed" : "87",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Gus McFillan",
+			  "Position" : "Centre",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Chris Moriarity",
+			  "Position" : "Wing",
+			  "Speed" : "94",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Joe Rickard",
+			  "Position" : "Hooker",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Tom Watson",
+			  "Position" : "Lock",
+			  "Speed" : "100",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+		
+		$scope.teamF = [
+			{
+			  "TeamName" : "Paris St.Germain '97",
+			  "TeamNation" : "Custom",
+			  "TeamIndex" : 5
+			},
+			{
+			  "Name" : "Deon Bird",
+			  "Position" : "Full Back",
+			  "Speed" : "80",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Pierre Chamorin",
+			  "Position" : "Scrum Half",
+			  "Speed" : "70",
+			  "Strength" : "60",
+			  "Passing" : "80",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Fabien Devecci",
+			  "Position" : "Centre",
+			  "Speed" : "68",
+			  "Strength" : "88",
+			  "Passing" : "46",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Paul Evans",
+			  "Position" : "Full Back",
+			  "Speed" : "100",
+			  "Strength" : "67",
+			  "Passing" : "54",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Anthony Hancock",
+			  "Position" : "Scrum Half",
+			  "Speed" : "37",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "David Lomax",
+			  "Position" : "Centre",
+			  "Speed" : "87",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Michael Hogue",
+			  "Position" : "Centre",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Jason Martin",
+			  "Position" : "Wing",
+			  "Speed" : "94",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Matt OConnor",
+			  "Position" : "Hooker",
+			  "Speed" : "57",
+			  "Strength" : "76",
+			  "Passing" : "70",
+			  "Selected" : "",
+			},
+			{
+			  "Name" : "Craig Menkins",
+			  "Position" : "Lock",
+			  "Speed" : "100",
+			  "Strength" : "100",
+			  "Passing" : "56",
+			  "Selected" : "",
+			}
+		]
+		
+		$scope.teamsJSON = [];
+		$scope.teamListArray = [$scope.teamA, $scope.teamB, $scope.teamC, $scope.teamD, $scope.teamE, $scope.teamF];
+		//$scope.teamListArray = [[], [], []];
+		$scope.groundArray = ["Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
+		$scope.Ground =  $scope.groundArray[Math.floor(Math.random() * 5) + 0  ];
+		$scope.team = 0;
+		$scope.teamOP = 0;
 		
 		
-	</body>	
+		$scope.teamSort = function() {
+			var x = 0;		
+			$scope.teamListArray[0] = [];
+			
+			for (var i = 0; i < $scope.teamsJSON.length; i++) {			
+			$scope.teamListArray[x].push($scope.teamsJSON[i]);
+			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) ) {x++; $scope.teamListArray[x] = [];}   
+			}
+		}
+		
+		
+        $scope.teamLookup = function() {
+			//team lookup
+            var lookupURL = "api.php?action=teamLoad&team="+$scope.selectedTeam ;
+            $scope.teamObject = $scope.myFunc(lookupURL);
+        };
+		
+
+		$scope.teamSelect = function(teamSelect) {
+			
+			if (teamSelect == "team") {
+				$scope.teamID = "N"; 
+				$scope.clearTeamPlayers();
+				$scope.selectorN = 0;
+			}
+			
+			if (teamSelect == "op"){
+				$scope.teamID = "S";
+				$scope.selectorS = 0;				
+			}
+			
+		}
+		
+		$scope.addTeam = function(index) {
+			
+			if ($scope.teamID == "N") {
+				$scope.team = $scope.teamListArray[index];
+				$scope.selectorN = 0;
+				$( "#north0Name" ).text($scope.team[0].TeamName);
+				NorthTeam = $scope.team[0].TeamName;
+				NorthImageSprite.src = loadPlayerSpriteN(NorthTeam);
+			}
+			
+			if ($scope.teamID == "S"){
+				$scope.teamOP = $scope.teamListArray[index];
+				$( "#south0Name" ).text($scope.teamOP[0].TeamName);
+				$scope.addOppositionPlayers();
+				SouthTeam = $scope.teamOP[0].TeamName;
+				SouthImageSprite.src = loadPlayerSpriteS(SouthTeam);
+			}
+			
+		}
+		
+		
+		$scope.addPlayer = function(index) {
+		
+			var Team = [north1, north2, north3, north4, north5, north6]; 
+			//exisitng player avatar takes values of json object player
+			Team[$scope.selectorN].speed = $scope.team[index].Speed;
+			Team[$scope.selectorN].originalspeed = $scope.team[index].Speed;
+			Team[$scope.selectorN].name = $scope.team[index].Name;
+			Team[$scope.selectorN].passing = $scope.team[index].Passing;
+			Team[$scope.selectorN].strength = $scope.team[index].Strength;
+			
+		
+			$scope.team[index].Selected = "Starting at " +  ($scope.selectorN +1);
+			console.log ($scope.team[index].Name + " now playing as "  + $scope.team[0].TeamName + ($scope.selectorN +1));
+			newLine ([$scope.team[index].Name + " now playing as "  + $scope.team[0].TeamName + " NO. " + ($scope.selectorN +1)]);
+			
+			$( "#north" + ($scope.selectorN +1) + "Name" ).text($scope.team[index].Name);
+			
+			$scope.selectorN ++;
+		
+		}
+		
+
+		$scope.addOppositionPlayers = function() {
+		
+			var Team = [south1, south2, south3, south4, south5, south6]; 
+			//exisitng player avatar takes values of json object player
+			
+			for (i=1; i < 7; i++) {
+			Team[$scope.selectorS].speed = $scope.teamOP[i].Speed;
+			Team[$scope.selectorS].originalspeed = $scope.teamOP[i].Speed;
+			Team[$scope.selectorS].name = $scope.teamOP[i].Name;
+			Team[$scope.selectorS].passing = $scope.teamOP[i].Passing;
+			Team[$scope.selectorS].strength = $scope.teamOP[i].Strength;
+		
+			console.log ($scope.teamOP[i].Name + " now playing as "  + $scope.teamOP[0].TeamName + ($scope.selectorS +1));
+			$( "#south" + (i) + "Name" ).text($scope.teamOP[i].Name);
+			
+			$scope.selectorS ++;
+			}
+				newLine ([$scope.teamOP[0].TeamName + " Ready for Kick Off"]);
+		}
+		
+		$scope.clearTeamPlayers = function() {
+		
+			$scope.selectorN = 0;
+		
+			for (i=1; i < 11; i++) {
+				$scope.team[i].Selected = "";
+			}
+		
+		var Team = [north1, north2, north3, north4, north5, north6];
+			
+			for (i=0; i < 5; i++) {
+			Team[i].speed = 50;
+			Team[i].name = ("Player" + (i));
+			Team[i].passing = 50;
+			Team[i].strength = 50;
+		}
+		
+		for (i=0; i < 7; i++) {
+			//$scope.team[index].Selected = "Starting at " +  ($scope.selectorN +1);
+			$( "#north" + (i) + "Name" ).text("Player " + (i));
+			}
+			
+		}
+
+        $scope.lookup = function(getURL, object) {
+
+            $.ajax({
+                url: getURL,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+                    
+					if (object == 'User'){
+					UserObj = JSON.parse(obj);					
+					$scope.User = UserObj;
+					console.log($scope.User);
+					$scope.lookup("http://etrl.rlicoach.com/RLASv02/php/lookup.php?teamData", 'Teams');
+					}
+					
+					if (object == 'Teams'){
+					teamObj = JSON.parse(obj);					
+					$scope.teamsJSON = teamObj;				
+					$scope.teamSort();
+					}
+					
+					$scope.$apply();                   
+					
+                },
+                error: function(request, error) {
+                    alert("Possible Failed Request: " + JSON.stringify(request));
+                    alert("Check Web Page is available");
+                }
+
+            });
+        };
+				
+		$scope.postup = function(getURL) {
+			
+			$.ajax({
+				url: postURL,
+				type: 'POST',
+				data: {
+				text: postData
+				},
+			success: function(obj) {
+				alert('Server Response : ' + obj);
+				},
+			error: function(request, error) {
+				alert("check db failed");
+				}
+			});
+		}; 
+				
+		//initial lookups
+		//	$scope.lookup("php/lookup.php?userName=DecFoy&password=nrlnrlnrl8!");
+	    $scope.lookup("http://etrl.rlicoach.com/RLASv02/php/lookup.php?userName=Guest&password=blank", 'User');
 	
-	</html>
+		
+		
+    });
+	
+	
+</script>
+
+
+<script>
+$('#splashScreen').modal('show');
+
+
+function blinker() {
+    $('.blink_me').fadeOut(500);
+    $('.blink_me').fadeIn(500);
+}
+
+setInterval(blinker, 1000);
+
+</script>
