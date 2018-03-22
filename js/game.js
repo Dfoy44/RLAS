@@ -899,6 +899,8 @@ var Try = function() {
  crowdAmb.volume = 0.50;
  Cbuild = 0;
 
+
+ 
  if (score != -1) {
   $(BigScreen).text("TRY!");
   $(BigScreen).append("<h1>" + tryScorer() + "</h1>")
@@ -906,7 +908,7 @@ var Try = function() {
   tackleCount = 0;
  }
  
- sendTry(tryScorer());
+
 
  if (init == 1 && ball.team == 1) {
   score++;
@@ -914,6 +916,9 @@ var Try = function() {
  
   if (init == 1 && ball.team == 2) {
   scoreSouth++;
+   var TS = tryScorer();
+   console.log("TRYS!" + TS);
+   sendTry(TS);
  }
 
  // Reset norths
@@ -984,6 +989,8 @@ var TryNorth = function() {
  restoreSpeeds();
  onsideAll();
  $("#Pow").hide();
+ 
+
 
  buildOnce();
  bigCheer.play();
@@ -999,6 +1006,9 @@ var TryNorth = function() {
 
  if (init == 1 && ball.team == 1) {
   score++;
+  var TS = tryScorer();
+  console.log("TRYN!" + TS);
+  sendTry(TS);
  }
  
   if (init == 1 && ball.team == 2) {
