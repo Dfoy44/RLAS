@@ -22,6 +22,12 @@ var	loadPlayerSpriteN = function (teamName) {
 			case "Paris St.Germain '97":
 				return "sprites/NorthImageSpritePSG97.png";
 				break;
+			case "Hull":
+				return "sprites/NorthImageSpriteHULL.png";
+				break;
+			case "Manly":
+				return "sprites/NorthImageSpriteMANL.png";
+				break;			
 			case "Oldham '88":
 				return "sprites/NorthImageSpriteOLDH.png";
 				break;				
@@ -54,6 +60,9 @@ var	loadPlayerSpriteS = function (teamName) {
 			case "Paris St.Germain '97":
 				return "sprites/SouthImageSpritePSG97.png";
 				break;
+			case "Hull":
+				return "sprites/SouthImageSpriteHULL.png";
+				break;	
 			case "Oldham '88":
 				return "sprites/SouthImageSpriteOLDH.png";
 				break;			

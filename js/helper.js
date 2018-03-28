@@ -264,12 +264,12 @@ var dummyHalfInPosition = function () {
 
 	if (ball.team == 2) {		
 	
-	$(PTBbutton).removeAttr('disabled');
+	//$(PTBbutton).removeAttr('disabled');
 	
-	if (ballCarrier != "S1" && south1.x > ball.x -30 && south1.x < ball.x +30  ) 
+	if (ballCarrier != "S1" && south1.x < ball.x +30 && south1.x > ball.x -30  ) 
 	{ $(PTBbutton).removeAttr('disabled');	};
 
-	if (ballCarrier == "S1" && south2.x > ball.x -30 && south2.x < ball.x +30  ) 
+	if (ballCarrier == "S1" && south2.x < ball.x +30 && south2.x > ball.x -30  ) 
 	{ $(PTBbutton).removeAttr('disabled');	};
 
 	}
@@ -301,6 +301,51 @@ var sendTry = function (tryScorer) {
                 dataType: "text",
                 success: function(obj) {
 						console.log("TRY")
+						console.log(obj)
+				}               					
+        });
+}
+
+var sendGame = function (team) {
+	
+	var user = "Guest";
+	
+	 $.ajax({
+                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?gameStarter=" + user,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+						console.log("game start")
+						console.log(obj)
+				}               					
+        });
+}
+
+var sendWin = function (team) {
+	
+	var user = "Guest";
+	
+	 $.ajax({
+                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?gameWinner=" + user,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+						console.log("game start")
+						console.log(obj)
+				}               					
+        });
+}
+
+var sendLoss = function (team) {
+	
+	var user = "Guest";
+	
+	 $.ajax({
+                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?gameLoser=" + user,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+						console.log("game start")
 						console.log(obj)
 				}               					
         });
@@ -342,6 +387,10 @@ var CPULoadPlay = function () {
   south1.lock = 0; south2.lock = 0; south3.lock = 0; south4.lock = 0; south5.lock = 0; south6.lock = 0;
   attackReady = 1;
  }
+ 
+ var random = Math.floor(Math.random() * Math.floor(1));
+ 
+ if (random == 1) {
   
 	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 400; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
@@ -350,7 +399,21 @@ var CPULoadPlay = function () {
 	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S3"; hTargetx3 = 200; hTargety3 = 0; hTargety2 = ball.y +50; hTargety1 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 5 &&  attackReady == 1) {ballCarrier = "S4"; hTargetx4 = 300; hTargety4 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety1 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 6 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
-	
+ }
+
+	if (random == 0) {
+  
+	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 200; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 200; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx2 = 500; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 3 &&  attackReady == 1) {ballCarrier = "S3"; hTargetx3 = 100; hTargety3 = 0; hTargety2 = ball.y +50; hTargety1 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 5 &&  attackReady == 1) {ballCarrier = "S4"; hTargetx4 = 100; hTargety4 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety1 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 6 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
+
+}
+
+ 
 }
 
 }

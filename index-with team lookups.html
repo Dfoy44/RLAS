@@ -126,9 +126,9 @@
                 </thead>
                 <tbody>
 				    <tr style="border-top: 1px solid #ddd0 !important;">
-						<td>User[0].games</td>
-						<td>User[0].won</td>
-						<td>User[0].lost</td>
+						<td>5</td>
+						<td>4</td>
+						<td>3</td>
 						<td>*All-Star*</td>
 					</tr>
                 </tbody>
@@ -255,23 +255,31 @@
   
   <!-- Modal Select Team-->
   <div class="modal fade" id="squadSelect" role="dialog">
-    <div class="modal-dialog modal-lg Full-dialog">
+    <div class="modal-dialog modal-lg Full-dialog" style="width: 100%;">
       <!-- Modal content-->
-      <div class="modal-content">
-		 <table class="table hover text-center" id="mytable">
+      <div class="modal-content" style="width: vw100; height: 90vh;">
+		 <table class="table hover text-center" id="mytable" style="width: 100%; height: 85%;">
                 <thead>
                     <tr>
                         <th class="text-center">Name</th>
                         <th class="text-center">Position</th>
+                        <th class="text-center">Speed</th>
+                        <th class="text-center">Strength</th>
+                        <th class="text-center">Passing</th>
 						<th class="text-center">Select</th>
+						<th class="text-center">Match Position</th>
                     </tr>
                 </thead>
                 <tbody>
 				    <tr ng-repeat="x in team"  ng-if="$index>0">
 						<td>{{x.Name}}</td>
 						<td>{{x.Position}}</td>
+						<td>{{x.Speed}}</td>  
+						<td>{{x.Strength}}</td>  
+						<td>{{x.Passing}}</td> 
 						<td><button ng-Click="addPlayer($index)" ng-if="!x.Selected" class="btn btn-warning active btn-block">ADD Player</button>
 						<button ng-if="x.Selected" class="btn btn-success active btn-block">Selected</button></td>
+						<td>{{x.Selected}}</td> 
 				    </tr>
                 </tbody>
             </table>
@@ -907,7 +915,7 @@
 		$scope.teamsJSON = [];
 		$scope.teamListArray = [$scope.teamA, $scope.teamB, $scope.teamC, $scope.teamD, $scope.teamE, $scope.teamF];
 		//$scope.teamListArray = [[], [], []];
-		$scope.groundArray = ["Carlaw Park, Aukland", "Lidcombe Oval, Sydney", "Stade Sebastien Chartley, Paris", "The Boulevard, Hull", "The Willows, Salford", "Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
+		$scope.groundArray = ["Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
 		$scope.Ground =  $scope.groundArray[Math.floor(Math.random() * 5) + 0  ];
 		$scope.team = 0;
 		$scope.teamOP = 0;
@@ -919,12 +927,10 @@
 			
 			for (var i = 0; i < $scope.teamsJSON.length; i++) {			
 			$scope.teamListArray[x].push($scope.teamsJSON[i]);
-			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) || (i == 65) || (i == 76))
-		//	|| (i == 87 ) || (i == 98) || (i == 109) || (i == 120) || (i == 131) || (i == 142)
-		//	|| (i == 153 ) || (i == 164) || (i == 175) || (i == 186) || (i == 197) || (i == 208))
-			{	x++; $scope.teamListArray[x] = [];	}   
-		 }
+			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) ) {x++; $scope.teamListArray[x] = [];}   
+			}
 		}
+		
 		
         $scope.teamLookup = function() {
 			//team lookup

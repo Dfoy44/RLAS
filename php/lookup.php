@@ -55,6 +55,24 @@ if(isset($_GET['tryScorer']))
 		  $queryString = $queryString . " Where Name = '" .$_GET['tryScorer'] ."'";
 }
 
+if(isset($_GET['gameStarter']))
+{
+          $queryString = "UPDATE Users SET Games = Games + 1";
+		  $queryString = $queryString . " Where username = '" .$_GET['gameStarter'] ."'";
+}
+
+if(isset($_GET['gameWinner']))
+{
+          $queryString = "UPDATE Users SET won = won + 1";
+		  $queryString = $queryString . " Where username = '" .$_GET['gameWinner'] ."'";
+}
+
+if(isset($_GET['gameLoser']))
+{
+          $queryString = "UPDATE Users SET lost = lost + 1";
+		  $queryString = $queryString . " Where username = '" .$_GET['gameLoser'] ."'";
+}
+
 // 4. return all relative rows
 
 $result = mysqli_query($connection, $queryString) or die('Could not query');

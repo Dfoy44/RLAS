@@ -161,6 +161,7 @@ function startGame() {
  clicked = 1;
  gameInfo();
  gameStart();
+ sendGame();
 
 
  var screen = $(window)
@@ -483,6 +484,7 @@ canvas.onmousedown = function(e) {
    inPossesion(north1);
    if (north1.y > ball.y) {
     turnOverToSouth();
+	newLine(['FORWARD PASS']);
    }
   }
 
@@ -492,6 +494,7 @@ canvas.onmousedown = function(e) {
    inPossesion(north2);
    if (north2.y > ball.y) {
     turnOverToSouth();
+	newLine(['FORWARD PASS']);
    }
   }
 
@@ -501,6 +504,7 @@ canvas.onmousedown = function(e) {
    inPossesion(north3);
    if (north3.y > ball.y) {
     turnOverToSouth();
+	newLine(['FORWARD PASS']);
    }
   }
 
@@ -510,6 +514,7 @@ canvas.onmousedown = function(e) {
    inPossesion(north4);
    if (north4.y > ball.y) {
     turnOverToSouth();
+	newLine(['FORWARD PASS']);
    }
   }
 
@@ -519,6 +524,7 @@ canvas.onmousedown = function(e) {
    inPossesion(north5);
    if (north5.y > ball.y) {
     turnOverToSouth();
+	newLine(['FORWARD PASS']);
    }
   }
 
@@ -528,6 +534,7 @@ canvas.onmousedown = function(e) {
    inPossesion(north6);
    if (north6.y > ball.y) {
     turnOverToSouth();
+	newLine(['FORWARD PASS']);
    }
   }
 
@@ -1092,6 +1099,12 @@ if (ball.team == 2) {
   SouthOnside = ball.y;
   NorthOnside = ball.y - 100;
 } 
+
+if (NorthOnside < 110) {
+ // set the onside if too north
+  NorthOnside = 110;
+} 
+
  
  $("canvas").effect("shake", {
   distance: 10
@@ -1132,6 +1145,8 @@ if (ball.team == 2) {
  $(PTBbutton).text("Continue");
  $(PTBbutton).show();
  southPlayOn = 0;
+ $(PTBbutton).attr('disabled', 'disabled');
+
  }
 
  $("#PTBbutton").css("left", ballx + canvas.offsetLeft - 50);
@@ -1222,6 +1237,8 @@ function forwardPass() {
 
  boo.play();
  crowdAmb.volume = 0.20;
+ 
+ newLine("Forward Pass");
 
 
  if (score != -1) {
