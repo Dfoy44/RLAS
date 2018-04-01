@@ -24,7 +24,7 @@ newLine(['Welcome to Rugby League All-Stars!', 'Select Your Matchup']);
 
 var gameStart = function () {
 	
-	newLine(['Get ready for some old-fashioned Rugby League']);
+	newLine(['Get ready for some good old-fashioned Rugby League']);
 	
 }
 

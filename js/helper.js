@@ -7,7 +7,7 @@ var northTeam = [north1, north2, north3, north4, north5, north6];
 var southTeam = [south1, south2, south3, south4, south5, south6];  
 var northTargetX = [mTargetx, mTargetx2, mTargetx3, mTargetx4, mTargetx5, mTargetx6]; 
 var northTargetY = [mTargety, mTargety2, mTargety3, mTargety4, mTargety5, mTargety6]; 
-
+var random = 0;
 
 var StayBackNorth = function () {
 	
@@ -351,6 +351,11 @@ var sendLoss = function (team) {
         });
 }
 
+var newPlay = function () {
+
+  random = Math.floor(Math.random() * Math.floor(2));
+
+}
 
 //CPU LOGIC
 
@@ -388,9 +393,9 @@ var CPULoadPlay = function () {
   attackReady = 1;
  }
  
- var random = Math.floor(Math.random() * Math.floor(1));
  
  if (random == 1) {
+  
   
 	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 400; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}

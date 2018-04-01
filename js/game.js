@@ -1093,6 +1093,7 @@ if (ball.team == 1) {
   NorthOnside = ball.y - 50;
  MdummyHalf = ball.x
 }
+
  
 if (ball.team == 2) {
  // set the onside if the mons have it
@@ -1227,7 +1228,7 @@ if (NorthOnside < 110) {
  south6.onside = 0;
 
  dropOut();
-
+ newPlay();
 
  //alert(message);
 };
@@ -1457,15 +1458,16 @@ function turnOverToSouth() {
 
 
 function endGame() {
-
-
+	
+	
+ $(PTBbutton).removeAttr('disabled');
  buildOnce();
  crowdAmb.volume = 0.99;
  aud.play();
  aud.volume = 0.80;
 
  if (score != -1) {
-  $(BigScreen).html("*** Final Score ***<br>" + NorthTeam + " : " + score + "<br>" + SouthTeam + " : " + scoreSouth);
+  $(BigScreen).html("** Final Score **<br>" + NorthTeam + " : " + score + "<br>" + SouthTeam + " : " + scoreSouth);
   $(BigScreen).removeClass("large");
   tackleCount = 0;
  }
@@ -1476,12 +1478,13 @@ function endGame() {
 
  //ball
  ball.x = 400;
- ball.y = 150;
-
+ ball.y = 400;
+ ballCarrier = "";
  lockAll();
  tackleCount = 99;
 
  $(PTBbutton).text("Game Over - Play Again");
+ newLine(['And so ends another chapter in the great book of Rugby League']);
  $(PTBbutton).show();
 
  $(BigScreen).show();

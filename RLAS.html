@@ -126,9 +126,9 @@
                 </thead>
                 <tbody>
 				    <tr style="border-top: 1px solid #ddd0 !important;">
-						<td>User[0].games</td>
-						<td>User[0].won</td>
-						<td>User[0].lost</td>
+						<td>{{User[0].games}}</td>
+						<td>{{User[0].won}}</td>
+						<td>{{User[0].lost}}</td>
 						<td>*All-Star*</td>
 					</tr>
                 </tbody>
@@ -232,7 +232,7 @@
                     </tr> 
                 </thead>
                 <tbody>
-				    <tr ng-repeat="x in teamListArray | orderBy : 'this[0].TeamName'" style="border-top: 1px solid #ddd0 !important;">
+				    <tr ng-repeat="x in teamListArray | orderBy : 'this[0].TeamNation'" style="border-top: 1px solid #ddd0 !important;">
 						<td>{{x[0].TeamName}}</td>
 						<td>{{x[0].TeamNation}}</td>
 						<td>
