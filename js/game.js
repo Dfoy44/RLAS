@@ -2313,6 +2313,7 @@ var update = function(modifier) {
    ++tackleCount;
    tackle();
    tacklerCredit(tackler);
+   sendTackle(tackler);
   }
 
   if (tackler != 0 && init == 0) {

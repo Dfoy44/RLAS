@@ -306,6 +306,19 @@ var sendTry = function (tryScorer) {
         });
 }
 
+var sendTackle = function (tackler) {
+	
+	 $.ajax({
+                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?tackler=" + tackler,
+                type: 'GET',
+                dataType: "text",
+                success: function(obj) {
+						console.log("tackle")
+						console.log(obj)
+				}               					
+        });
+}
+
 var sendGame = function (team) {
 	
 	var user = "Guest";
