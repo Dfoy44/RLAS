@@ -2356,7 +2356,8 @@ var update = function(modifier) {
   if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false && tackler.onside == 1 && !ballInAir()) {
    ++tackleCount;
    tackle();
-   tacklerCredit(tackler);
+   tacklerCredit(tackler
+   sendTackle(tackler);
   }
 
   if (tackler != 0 && init == 0) {
