@@ -2356,7 +2356,7 @@ var update = function(modifier) {
   if (tackler != 0 && attackReady == 1 && TackleBroken(tackler) == false && tackler.onside == 1 && !ballInAir()) {
    ++tackleCount;
    tackle();
-   tacklerCredit(tackler
+   tacklerCredit(tackler);
    sendTackle(tackler);
   }
 
@@ -2409,7 +2409,7 @@ var render = function() {
  }
 
  if (ballReady) {
-  matchUpdate();
+
   ctx.drawImage(ballImage, ball.x - 4, ball.y - 2);
   ctx.drawImage(greenArrow, ballCarrierOBJ.x - 4, ballCarrierOBJ.y - 24);
  }
@@ -2459,6 +2459,7 @@ var render = function() {
  ctx.fillText(SouthTeam + " " + scoreSouth, 50, 55);
  //ticks
  gameTicks++;
+ matchUpdate();
 };
 
 

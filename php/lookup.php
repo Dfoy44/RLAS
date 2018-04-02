@@ -57,7 +57,7 @@ if(isset($_GET['tryScorer']))
 
 if(isset($_GET['tackler']))
 {
-          $queryString = "UPDATE Players SET tackles = tackles + 1";
+          $queryString = "UPDATE Players SET Tackles = Tackles + 1";
 		  $queryString = $queryString . " Where Name = '" .$_GET['tackler'] ."'";
 }
 

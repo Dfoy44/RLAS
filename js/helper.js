@@ -309,7 +309,7 @@ var sendTry = function (tryScorer) {
 var sendTackle = function (tackler) {
 	
 	 $.ajax({
-                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?tackler=" + tackler,
+                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?tackler=" + tackler.name,
                 type: 'GET',
                 dataType: "text",
                 success: function(obj) {
@@ -366,7 +366,7 @@ var sendLoss = function (team) {
 
 var newPlay = function () {
 
-  random = Math.floor(Math.random() * Math.floor(2));
+  random = 1;
 
 }
 
