@@ -146,6 +146,9 @@ var ballCarrierOBJ;
 
 ///////////////its a button thing/////////
 
+
+
+
 function startGame() {
  $(".menu").hide();
  document.body.appendChild(canvas);
@@ -178,6 +181,38 @@ function startGame() {
  $("canvas").css("display", "block");
 
 }
+
+var matchUpdate = function() {
+    var northTeam = [north1, north2, north3, north4, north5, north6];
+	var southTeam = [south1, south2, south3, south4, south5, south6]; 
+    var northBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
+	var southBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6"];
+
+    //north with the ball 
+    for (var i = 0; i < northTeam.length; i++) {
+        if (ballCarrier == northBallCarrierArray[i]) {
+		    ballCarrierOBJ = northTeam[i]; 
+			ball.team = 1;
+		for (var i = 0; i < southTeam.length -1; i++) {
+
+		}			
+	  }
+	}	
+	
+	 //south with the ball 
+    for (var i = 0; i < southTeam.length; i++) {
+        if (ballCarrier == southBallCarrierArray[i]) {
+          ballCarrierOBJ = southTeam[i]; 
+		  ball.team = 2;
+		for (var i = 0; i < northTeam.length -1; i++) {
+		}			
+	  }
+	}	
+  
+}
+
+
+
 
 function PTB() {
 
@@ -2394,12 +2429,7 @@ var render = function() {
 
  if (northReady) {
   stopStillNorth();
-  //ctx.drawImage(northImage, north1.x, north1.y);
-  //ctx.drawImage(northImage, north2.x, north2.y);
-  //ctx.drawImage(northImage, north3.x, north3.y);
-  //ctx.drawImage(northImage, north4.x, north4.y);
-  //ctx.drawImage(northImageCap, north5.x, north5.y);
-  //ctx.drawImage(northImageCap, north6.x, north6.y);
+
   ctx.drawImage(NorthImageSprite, spriteFrame(north1), 0, 21, 26, north1.x - 10, north1.y, 30, 40);
   ctx.drawImage(NorthImageSprite, spriteFrame(north2), 0, 21, 26, north2.x - 10, north2.y, 30, 40);
   ctx.drawImage(NorthImageSprite, spriteFrame(north3), 0, 21, 26, north3.x - 10, north3.y, 30, 40);
@@ -2416,12 +2446,6 @@ var render = function() {
 
  if (southReady) {
   stopStillSouth();
-  //ctx.drawImage(southImageCap, south1.x, south1.y);
-  //ctx.drawImage(southImage, south2.x, south2.y);
-  //ctx.drawImage(southImage, south3.x, south3.y);
-  //ctx.drawImage(southImage, south4.x, south4.y);
-  //ctx.drawImage(southImage, south5.x, south5.y);
-  //ctx.drawImage(southImage, south6.x, south6.y);
   ctx.drawImage(SouthImageSprite, spriteFrame(south1), 0, 21, 26, south1.x - 10, south1.y, 30, 40);
   ctx.drawImage(SouthImageSprite, spriteFrame(south2), 0, 21, 26, south2.x - 10, south2.y, 30, 40);
   ctx.drawImage(SouthImageSprite, spriteFrame(south3), 0, 21, 26, south3.x - 10, south3.y, 30, 40);

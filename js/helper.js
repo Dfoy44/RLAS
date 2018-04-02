@@ -171,34 +171,6 @@ var DefensiveSpeed = function() {
   
 }
 
-var matchUpdate = function() {
-    var northTeam = [north1, north2, north3, north4, north5, north6];
-	var southTeam = [south1, south2, south3, south4, south5, south6]; 
-    var northBallCarrierArray = ["N1", "N2", "N3", "N4", "N5", "N6"];
-	var southBallCarrierArray = ["S1", "S2", "S3", "S4", "S5", "S6"];
-
-    //north with the ball 
-    for (var i = 0; i < northTeam.length; i++) {
-        if (ballCarrier == northBallCarrierArray[i]) {
-		    ballCarrierOBJ = northTeam[i]; 
-			ball.team = 1;
-		for (var i = 0; i < southTeam.length -1; i++) {
-
-		}			
-	  }
-	}	
-	
-	 //south with the ball 
-    for (var i = 0; i < southTeam.length; i++) {
-        if (ballCarrier == southBallCarrierArray[i]) {
-          ballCarrierOBJ = southTeam[i]; 
-		  ball.team = 2;
-		for (var i = 0; i < northTeam.length -1; i++) {
-		}			
-	  }
-	}	
-  
-}
 
 
 var restoreSpeeds = function () {
@@ -366,7 +338,7 @@ var sendLoss = function (team) {
 
 var newPlay = function () {
 
-  random = 1;
+  random = Math.floor(Math.random() * Math.floor(2));
 
 }
 

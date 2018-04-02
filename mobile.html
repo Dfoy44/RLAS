@@ -151,17 +151,17 @@
 					
 					<tr>
                         <th class="text-center">Name</th>
-						<th class="text-center">Tries</th>
-						<th class="text-center">Assists</th>
-						<th class="text-center">Matches</th>
+						<th class="text-center">Trys</th>
+						<th class="text-center">Tackles</th>
+						<th class="text-center">Team</th>
                     </tr> 
                 </thead>
                 <tbody>
-				    <tr style="border-top: 1px solid #ddd0 !important;">
-						<td>Player A</td>
-						<td>4</td>
-						<td>3</td>
-						<td>7</td>
+				    <tr ng-repeat="x in teamsJSON | orderBy : sorterFuncT:true | limitTo : 10 "  ng-if="x.Trys > 2"  style="border-top: 1px solid #ddd0 !important;">
+						<td>{{x.Name}}</td>
+						<td>{{x.Trys}}</td>
+						<td>{{x.Tackles}}</td>
+						<td>{{x.TeamName}}</td>
 					</tr>
                 </tbody>
             </table>
@@ -910,7 +910,7 @@
 		]
 		
 		$scope.teamsJSON = [];
-		$scope.teamListArray = [$scope.teamA, $scope.teamB, $scope.teamC, $scope.teamD, $scope.teamE, $scope.teamF];
+		$scope.teamListArray = [$scope.teamA, $scope.teamB];
 		//$scope.teamListArray = [[], [], []];
 		$scope.groundArray = ["Carlaw Park, Aukland", "Lidcombe Oval, Sydney", "Stade Sebastien Chartley, Paris", "The Boulevard, Hull", "The Willows, Salford", "Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
 		$scope.Ground =  $scope.groundArray[Math.floor(Math.random() * 5) + 0  ];
@@ -1092,7 +1092,6 @@
 		}; 
 				
 		//initial lookups
-		//	$scope.lookup("php/lookup.php?userName=DecFoy&password=nrlnrlnrl8!");
 	    $scope.lookup("http://etrl.rlicoach.com/RLASv02/php/lookup.php?userName=Guest&password=blank", 'User');
 	
 		
