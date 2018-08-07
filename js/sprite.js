@@ -30,7 +30,22 @@ var	loadPlayerSpriteN = function (teamName) {
 				break;			
 			case "Oldham '88":
 				return "sprites/NorthImageSpriteOLDH.png";
-				break;				
+				break;
+			case "Kangaroos '82":
+				return "sprites/NorthImageSpriteAK82.png";
+				break;			
+			case "GB Lions '92":
+				return "sprites/NorthImageSpriteGB92.png";
+				break;		
+			case "South Sydney":
+				return "sprites/NorthImageSpriteSSRB.png";
+				break;		
+			case "Salford":
+				return "sprites/NorthImageSpriteSALF.png";
+				break;
+			case "France '54":
+				return "sprites/NorthImageSpriteFR54.png";
+				break;			
 		}
 	
 }
@@ -65,7 +80,22 @@ var	loadPlayerSpriteS = function (teamName) {
 				break;	
 			case "Oldham '88":
 				return "sprites/SouthImageSpriteOLDH.png";
-				break;			
+				break;
+			case "Kangaroos '82":
+				return "sprites/SouthImageSpriteAK82.png";
+				break;	
+			case "GB Lions '92":
+				return "sprites/SouthImageSpriteGB92.png";
+				break;	
+			case "South Sydney":
+				return "sprites/SouthImageSpriteQLDI.png";
+				break;
+			case "Salford":
+				return "sprites/SouthImageSpriteSALF.png";
+				break;
+			case "France '54":
+				return "sprites/SouthImageSpriteFR54.png";
+				break;				
 		}
 	
 }

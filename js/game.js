@@ -581,7 +581,7 @@ canvas.onmousedown = function(e) {
   target.y = pageY;
 
   // on mouse down we set the targets of the user players
-  //defensive positions
+  //defensive positions man on man to be inserted df44
 
   mTargetx = pageX;
   mTargety = pageY;
@@ -1199,6 +1199,15 @@ if (NorthOnside < 110) {
   mTargety5 = ball.y - 130;
   mTargety6 = ball.y - 130;
  }
+ 
+  if (PTB == 1 && ball.team == 2) {
+  mTargety = ball.y - 100;
+  mTargety2 = ball.y - 110;
+  mTargety3 = ball.y - 110;
+  mTargety4 = ball.y - 110;
+  mTargety5 = ball.y - 130;
+  mTargety6 = ball.y - 330;
+ }
 
  //lock the player with the ball
 
@@ -1507,6 +1516,14 @@ function endGame() {
   tackleCount = 0;
  }
 
+ if (score > scoreSouth) {
+	 send();
+ }
+ 
+ if (score < scoreSouth) {
+	 sendLoss();
+ }
+ 
  if (init == 1) {
   time = 0;
  }

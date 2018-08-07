@@ -41,33 +41,10 @@
             <img id="logo" src="images/logo.png" alt="Rugby League All-Stars" />
         </div>
 		
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
-                </div>
-                
-				<div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Main Menu</a>
-                        </li>
-                        <li><a href="#">About</a>
-                        </li>
-                        <li><a href="#">Stats</a>
-                        </li>
-                        <li><a href="#">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"></span>Login</a>
-                        </li>
-                    </ul>
-                </div>
-            
-			</div>
-        </nav>
-
-        <br/>
+      
+		<div class="jumbotron" style="text-align : center; padding-top: 10px; padding-bottom: 10px;">
+		<a href="http://sportsrush.co.uk" target="_blank"> <img style="align : centre;" src="http://sportsrush.co.uk/sites/sportsrush/files/logo_Nav_Horizontal_color.png"></img> - Visit our sponsor </a>
+		</div>		
 
 
         <div class="container" style="background: white;">
@@ -82,7 +59,7 @@
 			 <table style="border-top: 1px solid #ddd0 !important;" class="StartingLineUps table hover text-center" id="StartingLineup">
 					<thead>
 						<tr>
-							<th class="text-center">Tonights Matchup</th>
+							<th class="text-center">Tonights Matchup - Sponsored By SportsRush.co.uk</th>
 						</tr> 
 					</thead>
 					<tbody>
@@ -146,13 +123,13 @@
 					
 					<tr>
                         <th class="text-center">Name</th>
-						<th class="text-center">Trys</th>
-						<th class="text-center">Tackles</th>
+						<th class="text-center" ng-click="sorterFunc = sorterFuncT;">Trys</th>
+						<th class="text-center" ng-click="sorterFunc = sorterFuncTk;">Tackles</th>
 						<th class="text-center">Team</th>
                     </tr> 
                 </thead>
                 <tbody>
-				    <tr ng-repeat="x in teamsJSON | orderBy : sorterFuncT:true | limitTo : 10 "  ng-if="x.Trys > 2"  style="border-top: 1px solid #ddd0 !important;">
+				    <tr ng-repeat="x in teamsJSON | orderBy : sorterFunc:true | limitTo : 10 "  ng-if="x.Tackles > 0"  style="border-top: 1px solid #ddd0 !important;">
 						<td>{{x.Name}}</td>
 						<td>{{x.Trys}}</td>
 						<td>{{x.Tackles}}</td>
@@ -919,8 +896,9 @@
 			
 			for (var i = 0; i < $scope.teamsJSON.length; i++) {			
 			$scope.teamListArray[x].push($scope.teamsJSON[i]);
-			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) || (i == 65) || (i == 76))
-		//	|| (i == 87 ) || (i == 98) || (i == 109) || (i == 120) || (i == 131) || (i == 142)
+			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) || (i == 65) || (i == 76)
+			|| (i == 87 ) || (i == 98) || (i == 109) || (i == 120))
+		//		 || (i == 131) || (i == 142)
 		//	|| (i == 153 ) || (i == 164) || (i == 175) || (i == 186) || (i == 197) || (i == 208))
 			{	x++; $scope.teamListArray[x] = [];	}   
 		 }
@@ -948,9 +926,21 @@
 			
 		}
 		
-		$scope.sorterFuncT = function(teamsJSON){
+		
+	// sorterFuncTion
+	
+			$scope.sorterFuncT = function(teamsJSON){
 			return parseInt(teamsJSON.Trys);
 		}
+		
+			$scope.sorterFuncTk = function(teamsJSON){
+			return parseInt(teamsJSON.Tackles);
+		}
+		
+		$scope.sorterFunc = $scope.sorterFuncT;
+		
+	// End sorterFuncTion
+		
 		
 		$scope.addTeam = function(index) {
 			

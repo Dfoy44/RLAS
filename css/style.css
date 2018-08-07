@@ -100,7 +100,7 @@
   .BigScreen {
     color: #FFB300;
     font-family: 'BigScreen', Arial, sans-serif;
-    background-image: url(' http://rlicoach.com/wp-content/uploads/2015/09/BigScreen.png');
+    background-image: url(' ../images/BigScreen.png');
     background-repeat: no-repeat;
     /* background-attachment: fixed; */
     background-position: center;

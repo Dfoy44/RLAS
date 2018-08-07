@@ -151,13 +151,13 @@
 					
 					<tr>
                         <th class="text-center">Name</th>
-						<th class="text-center">Trys</th>
-						<th class="text-center">Tackles</th>
+						<th class="text-center" ng-click="sorterFunc = sorterFuncT;">Trys</th>
+						<th class="text-center" ng-click="sorterFunc = sorterFuncTk;">Tackles</th>
 						<th class="text-center">Team</th>
                     </tr> 
                 </thead>
                 <tbody>
-				    <tr ng-repeat="x in teamsJSON | orderBy : sorterFuncT:true | limitTo : 10 "  ng-if="x.Trys > 2"  style="border-top: 1px solid #ddd0 !important;">
+				    <tr ng-repeat="x in teamsJSON | orderBy : sorterFunc:true | limitTo : 10 "  ng-if="x.Tackles > 0"  style="border-top: 1px solid #ddd0 !important;">
 						<td>{{x.Name}}</td>
 						<td>{{x.Trys}}</td>
 						<td>{{x.Tackles}}</td>
@@ -924,8 +924,9 @@
 			
 			for (var i = 0; i < $scope.teamsJSON.length; i++) {			
 			$scope.teamListArray[x].push($scope.teamsJSON[i]);
-			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) || (i == 65) || (i == 76))
-		//	|| (i == 87 ) || (i == 98) || (i == 109) || (i == 120) || (i == 131) || (i == 142)
+			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) || (i == 65) || (i == 76)
+			|| (i == 87 ) || (i == 98) || (i == 109) || (i == 120))
+		//			 || (i == 131) || (i == 142)
 		//	|| (i == 153 ) || (i == 164) || (i == 175) || (i == 186) || (i == 197) || (i == 208))
 			{	x++; $scope.teamListArray[x] = [];	}   
 			
@@ -954,6 +955,20 @@
 			}
 			
 		}
+		
+		// sorterFuncTion
+	
+			$scope.sorterFuncT = function(teamsJSON){
+			return parseInt(teamsJSON.Trys);
+		}
+		
+			$scope.sorterFuncTk = function(teamsJSON){
+			return parseInt(teamsJSON.Tackles);
+		}
+		
+		$scope.sorterFunc = $scope.sorterFuncT;
+		
+	// End sorterFuncTion
 		
 		$scope.addTeam = function(index) {
 			
