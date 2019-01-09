@@ -24,12 +24,9 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
 	<link rel="stylesheet" href="css/custommob.css">
 	
-
-	
 </head>
 
 <meta name="viewport" content="width=device-width, initial-scale=.70, maximum-scale=.70, user-scalable=no">
-
 
 <body style="background-color: black; background-size: 100% 100%;">
 
@@ -46,33 +43,10 @@
             <img id="logo" src="images/logo.png" alt="Rugby League All-Stars" />
         </div>
 		
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"></button>
-                </div>
-                
-				<div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Main Menu</a>
-                        </li>
-                        <li><a href="#">About</a>
-                        </li>
-                        <li><a href="#">Stats</a>
-                        </li>
-                        <li><a href="#">Contact</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"></span>Login</a>
-                        </li>
-                    </ul>
-                </div>
-            
-			</div>
-        </nav>
-
-        <br/>
+      
+		<div class="jumbotron" style="text-align : center; padding-top: 10px; padding-bottom: 10px;">
+		<a href="http://sportsrush.co.uk" target="_blank"> <img style="align : centre;" src="http://sportsrush.co.uk/sites/sportsrush/files/logo_Nav_Horizontal_color.png"></img> - Visit our sponsor </a>
+		</div>		
 
 
         <div class="container" style="background: white;">
@@ -87,12 +61,12 @@
 			 <table style="border-top: 1px solid #ddd0 !important;" class="StartingLineUps table hover text-center" id="StartingLineup">
 					<thead>
 						<tr>
-							<th class="text-center">Tonights Matchup</th>
+							<th class="text-center">Tonights Matchup - Sponsored By SportsRush.co.uk</th>
 						</tr> 
 					</thead>
 					<tbody>
 						<tr style="border-top: 1px solid #ddd0 !important;">
-							<td><div id="north0Name">Yorkshire</div> Vs. <div id="south0Name">Queensland</div>
+							<td><div id="north0Name">Yorkshire '86</div> Vs. <div id="south0Name">Queensland '80</div>
 							<div style="font-size : 70%; margin : 10px;"><span class="blink_me"> * </span>Live From {{Ground}}</div>
 							</td>
 						</tr>
@@ -204,9 +178,10 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header modal-lg">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
-        <div class="modal-body modal-lg full-screen">
+        <div style="text-align : center;" class="modal-body modal-lg full-screen">
+		 <button class="btn btn-default" style="width : 100%" data-dismiss="modal">Weclome to RL All-Stars Match Centre</button>
          <img style="width : 100%" src="images\SplashScreen.jpg" alt="Splash Screen"> 
         </div>
         <div class="modal-footer">
@@ -233,7 +208,7 @@
 					<tr>
                         <th class="text-center">Team Name</th>
 						<th class="text-center">Country</th>
-						<th class="text-center">Add</th>
+						<th class="text-center"></th>
                     </tr> 
                 </thead>
                 <tbody>
@@ -347,7 +322,7 @@
             </table>
         </div>
         <div class="modal-footer">
-          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-default active btn-block">Start Match</button>
+          <button id="StartButton"  data-dismiss="modal" onclick="startGame()" class="btn btn-success active btn-block">Start Match</button>
         </div>
       </div>
     </div>
@@ -378,542 +353,14 @@
 	console.log($scope.User);
 	
 	
-		 $scope.teamA = [
-			{
-			  "TeamName" : "Hunter-Newcastle",
-			  "TeamLogo" : "./teams/HN.png",
-			  "TeamNation" : "Australia",
-			  "TeamIndex" : 0
-			},
-			{
-			  "Name" : "Andrew Johns",
-			  "Position" : "Stand-Off",
-			  "Speed" : "80",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Mathew Johns",
-			  "Position" : "Scrum Half",
-			  "Speed" : "70",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Paul Harragan",
-			  "Position" : "Front Row",
-			  "Speed" : "68",
-			  "Strength" : "88",
-			  "Passing" : "46",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Robbie ODavis",
-			  "Position" : "Full Back",
-			  "Speed" : "100",
-			  "Strength" : "67",
-			  "Passing" : "54",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Tony Butterfield",
-			  "Position" : "Front Row",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Mark Sargant",
-			  "Position" : "Front Row",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Akilua Uate",
-			  "Position" : "Centre",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Adam MacDougall",
-			  "Position" : "Wing",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Danny Buderas",
-			  "Position" : "Hooker",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Mark Granville",
-			  "Position" : "Lock",
-			  "Speed" : "100",
-			  "Strength" : "100",
-			  "Passing" : "56",
-			  "Selected" : "",
-			}
-		]
-
-
-		$scope.teamB = [
-			{				
-			  "TeamName" : "St.Helens",
-			  "TeamNation" : "UK",
-			  "TeamLogo" : "./teams/SH.png",
-			  "TeamIndex" : 1
-			},
-			{
-			  "Name" : "James Roby",
-			  "Position" : "Stand-Off",
-			  "Speed" : "80",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Bobby Goulding",
-			  "Position" : "Scrum Half",
-			  "Speed" : "70",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Paul Newlove",
-			  "Position" : "Front Row",
-			  "Speed" : "68",
-			  "Strength" : "88",
-			  "Passing" : "46",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Robbie ODavis",
-			  "Position" : "Full Back",
-			  "Speed" : "100",
-			  "Strength" : "67",
-			  "Passing" : "54",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Chris Joynt",
-			  "Position" : "Front Row",
-			  "Speed" : "55",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Anthony Sullivan",
-			  "Position" : "Winger",
-			  "Speed" : "88",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Paul Wellens",
-			  "Position" : "Centre",
-			  "Speed" : "66",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Alan Hunte",
-			  "Position" : "Wing",
-			  "Speed" : "88",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Neil Holding",
-			  "Position" : "Hooker",
-			  "Speed" : "65",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Paul Sculthorpe",
-			  "Position" : "Lock",
-			  "Speed" : "55",
-			  "Strength" : "100",
-			  "Passing" : "56",
-			  "Selected" : "",
-			}
-		]
-		
-		$scope.teamC = [
-			{
-			  "TeamName" : "Brisbane",
-			  "TeamNation" : "Australia",
-			  "TeamIndex" : 2
-			},
-			{
-			  "Name" : "Allan Langer",
-			  "Position" : "Stand-Off",
-			  "Speed" : "80",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Steve Renouf",
-			  "Position" : "Centre",
-			  "Speed" : "70",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Kerrod Walters",
-			  "Position" : "Front Row",
-			  "Speed" : "68",
-			  "Strength" : "88",
-			  "Passing" : "46",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Wendel Sailor",
-			  "Position" : "Full Back",
-			  "Speed" : "100",
-			  "Strength" : "67",
-			  "Passing" : "54",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Gorden Tallis",
-			  "Position" : "Front Row",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Shane Webcke",
-			  "Position" : "Front Row",
-			  "Speed" : "77",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Michael Hancock",
-			  "Position" : "Centre",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Justin Hodges",
-			  "Position" : "Centre",
-			  "Speed" : "66",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Corey Parker",
-			  "Position" : "Lock",
-			  "Speed" : "77",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Darren Lockyer",
-			  "Position" : "Stand-Off",
-			  "Speed" : "76",
-			  "Strength" : "100",
-			  "Passing" : "56",
-			  "Selected" : "",
-			}
-		]
-		
-		$scope.teamD = [
-			{
-			  "TeamName" : "Wigan",
-			  "TeamNation" : "UK",
-			  "TeamIndex" : 3
-			},
-			{
-			  "Name" : "Andrew Farrell",
-			  "Position" : "Stand-Off",
-			  "Speed" : "80",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Shaun Edwards",
-			  "Position" : "Scrum Half",
-			  "Speed" : "70",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Kelvim Skerrit",
-			  "Position" : "Front Row",
-			  "Speed" : "68",
-			  "Strength" : "88",
-			  "Passing" : "46",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Chris Radlinski",
-			  "Position" : "Full Back",
-			  "Speed" : "100",
-			  "Strength" : "67",
-			  "Passing" : "54",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Terry OConnor",
-			  "Position" : "Front Row",
-			  "Speed" : "37",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Barry Mcdermott",
-			  "Position" : "Front Row",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Garry Connolly",
-			  "Position" : "Centre",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Jason Robinson",
-			  "Position" : "Wing",
-			  "Speed" : "94",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Joe Egan",
-			  "Position" : "Hooker",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Sean OLougjlin",
-			  "Position" : "Lock",
-			  "Speed" : "100",
-			  "Strength" : "100",
-			  "Passing" : "56",
-			  "Selected" : "",
-			}
-		]
-		
-		$scope.teamE = [
-			{
-			  "TeamName" : "QLD Irish",
-			  "TeamNation" : "Custom",
-			  "TeamIndex" : 4
-			},
-			{
-			  "Name" : "Michael Quinn",
-			  "Position" : "Stand-Off",
-			  "Speed" : "80",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Keelan OReilly",
-			  "Position" : "Scrum Half",
-			  "Speed" : "70",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Jake Rowles",
-			  "Position" : "Centre",
-			  "Speed" : "68",
-			  "Strength" : "88",
-			  "Passing" : "46",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Tristan Furniss",
-			  "Position" : "Full Back",
-			  "Speed" : "100",
-			  "Strength" : "67",
-			  "Passing" : "54",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Wally Pearce",
-			  "Position" : "Scrum Half",
-			  "Speed" : "37",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Gavin Baker",
-			  "Position" : "Centre",
-			  "Speed" : "87",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Gus McFillan",
-			  "Position" : "Centre",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Chris Moriarity",
-			  "Position" : "Wing",
-			  "Speed" : "94",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Joe Rickard",
-			  "Position" : "Hooker",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Tom Watson",
-			  "Position" : "Lock",
-			  "Speed" : "100",
-			  "Strength" : "100",
-			  "Passing" : "56",
-			  "Selected" : "",
-			}
-		]
-		
-		$scope.teamF = [
-			{
-			  "TeamName" : "Paris St.Germain '97",
-			  "TeamNation" : "Custom",
-			  "TeamIndex" : 5
-			},
-			{
-			  "Name" : "Deon Bird",
-			  "Position" : "Full Back",
-			  "Speed" : "80",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Pierre Chamorin",
-			  "Position" : "Scrum Half",
-			  "Speed" : "70",
-			  "Strength" : "60",
-			  "Passing" : "80",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Fabien Devecci",
-			  "Position" : "Centre",
-			  "Speed" : "68",
-			  "Strength" : "88",
-			  "Passing" : "46",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Paul Evans",
-			  "Position" : "Full Back",
-			  "Speed" : "100",
-			  "Strength" : "67",
-			  "Passing" : "54",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Anthony Hancock",
-			  "Position" : "Scrum Half",
-			  "Speed" : "37",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "David Lomax",
-			  "Position" : "Centre",
-			  "Speed" : "87",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Michael Hogue",
-			  "Position" : "Centre",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Jason Martin",
-			  "Position" : "Wing",
-			  "Speed" : "94",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Matt OConnor",
-			  "Position" : "Hooker",
-			  "Speed" : "57",
-			  "Strength" : "76",
-			  "Passing" : "70",
-			  "Selected" : "",
-			},
-			{
-			  "Name" : "Craig Menkins",
-			  "Position" : "Lock",
-			  "Speed" : "100",
-			  "Strength" : "100",
-			  "Passing" : "56",
-			  "Selected" : "",
-			}
-		]
 		
 		$scope.teamsJSON = [];
 		$scope.teamListArray = [$scope.teamA, $scope.teamB];
 		//$scope.teamListArray = [[], [], []];
-		$scope.groundArray = ["Carlaw Park, Aukland", "Lidcombe Oval, Sydney", "Stade Sebastien Chartley, Paris", "The Boulevard, Hull", "The Willows, Salford", "Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
+	//	$scope.groundArray = ["Carlaw Park, Aukland", "Lidcombe Oval, Sydney", "Stade Sebastien Chartley, Paris", "The Boulevard, Hull", "The Willows, Salford", "Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
+		$scope.groundArray = ["Watersheddings, Oldham", "Leichhardt Oval, Sydney", "Central Park, Wigan", "Wilderspool, Warrington", "Knowsley Road, St. Helens"];
 		$scope.Ground =  $scope.groundArray[Math.floor(Math.random() * 5) + 0  ];
+		bgImage.src = loadStadium($scope.Ground); 
 		$scope.team = 0;
 		$scope.teamOP = 0;
 		
@@ -926,13 +373,11 @@
 			$scope.teamListArray[x].push($scope.teamsJSON[i]);
 			if ((i == 10) || (i == 21 ) || (i == 32) || (i == 43) || (i == 54) || (i == 65) || (i == 76)
 			|| (i == 87 ) || (i == 98) || (i == 109) || (i == 120))
-		//			 || (i == 131) || (i == 142)
+		//		 || (i == 131) || (i == 142)
 		//	|| (i == 153 ) || (i == 164) || (i == 175) || (i == 186) || (i == 197) || (i == 208))
 			{	x++; $scope.teamListArray[x] = [];	}   
-			
-			}
+		 }
 		}
-		
 		
         $scope.teamLookup = function() {
 			//team lookup
@@ -956,7 +401,8 @@
 			
 		}
 		
-		// sorterFuncTion
+		
+	// sorterFuncTion
 	
 			$scope.sorterFuncT = function(teamsJSON){
 			return parseInt(teamsJSON.Trys);
@@ -969,6 +415,7 @@
 		$scope.sorterFunc = $scope.sorterFuncT;
 		
 	// End sorterFuncTion
+		
 		
 		$scope.addTeam = function(index) {
 			
@@ -1069,7 +516,7 @@
 					UserObj = JSON.parse(obj);					
 					$scope.User = UserObj;
 					console.log($scope.User);
-					$scope.lookup("http://etrl.rlicoach.com/RLASv02/php/lookup.php?teamData", 'Teams');
+					$scope.lookup("php/lookup.php?teamData", 'Teams');
 					}
 					
 					if (object == 'Teams'){
@@ -1107,7 +554,8 @@
 		}; 
 				
 		//initial lookups
-	    $scope.lookup("http://etrl.rlicoach.com/RLASv02/php/lookup.php?userName=Guest&password=blank", 'User');
+		//	$scope.lookup("php/lookup.php?userName=DecFoy&password=nrlnrlnrl8!");
+	    $scope.lookup("php/lookup.php?userName=Guest&password=blank", 'User');
 	
 		
 		

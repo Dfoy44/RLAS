@@ -1,0 +1,11 @@
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) Values ('Hunter-Newcastle','./teams/HN.png','Australia',0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Andrew Johns','Stand-Off',80,60,80);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Mathew Johns','Scrum Half',70,60,80);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Paul Harragan','Front Row',68,88,46);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Robbie ODavis','Full Back',100,67,54);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Tony Butterfield','Front Row',57,76,70);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Mark Sargant','Front Row',57,76,70);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Akilua Uate','Centre',57,76,70);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Adam MacDougall','Wing',57,76,70);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Danny Buderas','Hooker',57,76,70);
+INSERT INTO Players (TeamName, Sprite, TeamNation, TeamIndex, Name, Position, Speed, Strength, Passing) VALUES (NULL,NULL,NULL,NULL,'Mark Granville','Lock',100,100,56);

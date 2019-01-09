@@ -118,7 +118,7 @@ var ballCarrier = "N1";
 var teamPoss = "N";
 
 //time 
-var time = 8000
+var time = 10000
 
 //in play
 var inplay = 0;
@@ -238,7 +238,7 @@ var SouthTeam = "Queensland";
 
 //souths
 var south1 = {
- name: "Queensland 1",
+ name: "J Smith",
  speed: 76, // movement in pixels per second
  originalspeed: 76,
  passing: 100, // speed at which a player passes the ball
@@ -253,7 +253,7 @@ var south1 = {
  ticks: 20
 };
 var south2 = {
- name: "Queensland 2",
+ name: "G Oliphant",
  speed: 76, // movement in pixels per second
  originalspeed: 76,
  passing: 100, // speed at which a player passes the ball
@@ -268,7 +268,7 @@ var south2 = {
  ticks: 20
 };
 var south3 = {
- name: "Queensland 3",
+ name: "M Meninga",
  speed: 76, // movement in pixels per second
  originalspeed: 76,
  passing: 100, // speed at which a player passes the ball
@@ -284,7 +284,7 @@ var south3 = {
 };
 
 var south4 = {
- name: "Queensland 4",
+ name: "C Close",
  speed: 76, // movement in pixels per second
  originalspeed: 66,
  passing: 100, // speed at which a player passes the ball
@@ -300,7 +300,7 @@ var south4 = {
 }
 
 var south5 = {
- name: "Queensland 5",
+ name: "C Scott",
  speed: 66, // movement in pixels per second
  originalspeed: 66,
  passing: 100, // speed at which a player passes the ball
@@ -316,7 +316,7 @@ var south5 = {
 }
 
 var south6 = {
- name: "Queensland 6",
+ name: "K Boustead",
  speed: 66, // movement in pixels per second
  originalspeed: 66,
  passing: 100, // speed at which a player passes the ball
@@ -334,7 +334,7 @@ var south6 = {
 
 //norths
 var north1 = {
- name: "Yorkshire 1",
+ name: "J Joyner",
  speed: 75, // movement in pixels per second
  originalspeed: 75,
  passing: 100, // speed at which a player passes the ball
@@ -350,7 +350,7 @@ var north1 = {
  ticks: 11
 };
 var north2 = {
- name: "Yorkshire 2",
+ name: "L Crooks",
  speed: 65, // movement in pixels per second
  originalspeed: 65,
  passing: 100, // speed at which a player passes the ball
@@ -366,7 +366,7 @@ var north2 = {
  ticks: 17
 };
 var north3 = {
- name: "Yorkshire 3",
+ name: "P Lyman",
  speed: 70, // movement in pixels per second
  originalspeed: 75,
  passing: 100, // speed at which a player passes the ball
@@ -382,7 +382,7 @@ var north3 = {
  ticks: 15
 };
 var north4 = {
- name: "Yorkshire 4",
+ name: "E Hanley",
  speed: 60, // movement in pixels per second
  originalspeed: 65,
  passing: 100, // speed at which a player passes the ball
@@ -398,7 +398,7 @@ var north4 = {
  ticks: 10
 };
 var north5 = {
- name: "Yorkshire 5",
+ name: "D Fox",
  speed: 70, // movement in pixels per second
  originalspeed: 75,
  passing: 100, // speed at which a player passes the ball
@@ -415,7 +415,7 @@ var north5 = {
 };
 
 var north6 = {
- name: "Yorkshire 6",
+ name: "H Gill",
  speed: 60, // movement in pixels per second
  originalspeed: 65,
  passing: 100, // speed at which a player passes the ball
@@ -584,22 +584,22 @@ canvas.onmousedown = function(e) {
   //defensive positions man on man to be inserted df44
 
   mTargetx = pageX;
-  mTargety = pageY;
+  mTargety = pageY +150;
 
   mTargetx2 = pageX - 100;
-  mTargety2 = pageY;
+  mTargety2 = pageY +150;
 
   mTargetx3 = pageX + 100;
-  mTargety3 = pageY;
+  mTargety3 = pageY +150;
 
   mTargetx4 = pageX - 200;
-  mTargety4 = pageY;
+  mTargety4 = pageY +150;
 
   mTargetx5 = pageX + 200;
-  mTargety5 = pageY;
+  mTargety5 = pageY +150;
 
   mTargetx6 = pageX;
-  mTargety6 = pageY -150;
+  mTargety6 = pageY;
   
   //console.log("reg def");
 
@@ -1185,7 +1185,7 @@ if (NorthOnside < 110) {
 
  }
 
- $("#PTBbutton").css("left", ballx + canvas.offsetLeft - 50);
+ $("#PTBbutton").css("left", canvas.offsetLeft + 300);
  $("#PTBbutton").css("top", bally + canvas.offsetTop + 150);
 
  //back 100 for the souths
@@ -1517,7 +1517,7 @@ function endGame() {
  }
 
  if (score > scoreSouth) {
-	 send();
+	 sendWin();
  }
  
  if (score < scoreSouth) {
@@ -1529,8 +1529,6 @@ function endGame() {
  }
 
  //ball
- ball.x = 400;
- ball.y = 400;
  ballCarrier = "";
  lockAll();
  tackleCount = 99;
@@ -2375,7 +2373,7 @@ var update = function(modifier) {
 
  }
 
- if (ball.team == 2) { //the north team is team two
+ if (ball.team == 2) { //the south team is team two
 
   if (ball.y < 100) {
    Try();

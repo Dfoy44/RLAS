@@ -268,7 +268,7 @@ var dropOut = function () {
 var sendTry = function (tryScorer) {
 	
 	 $.ajax({
-                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?tryScorer=" + tryScorer,
+                url: "php/lookup.php?tryScorer=" + tryScorer,
                 type: 'GET',
                 dataType: "text",
                 success: function(obj) {
@@ -281,7 +281,7 @@ var sendTry = function (tryScorer) {
 var sendTackle = function (tackler) {
 	
 	 $.ajax({
-                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?tackler=" + tackler.name,
+                url: "php/lookup.php?tackler=" + tackler.name,
                 type: 'GET',
                 dataType: "text",
                 success: function(obj) {
@@ -296,7 +296,7 @@ var sendGame = function (team) {
 	var user = "Guest";
 	
 	 $.ajax({
-                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?gameStarter=" + user,
+                url: "php/lookup.php?gameStarter=" + user,
                 type: 'GET',
                 dataType: "text",
                 success: function(obj) {
@@ -311,7 +311,7 @@ var sendWin = function (team) {
 	var user = "Guest";
 	
 	 $.ajax({
-                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?gameWinner=" + user,
+                url: "php/lookup.php?gameWinner=" + user,
                 type: 'GET',
                 dataType: "text",
                 success: function(obj) {
@@ -326,7 +326,7 @@ var sendLoss = function (team) {
 	var user = "Guest";
 	
 	 $.ajax({
-                url: "http://etrl.rlicoach.com/RLASv02/php/lookup.php?gameLoser=" + user,
+                url: "php/lookup.php?gameLoser=" + user,
                 type: 'GET',
                 dataType: "text",
                 success: function(obj) {
@@ -342,7 +342,7 @@ var newPlay = function () {
 
 }
 
-//CPU LOGIC
+//CPU LOGIC df 44
 
 var CPULoadPlay = function () {
 
@@ -381,8 +381,7 @@ var CPULoadPlay = function () {
  
  if (random == 1) {
   
-  
-	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = 0; hTargety6 = ball.y +50;}
 	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 400; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 3 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx2 = 100; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
@@ -393,7 +392,7 @@ var CPULoadPlay = function () {
 
 	if (random == 0) {
   
-	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx = 200; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S6"; hTargetx = 200; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = 0;}
 	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 200; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx2 = 500; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}

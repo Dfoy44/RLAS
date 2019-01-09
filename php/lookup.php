@@ -30,8 +30,6 @@ if(isset($_GET['userName']))
 		 $queryString = "SELECT * from Users where username = '" .$_GET['userName'] . "' and password = '" .$_GET['password'] . "' ";
 }
 
-
-
 if(isset($_GET['trysAndAssists']))
 {
          $queryString = "SELECT * from Players";
