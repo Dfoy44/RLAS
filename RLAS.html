@@ -445,7 +445,27 @@
 			Team[$scope.selectorN].passing = $scope.team[index].Passing;
 			Team[$scope.selectorN].strength = $scope.team[index].Strength;
 			
-		
+			switch ($scope.selectorN) {
+			case 0:
+				NorthImageSprite1.src = loadPlayerSpriteNorth($scope.team[index].Sprite);
+				break;				
+			case 1:
+				NorthImageSprite2.src = loadPlayerSpriteNorth($scope.team[index].Sprite);
+				break; 
+			case 2:
+				NorthImageSprite3.src = loadPlayerSpriteNorth($scope.team[index].Sprite);
+				break; 
+			case 3:
+				NorthImageSprite4.src = loadPlayerSpriteNorth($scope.team[index].Sprite);
+				break;
+			case 4:
+				NorthImageSprite5.src = loadPlayerSpriteNorth($scope.team[index].Sprite);
+				break;
+			case 5:
+				NorthImageSprite6.src = loadPlayerSpriteNorth($scope.team[index].Sprite);
+				break;						
+		}
+				
 			$scope.team[index].Selected = "Starting at " +  ($scope.selectorN +1);
 			console.log ($scope.team[index].Name + " now playing as "  + $scope.team[0].TeamName + ($scope.selectorN +1));
 			newLine ([$scope.team[index].Name + " now playing as "  + $scope.team[0].TeamName + " NO. " + ($scope.selectorN +1)]);

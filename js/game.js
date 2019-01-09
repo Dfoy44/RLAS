@@ -63,6 +63,12 @@ var southReady = false;
 var southImage = new Image();
 var southImageCap = new Image();
 var SouthImageSprite = new Image();
+var SouthImageSprite1 = new Image();
+var SouthImageSprite2 = new Image();
+var SouthImageSprite3 = new Image();
+var SouthImageSprite4 = new Image();
+var SouthImageSprite5 = new Image();
+var SouthImageSprite6 = new Image();
 southImage.onload = function() {
  southReady = true;
 };
@@ -74,6 +80,13 @@ var northReady = false;
 var northImage = new Image();
 var northImageCap = new Image();
 var NorthImageSprite = new Image();
+var NorthImageSprite1 = new Image();
+var NorthImageSprite2 = new Image();
+var NorthImageSprite3 = new Image();
+var NorthImageSprite4 = new Image();
+var NorthImageSprite5 = new Image();
+var NorthImageSprite6 = new Image();
+
 northImage.onload = function() {
  northReady = true;
 };
@@ -103,6 +116,22 @@ greenArrow.src = "images/GreenArrow.png";
 targetImage.src = "images/red_star2.png";
 SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
 NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
+
+//South Team Sprites
+SouthImageSprite1.src = "sprites/SouthImageSpriteBasic.png";
+SouthImageSprite2.src = "sprites/SouthImageSpriteBasic.png";
+SouthImageSprite3.src = "sprites/SouthImageSpriteBasic.png";
+SouthImageSprite4.src = "sprites/SouthImageSpriteBasic.png";
+SouthImageSprite5.src = "sprites/SouthImageSpriteBasic.png";
+SouthImageSprite6.src = "sprites/SouthImageSpriteBasic.png";
+
+//North Team Sprites
+NorthImageSprite1.src = "sprites/NorthImageSpriteYKA.png";
+NorthImageSprite2.src = "sprites/NorthImageSpriteYKA.png";
+NorthImageSprite3.src = "sprites/NorthImageSpriteYKA.png";
+NorthImageSprite4.src = "sprites/NorthImageSpriteYKB.png";
+NorthImageSprite5.src = "sprites/NorthImageSpriteYKA.png";
+NorthImageSprite6.src = "sprites/NorthImageSpriteYKB.png";
 
 
 //play on
@@ -2445,12 +2474,12 @@ var render = function() {
  if (northReady) {
   stopStillNorth();
 
-  ctx.drawImage(NorthImageSprite, spriteFrame(north1), 0, 21, 26, north1.x - 10, north1.y, 30, 40);
-  ctx.drawImage(NorthImageSprite, spriteFrame(north2), 0, 21, 26, north2.x - 10, north2.y, 30, 40);
-  ctx.drawImage(NorthImageSprite, spriteFrame(north3), 0, 21, 26, north3.x - 10, north3.y, 30, 40);
-  ctx.drawImage(NorthImageSprite, spriteFrame(north4), 0, 21, 26, north4.x - 10, north4.y, 30, 40);
-  ctx.drawImage(NorthImageSprite, spriteFrame(north5), 0, 21, 26, north5.x - 10, north5.y, 30, 40);
-  ctx.drawImage(NorthImageSprite, spriteFrame(north6), 0, 21, 26, north6.x - 10, north6.y, 30, 40);
+  ctx.drawImage(NorthImageSprite1, spriteFrame(north1), 0, 21, 26, north1.x - 10, north1.y, 30, 40);
+  ctx.drawImage(NorthImageSprite2, spriteFrame(north2), 0, 21, 26, north2.x - 10, north2.y, 30, 40);
+  ctx.drawImage(NorthImageSprite3, spriteFrame(north3), 0, 21, 26, north3.x - 10, north3.y, 30, 40);
+  ctx.drawImage(NorthImageSprite4, spriteFrame(north4), 0, 21, 26, north4.x - 10, north4.y, 30, 40);
+  ctx.drawImage(NorthImageSprite5, spriteFrame(north5), 0, 21, 26, north5.x - 10, north5.y, 30, 40);
+  ctx.drawImage(NorthImageSprite6, spriteFrame(north6), 0, 21, 26, north6.x - 10, north6.y, 30, 40);
  }
 
  if (ballReady) {
