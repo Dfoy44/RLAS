@@ -293,7 +293,7 @@ var sendTackle = function (tackler) {
 
 var sendGame = function (team) {
 	
-	var user = "Guest";
+	//var user = "Guest";
 	
 	 $.ajax({
                 url: "php/lookup.php?gameStarter=" + user,
@@ -308,7 +308,7 @@ var sendGame = function (team) {
 
 var sendWin = function (team) {
 	
-	var user = "Guest";
+	//var user = "Guest";
 	
 	 $.ajax({
                 url: "php/lookup.php?gameWinner=" + user,
@@ -323,7 +323,7 @@ var sendWin = function (team) {
 
 var sendLoss = function (team) {
 	
-	var user = "Guest";
+	//var user = "Guest";
 	
 	 $.ajax({
                 url: "php/lookup.php?gameLoser=" + user,
@@ -338,9 +338,73 @@ var sendLoss = function (team) {
 
 var newPlay = function () {
 
-  random = Math.floor(Math.random() * Math.floor(2));
+  random = Math.floor(Math.random() * Math.floor(3));
 
 }
+
+
+//play options df 44
+ //plays depth
+ 
+ var playDepth = function () {
+ 
+	  mTargety = ball.y - 175;
+	  mTargety2 = ball.y - 175;
+	  mTargety3 = ball.y - 190;
+	  mTargety4 = ball.y - 190;
+	  mTargety5 = ball.y - 220;
+	  mTargety6 = ball.y - 220;
+ 
+ }
+ 
+  var playStagger = function () {
+ 
+ if (ball.x < 400) {
+	  mTargety = ball.y - 150;
+	  mTargety2 = ball.y - 150;
+	  mTargety3 = ball.y - 110;
+	  mTargety4 = ball.y - 110;
+	  mTargety5 = ball.y - 110;
+	  mTargety6 = ball.y - 150;
+ }
+ 
+ if (ball.x > 400) {
+	 mTargety = ball.y - 150;
+	  mTargety2 = ball.y - 150;
+	  mTargety3 = ball.y - 110;
+	  mTargety4 = ball.y - 110;
+	  mTargety5 = ball.y - 150;
+	  mTargety6 = ball.y - 110;
+ 
+ }
+ 
+ }
+ 
+ 
+ var playStack = function () {
+	
+if (ball.x < 400) {	
+	  mTargetx = ball.x + 320;
+	  mTargetx2 = ball.x + 220;
+	  mTargetx3 = ball.x + 200;
+	  mTargetx4 = ball.x + 160;
+	  mTargetx5 = ball.x + 130;
+	  mTargetx6 = ball.x + 110;
+}
+
+if (ball.x > 400) {	
+	  mTargetx6 = ball.x - 320;
+	  mTargetx5 = ball.x - 220;
+	  mTargetx4 = ball.x - 200;
+	  mTargetx3 = ball.x - 160;
+	  mTargetx2 = ball.x - 130;
+	  mTargetx = ball.x - 110;
+}
+
+ }
+
+
+
 
 //CPU LOGIC df 44
 
@@ -381,7 +445,7 @@ var CPULoadPlay = function () {
  
  if (random == 1) {
   
-	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx = 400; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = 0; hTargety6 = ball.y +50;}
+	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx = 400; hTargety = ball.y +50; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = 0; hTargety6 = ball.y +50;}
 	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 400; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 3 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx2 = 100; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
@@ -392,7 +456,7 @@ var CPULoadPlay = function () {
 
 	if (random == 0) {
   
-	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S6"; hTargetx = 200; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = 0;}
+	if (tackleCount == 0 &&  attackReady == 1) {ballCarrier = "S6"; hTargetx = 200; hTargety = ball.y +50; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = 0;}
 	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 200; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
 	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx2 = 500; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
@@ -401,6 +465,21 @@ var CPULoadPlay = function () {
 	if (tackleCount == 6 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
 
 }
+
+	if (random == 2) {
+  
+	if (tackleCount == 3 &&  attackReady == 1) {ballCarrier = "S6"; hTargetx = 200; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = 0;}
+	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S2"; hTargetx = 200; hTargety2 = 0; hTargety = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 1 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 5 &&  attackReady == 1) {ballCarrier = "S1"; hTargetx2 = 500; hTargety = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 4 &&  attackReady == 1) {ballCarrier = "S3"; hTargetx3 = 100; hTargety3 = 0; hTargety2 = ball.y +50; hTargety1 = ball.y +50; hTargety4 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 2 &&  attackReady == 1) {ballCarrier = "S4"; hTargetx4 = 100; hTargety4 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety1 = ball.y +50; hTargety5 = ball.y +50; hTargety6 = ball.y +50;}
+	if (tackleCount == 6 &&  attackReady == 1) {ballCarrier = "S5"; hTargetx5 = 500; hTargety5 = 0; hTargety2 = ball.y +50; hTargety3 = ball.y +50; hTargety4 = ball.y +50; hTargety1 = ball.y +50; hTargety6 = ball.y +50;}
+
+}
+
+
+
 
  
 }

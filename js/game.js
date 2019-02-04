@@ -94,6 +94,9 @@ northImage.onload = function() {
 //greenArrow
 var greenArrow = new Image();
 
+//redArrow
+var redArrow = new Image();
+
 // Ball image
 var ballReady = false;
 var ballImage = new Image();
@@ -113,6 +116,7 @@ northImage.src = "images/north.png";
 northImageCap.src = "images/northRed.png";
 ballImage.src = "images/Ball.png";
 greenArrow.src = "images/GreenArrow.png";
+redArrow.src = "images/RedArrow.png";
 targetImage.src = "images/red_star2.png";
 SouthImageSprite.src = "sprites/SouthImageSpriteBasic.png";
 NorthImageSprite.src = "sprites/NorthImageSpriteBasic.png";
@@ -172,6 +176,8 @@ var gameTicks = 0;
 
 //ballCarrierOBJ
 var ballCarrierOBJ;
+
+
 
 ///////////////its a button thing/////////
 
@@ -249,14 +255,21 @@ function PTB() {
  if (PTB == 1) {
   PTB = 0;
   $(PTBbutton).hide();
+  $(".PlayButton").hide();
+  
  }
  $(PTBbutton).hide();
+ $(".PlayButton").hide();
 
 }
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Game objects ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//user
+var user = "Guest"
+
 
 //teams
 var NorthTeam = "Yorkshire";
@@ -519,6 +532,7 @@ var PTB = 0;
 
 
 canvas.onmousedown = function(e) {
+	
 
  var pageX = e.pageX - canvas.offsetLeft;
  var pageY = e.pageY - canvas.offsetTop;
@@ -610,25 +624,25 @@ canvas.onmousedown = function(e) {
   target.y = pageY;
 
   // on mouse down we set the targets of the user players
-  //defensive positions man on man to be inserted df44
+  //defensive positions man on man to be inserted df44?? hi were back here
 
-  mTargetx = pageX;
-  mTargety = pageY +150;
+  mTargetx = south1.x;
+  mTargety = south1.y;
 
-  mTargetx2 = pageX - 100;
-  mTargety2 = pageY +150;
+  mTargetx2 = south2.x;
+  mTargety2 = south2.y;
 
-  mTargetx3 = pageX + 100;
-  mTargety3 = pageY +150;
+  mTargetx3 = south3.x;
+  mTargety3 = south3.y;
 
-  mTargetx4 = pageX - 200;
-  mTargety4 = pageY +150;
+  mTargetx4 = south4.x;
+  mTargety4 = south4.y; 
 
-  mTargetx5 = pageX + 200;
-  mTargety5 = pageY +150;
+  mTargetx5 = south6.x;
+  mTargety5 = south6.y;
 
   mTargetx6 = pageX;
-  mTargety6 = pageY;
+  mTargety6 = pageY ;
   
   //console.log("reg def");
 
@@ -764,7 +778,7 @@ canvas.onmousedown = function(e) {
 
  }
 
- if (PTB == 1) {
+ if (PTB == 1 && ball.team == 1) {
   mTargety = ball.y - 120;
   mTargety2 = ball.y - 120;
   mTargety3 = ball.y - 120;
@@ -778,7 +792,7 @@ if (attackReady == 1 && ball.team == 2) {
 	//refer to cpu plays
 
 }
- 
+ //end of mouse down
  
 };
 
@@ -986,7 +1000,7 @@ var Try = function() {
  }
  
   if (init == 1 && ball.team == 2) {
-  scoreSouth++;
+  scoreSouth = scoreSouth+4;
    var TS = tryScorer();
    console.log("TRYS!" + TS);
    sendTry(TS);
@@ -1076,7 +1090,7 @@ var TryNorth = function() {
  }
 
  if (init == 1 && ball.team == 1) {
-  score++;
+  score = score+4;
   var TS = tryScorer();
   console.log("TRYN!" + TS);
   sendTry(TS);
@@ -1204,6 +1218,18 @@ if (NorthOnside < 110) {
  $(PTBbutton).text("Play The Ball");
  $(PTBbutton).attr('disabled', 'disabled');
  $(PTBbutton).show();
+
+$("#Stackbutton").css("left", canvas.offsetLeft + 220); 
+$("#Stackbutton").css("top", canvas.offsetTop + 50);
+
+$("#Depthbutton").css("left", canvas.offsetLeft + 320); 
+$("#Depthbutton").css("top", canvas.offsetTop + 50);
+
+$("#Staggerbutton").css("left", canvas.offsetLeft + 420); 
+$("#Staggerbutton").css("top", canvas.offsetTop + 50);
+
+$(".PlayButton").show();
+ 
  }
  
   if (ball.team == 2) {
@@ -1229,13 +1255,13 @@ if (NorthOnside < 110) {
   mTargety6 = ball.y - 130;
  }
  
+
+ 
+ 
+ 
+ 
   if (PTB == 1 && ball.team == 2) {
-  mTargety = ball.y - 100;
-  mTargety2 = ball.y - 110;
-  mTargety3 = ball.y - 110;
-  mTargety4 = ball.y - 110;
-  mTargety5 = ball.y - 130;
-  mTargety6 = ball.y - 330;
+
  }
 
  //lock the player with the ball
@@ -1584,7 +1610,7 @@ function buildOnce() {
 function PTBall() {
 
  if (PTB == 1) {
-  PTB = 0
+  PTB = 0;
  }
 
  if (tackleCount > 98) {
@@ -1595,6 +1621,7 @@ function PTBall() {
 
  unlockAll();
  $(PTBbutton).hide();
+ $(".PlayButton").hide();
  $(BigScreen).hide();
  start = 1;
  
@@ -1751,12 +1778,12 @@ var update = function(modifier) {
 
 
  //north one needs to get to dummy half
- if (ballCarrier != "N1" && attackReady == 0) {
+ if (ballCarrier != "N1" && attackReady == 0 && ball.team == 1) {
   mTargetx = ball.x;
   mTargety = ball.y;
  }
 
- if (ballCarrier == "N1" && attackReady == 0) {
+ if (ballCarrier == "N1" && attackReady == 0 && ball.team == 1) {
   mTargetx2 = ball.x;
   mTargety2 = ball.y;
  }
@@ -1833,6 +1860,8 @@ var update = function(modifier) {
  // gerrum onside
  if (north1.y > NorthOnside && north1.onside == 0) {
   mTargety = NorthOnside - 10;
+  console.log("north onside : " + mTargety);
+  
  }
  if (north2.y > NorthOnside && north2.onside == 0) {
   mTargety2 = NorthOnside - 10;
@@ -2412,7 +2441,7 @@ var update = function(modifier) {
 
 
   if ((north1.x <= ball.x + 30 && north1.x > ball.x - 30) && (north1.y <= ball.y + 20 && ball.y <= north1.y + 3)) {
-   tackler = north6;
+   tackler = north1;
   }
   if ((north2.x <= ball.x + 30 && north2.x > ball.x - 30) && (north2.y <= ball.y + 20 && ball.y <= north2.y + 3)) {
    tackler = north2;
@@ -2427,7 +2456,7 @@ var update = function(modifier) {
    tackler = north5;
   }
   if ((north6.x <= ball.x + 30 && north6.x > ball.x - 30) && (north6.y <= ball.y + 20 && ball.y <= north6.y + 3)) {
-   tackler = north1;
+   tackler = north6;
    clap.play();
   }
 
@@ -2464,6 +2493,7 @@ var render = function() {
 
   if (targetReady) {
    ctx.drawImage(targetImage, spriteFrame(target), 0, 500, 500, target.x - 15, target.y - 15, 30, 30);
+   
   };
 
 
@@ -2486,16 +2516,20 @@ var render = function() {
 
   ctx.drawImage(ballImage, ball.x - 4, ball.y - 2);
   ctx.drawImage(greenArrow, ballCarrierOBJ.x - 4, ballCarrierOBJ.y - 24);
+  
+  if (ball.team == 2) {
+	   ctx.drawImage(redArrow, north6.x - 4, north6.y - 24);
+  }
  }
 
  if (southReady) {
   stopStillSouth();
-  ctx.drawImage(SouthImageSprite, spriteFrame(south1), 0, 21, 26, south1.x - 10, south1.y, 30, 40);
-  ctx.drawImage(SouthImageSprite, spriteFrame(south2), 0, 21, 26, south2.x - 10, south2.y, 30, 40);
-  ctx.drawImage(SouthImageSprite, spriteFrame(south3), 0, 21, 26, south3.x - 10, south3.y, 30, 40);
-  ctx.drawImage(SouthImageSprite, spriteFrame(south4), 0, 21, 26, south4.x - 10, south4.y, 30, 40);
-  ctx.drawImage(SouthImageSprite, spriteFrame(south5), 0, 21, 26, south5.x - 10, south5.y, 30, 40);
-  ctx.drawImage(SouthImageSprite, spriteFrame(south6), 0, 21, 26, south6.x - 10, south6.y, 30, 40);
+  ctx.drawImage(SouthImageSprite1, spriteFrame(south1), 0, 21, 26, south1.x - 10, south1.y, 30, 40);
+  ctx.drawImage(SouthImageSprite2, spriteFrame(south2), 0, 21, 26, south2.x - 10, south2.y, 30, 40);
+  ctx.drawImage(SouthImageSprite3, spriteFrame(south3), 0, 21, 26, south3.x - 10, south3.y, 30, 40);
+  ctx.drawImage(SouthImageSprite4, spriteFrame(south4), 0, 21, 26, south4.x - 10, south4.y, 30, 40);
+  ctx.drawImage(SouthImageSprite5, spriteFrame(south5), 0, 21, 26, south5.x - 10, south5.y, 30, 40);
+  ctx.drawImage(SouthImageSprite6, spriteFrame(south6), 0, 21, 26, south6.x - 10, south6.y, 30, 40);
  }
 
 

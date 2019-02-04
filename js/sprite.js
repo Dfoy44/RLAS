@@ -5,6 +5,7 @@ var	loadStadium = function (stadiumName) {
 				return "images/background1.jpg";
 				break;				
 			case "Watersheddings, Oldham":
+				initSnow();
 				return "images/backgroundWS.jpg";
 				break; 
 			case "Leichhardt Oval, Sydney":
@@ -14,6 +15,7 @@ var	loadStadium = function (stadiumName) {
 				return "images/backgroundCP.jpg";
 				break;
 			case "Wilderspool, Warrington":
+				initRain();
 				return "images/backgroundWW.jpg";
 				break;						
 		}
@@ -29,6 +31,9 @@ var	loadPlayerSpriteN = function (teamName) {
 				break;				
 			case "QLD Irish":
 				return "sprites/NorthImageSpriteQLDI.png";
+				break; 
+			case "New Zealand '86":
+				return "sprites/NorthImageSpriteNZA.png";
 				break; 
 			case "Newcastle '88":
 				return "sprites/NorthImageSpriteNEWC.png";
@@ -73,46 +78,119 @@ var	loadPlayerSpriteN = function (teamName) {
 	
 }
 
+var	loadPlayerSpriteS = function (teamName) {
+		
+		
+		
+		switch (teamName) {
+			default: 
+				return "sprites/SouthImageSpriteBasic.png";
+				break;				
+			case "QLD Irish":
+				return "sprites/SouthImageSpriteQLDI.png";
+				break; 
+			case "newcA":
+				return "sprites/SouthImageSpriteNEWC.png";
+				break; 
+			case "Brisbane":
+				return "sprites/SouthImageSpriteBRIS.png";
+				break;
+			case "Wigan":
+				return "sprites/SouthImageSpriteWIGN.png";
+				break;
+			case "St. Helens '98":
+				return "sprites/SouthImageSpriteSTHN.png";
+				break;
+			case "Paris St.Germain '97":
+				return "sprites/SouthImageSpritePSG97.png";
+				break;
+			case "Hull":
+				return "sprites/SouthImageSpriteHULL.png";
+				break;	
+			case "Oldham '87":
+				return "sprites/SouthImageSpriteOLDH.png";
+				break;
+			case "Australia '92":
+				return "sprites/SouthImageSpriteAK82.png";
+				break;	
+			case "GB Lions '92":
+				return "sprites/SouthImageSpriteGB92.png";
+				break;	
+			case "South Sydney":
+				return "sprites/SouthImageSpriteQLDI.png";
+				break;
+			case "Salford":
+				return "sprites/SouthImageSpriteSALF.png";
+				break;
+			case "France '67":
+				return "sprites/SouthImageSpriteFRAC.png";
+				break;				
+		}
+	
+}
+
+
 
 var	loadPlayerSpriteNorth = function (spriteName) {
 		
 		switch (spriteName) {
-			default: 
-				return "sprites/NorthImageSpriteBasic.png";
-				break;				
-			case "QLD Irish":
-				return "sprites/NorthImageSpriteQLDI.png";
+//			default: 
+//				return "sprites/NorthImageSpriteBasic.png";
+//				break;				
+			case "newA":
+				return "sprites/NorthImageSpriteNEWA.png";
 				break; 
-			case "Newcastle '88":
+			case "newB":
+				return "sprites/NorthImageSpriteNEWB.png";
+				break; 
+			case "newcA":
 				return "sprites/NorthImageSpriteNEWC.png";
 				break; 
-			case "Brisbane":
-				return "sprites/NorthImageSpriteBRIS.png";
+			case "canA":
+				return "sprites/NorthImageSpriteCANA.png";
 				break;
-			case "Wigan":
+			case "canB":
+				return "sprites/NorthImageSpriteCANB.png";
+				break;
+			case "canC":
+				return "sprites/NorthImageSpriteCANC.png";
+				break;	
+			case "wigA":
 				return "sprites/NorthImageSpriteWIGN.png";
 				break;
-			case "St. Helens '98":
+			case "sthA":
 				return "sprites/NorthImageSpriteSTHN.png";
 				break;
 			case "Paris St.Germain '97":
 				return "sprites/NorthImageSpritePSG97.png";
 				break;
-			case "Hull":
+			case "hfcA":
 				return "sprites/NorthImageSpriteHULL.png";
 				break;
-			case "Manly":
+			case "manA":
 				return "sprites/NorthImageSpriteMANL.png";
 				break;			
-			case "Oldham '87":
+			case "oldA":
 				return "sprites/NorthImageSpriteOLDH.png";
 				break;
-			case "Australia '92":
-				return "sprites/NorthImageSpriteAK82.png";
-				break;			
-			case "GB Lions '92":
-				return "sprites/NorthImageSpriteGB92.png";
-				break;		
+			case "ausA":
+				return "sprites/NorthImageSpriteAK82A.png";
+				break;
+			case "ausB":
+				return "sprites/NorthImageSpriteAK82B.png";
+				break;					
+			case "gbA":
+				return "sprites/NorthImageSpriteGB92A.png";
+				break;
+			case "gbB":
+				return "sprites/NorthImageSpriteGB92B.png";
+				break;
+			case "gbC":
+				return "sprites/NorthImageSpriteGB92C.png";
+				break;
+			case "nzA":
+				return "sprites/NorthImageSpriteNZA.png";
+				break;				
 			case "South Sydney":
 				return "sprites/NorthImageSpriteSSRB.png";
 				break;		
@@ -132,104 +210,77 @@ var	loadPlayerSpriteNorth = function (spriteName) {
 	
 }
 
-var	loadPlayerSpriteS = function (teamName) {
+
+var	loadPlayerSpriteSouth = function (spriteName) {
 		
-		switch (teamName) {
-			default: 
-				return "sprites/SouthImageSpriteBasic.png";
-				break;				
-			case "QLD Irish":
-				return "sprites/SouthImageSpriteQLDI.png";
+		switch (spriteName) {
+//			default: 
+//				return "sprites/SouthImageSpriteBasic.png";
+//				break;				
+			case "newA":
+				return "sprites/SouthImageSpriteGB92.png";
 				break; 
-			case "Newcastle '88":
+			case "newcA":
 				return "sprites/SouthImageSpriteNEWC.png";
 				break; 
-			case "Brisbane":
-				return "sprites/SouthImageSpriteBRIS.png";
+			case "canB":
+				return "sprites/SouthImageSpriteCANB.png";
 				break;
-			case "Wigan":
+			case "wigA":
 				return "sprites/SouthImageSpriteWIGN.png";
 				break;
-			case "St. Helens '98":
+			case "sthA":
 				return "sprites/SouthImageSpriteSTHN.png";
 				break;
 			case "Paris St.Germain '97":
 				return "sprites/SouthImageSpritePSG97.png";
 				break;
-			case "Hull":
+			case "hfcA":
 				return "sprites/SouthImageSpriteHULL.png";
-				break;	
-			case "Oldham '87":
+				break;
+			case "manA":
+				return "sprites/SouthImageSpriteMANL.png";
+				break;			
+			case "oldA":
 				return "sprites/SouthImageSpriteOLDH.png";
 				break;
-			case "Australia '92":
+			case "ausA":
 				return "sprites/SouthImageSpriteAK82.png";
-				break;	
-			case "GB Lions '92":
-				return "sprites/SouthImageSpriteGB92.png";
-				break;	
-			case "South Sydney":
-				return "sprites/SouthImageSpriteQLDI.png";
 				break;
+			case "ausB":
+				return "sprites/SouthImageSpriteAK82.png";
+				break;			
+			case "gbA":
+				return "sprites/SouthImageSpriteGB92.png";
+				break;
+			case "gbB":
+				return "sprites/SouthImageSpriteGB92.png";
+				break;
+			case "gbC":
+				return "sprites/SouthImageSpriteGB92.png";
+				break;
+			case "nzA":
+				return "sprites/SouthImageSpriteNZA.png";
+				break;				
+			case "South Sydney":
+				return "sprites/SouthImageSpriteSSRB.png";
+				break;		
 			case "Salford":
 				return "sprites/SouthImageSpriteSALF.png";
 				break;
-			case "France '67":
+			case "fraA":
+				return "sprites/SouthImageSpriteFRAA.png";
+				break;	
+			case "fraB":
+				return "sprites/SouthImageSpriteFRAB.png";
+				break;	
+			case "fraC":
 				return "sprites/SouthImageSpriteFRAC.png";
-				break;				
+				break;	
 		}
 	
 }
 
-
-var	loadPlayerSpriteSouth = function (teamName) {
-		
-		switch (teamName) {
-			default: 
-				return "sprites/SouthImageSpriteBasic.png";
-				break;				
-			case "QLD Irish":
-				return "sprites/SouthImageSpriteQLDI.png";
-				break; 
-			case "Newcastle '88":
-				return "sprites/SouthImageSpriteNEWC.png";
-				break; 
-			case "Brisbane":
-				return "sprites/SouthImageSpriteBRIS.png";
-				break;
-			case "Wigan":
-				return "sprites/SouthImageSpriteWIGN.png";
-				break;
-			case "St. Helens '98":
-				return "sprites/SouthImageSpriteSTHN.png";
-				break;
-			case "Paris St.Germain '97":
-				return "sprites/SouthImageSpritePSG97.png";
-				break;
-			case "Hull":
-				return "sprites/SouthImageSpriteHULL.png";
-				break;	
-			case "Oldham '87":
-				return "sprites/SouthImageSpriteOLDH.png";
-				break;
-			case "Australia '92":
-				return "sprites/SouthImageSpriteAK82.png";
-				break;	
-			case "GB Lions '92":
-				return "sprites/SouthImageSpriteGB92.png";
-				break;	
-			case "South Sydney":
-				return "sprites/SouthImageSpriteQLDI.png";
-				break;
-			case "Salford":
-				return "sprites/SouthImageSpriteSALF.png";
-				break;
-			case "France '67":
-				return "sprites/SouthImageSpriteFRAC.png";
-				break;				
-		}
-	
-}
 	
 var spriteFrame	= function (spObject) {
 		

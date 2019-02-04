@@ -77,8 +77,23 @@ if(isset($_GET['gameLoser']))
 		  $queryString = $queryString . " Where username = '" .$_GET['gameLoser'] ."'";
 }
 
-// 4. return all relative rows
+if(isset($_GET['emailA']))
+{
+          $queryString = "INSERT INTO Users (userName, password, email) VALUES ('".$_GET['userNameA']."','".$_GET['passwordA']."','".$_GET['emailA']."')";
+//echo $queryString;
 
+}
+
+if(isset($_GET['Team']))
+{
+          $queryString = "INSERT INTO NewPlayers (`Name`, `Position`, `Rating`, `Team`)	  
+		  VALUES ('".$_GET['Name']."','".$_GET['Position']."','".$_GET['Rating']."','".$_GET['Team']."')";
+		
+}
+
+
+
+// 4. return all relative rows
 $result = mysqli_query($connection, $queryString) or die('Could not query');
 
 if(mysqli_num_rows($result)){ 

@@ -14,16 +14,15 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="js/angular.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 	<script src="js/dsrain.js"></script>
 	<script src="js/dssnow.js"></script>
-	<script src="js/cookie.js"></script>
 
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/custom.css">
-	
+	<link rel="stylesheet" href="css/custommob.css">
 	
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/2.3.1/css/flag-icon.min.css" rel="stylesheet"/>
@@ -35,9 +34,6 @@
 <body style="background-color: black; background-size: 100% 100%;">
 
 			<button id="PTBbutton" hidden="true" onclick="PTBall()" class="PTB">PLAY THE BALL</button>
-			<button id="Stackbutton" hidden="true" onclick="playStack()" class="PlayButton PTB">STACK</button>
-			<button id="Staggerbutton" hidden="true" onclick="playStagger()" class="PlayButton PTB">STAGGER</button>
-			<button id="Depthbutton" hidden="true" onclick="playDepth()" class="PlayButton PTB">DEPTH</button>
 			<button id="BigScreen" hidden="true" onclick="continueS()" class="BigScreen">Welcome To Rugby League All-Stars</button>
 			<button id="Pow" hidden="true" class="Pow"></button>
 			<div class="centerComB" id="typedP">...<div class="centerCom" id="typedA"></div></div>
@@ -86,8 +82,7 @@
 
 			<div class="col-md-12" style="margin : 10px;">
 			<div style="text-align : center;">
-			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#userData">Login User</button>
-			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#NewPlayerData">Submit Team</button>
+			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Login User</button>
 			<button type="button" ng-Click="teamSelect('team')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Your Team</button>
 			<button type="button" ng-Click="teamSelect('op')" class="btn btn-success btn-lg" data-toggle="modal" data-target="#teamSelect">Select Opponent Team</button>
 			<button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#startingLineups">Starting Lineups</button>
@@ -116,7 +111,7 @@
 						<td>{{User[0].games}}</td>
 						<td>{{User[0].won}}</td>
 						<td>{{User[0].lost}}</td>
-						<td>{{User[0].Rank}}</td>
+						<td>*All-Star*</td>
 					</tr>
                 </tbody>
             </table>
@@ -271,183 +266,6 @@
     </div>
   </div>
   
-    <!-- Modal User Data-->
-  <div class="modal fade" id="userData" role="dialog">
-    <div class="modal-dialog modal-lg Full-dialog">
-      <!-- Modal content-->
-	  <div class="modal-header">
-      <div class="modal-content" style="padding : 20px">
-	  <h1>SIGNUP</h1>
-	 <form id="newUser" class="form-horizontal">
-			<div class="form-group">
-			<label class="control-label col-sm-2" for="userName">Username:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" id="usernameA" placeholder="Enter Username">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-sm-2" for="email">Email:</label>
-			<div class="col-sm-10">
-			  <input type="email" class="form-control" id="emailA" placeholder="Enter Email">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-sm-2" for="password">Password:</label>
-			<div class="col-sm-10"> 
-			  <input type="password" class="form-control" id="pwdA" placeholder="Enter Password">
-			</div>
-		  </div>
-		  <div class="form-group"> 
-			<div class="col-sm-offset-2 col-sm-10">
-			  <button type="submit" ng-Click="newUser()" class="btn btn-success">Submit</button>
-			</div>
-		  </div>
-		</form>	
-		<h1>LOGIN</h1>
-		 <form id="login" class="form-horizontal">
-		  <div class="form-group">
-			<label class="control-label col-sm-2" for="userName">Username:</label>
-			<div class="col-sm-10">
-			  <input type="text" class="form-control" id="usernameB" placeholder="Enter username">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<label class="control-label col-sm-2" for="password">Password:</label>
-			<div class="col-sm-10"> 
-			  <input type="password" class="form-control" id="pwdB" placeholder="Enter password">
-			</div>
-		  </div>
-		  <div class="form-group"> 
-			<div class="col-sm-offset-2 col-sm-10">
-			  <button type="submit" ng-Click="loginUser($('#login').serialize())" class="btn btn-success">Submit</button>
-			</div>
-		  </div>
-		</form>
-      </div>
-	  </div>
-    </div>
-</div>
-	
-	  <!-- Modal Add Team Data-->
-  <div class="modal fade" id="NewPlayerData" role="dialog">
-    <div class="modal-dialog modal-lg Full-dialog">
-      <!-- Modal content-->
-	  <div class="modal-header">
-      <div form id="newTeam" class="modal-content" style="padding : 20px">
-	  <h3>New Team</h3><p>Enter team details for submission to the database</p>
-	 <form class="form-horizontal">
-			<div class="form-group">
-			<div class="col-sm-4">
-			  <input type="text" class="form-control" id="teamName" placeholder="Enter Team Name">
-			</div>
-			<div class="col-sm-4">
-			  <input type="text" class="form-control" id="teamType" placeholder="Type (UK, AUS, AMATEUR)">
-			</div>
-			<div class="col-sm-4">
-			  <input type="text" class="form-control" id="teamColors" placeholder="Enter Team Colors">
-			</div>
-		  </div>
-		  <h3>Squad</h3><p>Enter players ranking each from 10 - 1</p>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName1" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position1" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating1" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName2" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position2" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating2" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName3" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position3" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating3" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName4" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position4" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating4" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName5" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position6" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating7" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName8" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position8" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating8" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName9" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position9" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating9" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group">
-			<div class="col-sm-4">
-			  <input class="form-control" id="playerName10" placeholder="Enter Name">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Position10" placeholder="Enter Position">
-			</div>
-			<div class="col-sm-4"> 
-			  <input type="password" class="form-control" id="Rating10" placeholder="Rate 1 - 10">
-			</div>
-		  </div>
-		  <div class="form-group"> 
-			<div class="col-sm-12">
-			  <button type="submit" ng-Click="newTeam()" class="btn btn-success col-sm-12">Submit</button>
-			</div>
-		  </div>
-		</form>	
-      </div>
-	  </div>
-    </div>
-  </div>
-  
-  
   <!-- Modal Starting Lineup-->
   <div class="modal fade" id="startingLineups" role="dialog">
     <div class="modal-dialog modal-lg" >
@@ -527,6 +345,7 @@
 
 <script>
     //angular control of list
+
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope) {
 	$scope.selectorN = 0; //number of player to select
@@ -535,31 +354,8 @@
 	$scope.User = [{user_ID: "0", username: "Guest", password: "nrlnrlnrl8!", games: "5", won: "3"}];
 	console.log($scope.User);
 	
-	$scope.newUser = function () {
-		newUser = "?userNameA=" + angular.element('#usernameA').val()
-		newpwd = "&passwordA=" + angular.element('#pwdA').val()
-		newemail = "&emailA=" + angular.element('#emailA').val()
-		console.log(newUser);
-		$scope.lookup("php/lookup.php"+newUser+newpwd+newemail);
-		}
 	
-	$scope.loginUser = function () {
-		user = "?userName=" + angular.element('#usernameB').val()
-		password = "&password=" + angular.element('#pwdB').val()
-		console.log(newUser);
-		$scope.lookup("php/lookup.php"+user+password, 'User');
-		}
 		
-	$scope.newTeam = function () {
-	//add players one by one to db.
-		for (i = 0; i < 12; i++) {
-			var newPlayer = angular.element('#playerName' + i).val()
-			var newPosition = angular.element('#playerName' + i).val()
-			var newTeam = angular.element('#playerName' + i).val()
-			console.log(newPlayer);
-		}
-	}
-	
 		$scope.teamsJSON = [];
 		$scope.teamListArray = [];
 		//$scope.teamListArray = [[], [], []];
@@ -631,12 +427,7 @@
 				$scope.selectorN = 0;
 				$( "#north0Name" ).text($scope.team[0].TeamName);
 				NorthTeam = $scope.team[0].TeamName;
-				NorthImageSprite1.src = loadPlayerSpriteNorth($scope.team[0].Sprite);
-				NorthImageSprite2.src = loadPlayerSpriteNorth($scope.team[0].Sprite);
-				NorthImageSprite3.src = loadPlayerSpriteNorth($scope.team[0].Sprite);
-				NorthImageSprite4.src = loadPlayerSpriteNorth($scope.team[0].Sprite);
-				NorthImageSprite5.src = loadPlayerSpriteNorth($scope.team[0].Sprite);
-				NorthImageSprite6.src = loadPlayerSpriteNorth($scope.team[0].Sprite);
+				NorthImageSprite.src = loadPlayerSpriteN(NorthTeam);
 			}
 			
 			if ($scope.teamID == "S"){
@@ -644,12 +435,7 @@
 				$( "#south0Name" ).text($scope.teamOP[0].TeamName);
 				$scope.addOppositionPlayers();
 				SouthTeam = $scope.teamOP[0].TeamName;
-				SouthImageSprite1.src = loadPlayerSpriteSouth($scope.teamOP[0].Sprite);
-				SouthImageSprite2.src = loadPlayerSpriteSouth($scope.teamOP[0].Sprite);
-				SouthImageSprite3.src = loadPlayerSpriteSouth($scope.teamOP[0].Sprite);
-				SouthImageSprite4.src = loadPlayerSpriteSouth($scope.teamOP[0].Sprite);
-				SouthImageSprite5.src = loadPlayerSpriteSouth($scope.teamOP[0].Sprite);
-				SouthImageSprite6.src = loadPlayerSpriteSouth($scope.teamOP[0].Sprite);
+				SouthImageSprite.src = loadPlayerSpriteS(SouthTeam);
 			}
 			
 		}
@@ -708,28 +494,6 @@
 			Team[$scope.selectorS].name = $scope.teamOP[i].Name;
 			Team[$scope.selectorS].passing = $scope.teamOP[i].Passing;
 			Team[$scope.selectorS].strength = $scope.teamOP[i].Strength;
-			
-			switch ($scope.selectorS) {
-			case 0:
-				SouthImageSprite1.src = loadPlayerSpriteSouth($scope.teamOP[i].Sprite);
-				break;				
-			case 1:
-				SouthImageSprite2.src = loadPlayerSpriteSouth($scope.teamOP[i].Sprite);
-				break; 
-			case 2:
-				SouthImageSprite3.src = loadPlayerSpriteSouth($scope.teamOP[i].Sprite);
-				break; 
-			case 3:
-				SouthImageSprite4.src = loadPlayerSpriteSouth($scope.teamOP[i].Sprite);
-				break;
-			case 4:
-				SouthImageSprite5.src = loadPlayerSpriteSouth($scope.teamOP[i].Sprite);
-				break;
-			case 5:
-				SouthImageSprite6.src = loadPlayerSpriteSouth($scope.teamOP[i].Sprite);
-				break;						
-		}
-			
 		
 			console.log ($scope.teamOP[i].Name + " now playing as "  + $scope.teamOP[0].TeamName + ($scope.selectorS +1));
 			$( "#south" + (i) + "Name" ).text($scope.teamOP[i].Name);
@@ -764,8 +528,6 @@
 		}
 
         $scope.lookup = function(getURL, object) {
-		
-	//	alert(getURL);
 
             $.ajax({
                 url: getURL,
@@ -776,26 +538,14 @@
 					if (object == 'User'){
 					UserObj = JSON.parse(obj);					
 					$scope.User = UserObj;
-					user = $scope.User[0].username;
-					pass = $scope.User[0].password;
 					console.log($scope.User);
 					$scope.lookup("php/lookup.php?teamData", 'Teams');
-					
-					if (user != "Guest" ) {
-					$.cookie('user', user, { expires: 7});
-					$.cookie('pass', pass, { expires: 7});
-					}
-					
 					}
 					
 					if (object == 'Teams'){
 					teamObj = JSON.parse(obj);					
 					$scope.teamsJSON = teamObj;				
 					$scope.teamSort();
-					}
-					
-					if (object == 'AddTeam'){
-					
 					}
 					
 					$scope.$apply();                   
@@ -809,35 +559,28 @@
             });
         };
 				
-		$scope.postup = function(postURL, type) {
-		
-
+		$scope.postup = function(getURL) {
+			
 			$.ajax({
 				url: postURL,
 				type: 'POST',
 				data: {
-				text: postURL
+				text: postData
 				},
 			success: function(obj) {
-	//			alert('Server Response : ' + obj);
+				alert('Server Response : ' + obj);
 				},
 			error: function(request, error) {
 				alert("check db failed");
 				}
 			});
 		}; 
-		
-		
 				
 		//initial lookups
 		//	$scope.lookup("php/lookup.php?userName=DecFoy&password=nrlnrlnrl8!");
-	    if ($.cookie("user") == null) {
-		$scope.lookup("php/lookup.php?userName=Guest&password=blank", 'User');
-		}
+	    $scope.lookup("php/lookup.php?userName=Guest&password=blank", 'User');
+	
 		
-		if ($.cookie("user") != null) {
-		$scope.lookup("php/lookup.php?userName="+ $.cookie('user') + "&password=" + $.cookie('pass'), 'User');
-		}
 		
     });
 	
